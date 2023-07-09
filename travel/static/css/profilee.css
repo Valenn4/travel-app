@@ -19,7 +19,7 @@
     height: 120px;
     border-radius: 50%;
     left: 20px;
-    bottom: 90px;
+    bottom: 80px;
     border: 2px solid white;
 }
 /* WINDOW PHOTO */
@@ -133,15 +133,18 @@
 }
 
 /* MY TRIPS SECTION */
+.add_trip {
+    display: flex;
+    width: 100%;
+    justify-content: right;
+}
 .new_trip {
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: right;
-    margin: 5px 5% 15px 0;
     font-family: 'Rubik';
+    margin: 5px 5% 10px 0;
     text-decoration: underline;
     cursor: pointer;
+    color: black;
 }
 
 .trip {

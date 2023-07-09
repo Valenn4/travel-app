@@ -1,0 +1,25 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.title {
+    width: 100%;
+    color: orangered;
+    font-family: 'Poppins';
+    font-weight: bold;
+    font-size: 25px;
+    margin: 20px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 90%;
+}
+
+.section_form {
+    display: flex;
+    flex-direction: column;
+}

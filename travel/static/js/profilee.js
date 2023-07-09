@@ -1,9 +1,11 @@
 /* open and close window photo */
 document.querySelector(".photo_profile").addEventListener("click", () => {
     document.querySelector(".window_photo").style.display = "flex"
+    document.querySelector("body").style.overflow = "hidden"
 })
 document.querySelector(".close").addEventListener("click", () => {
     document.querySelector(".window_photo").style.display = "none"
+    document.querySelector("body").style.overflow = "auto"
 })
 
 /* options click */
