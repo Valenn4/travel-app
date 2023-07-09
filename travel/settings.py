@@ -121,6 +121,16 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'travel/static/')]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+import firebase_admin
+from firebase_admin import credentials
+
+# Ruta al archivo JSON de la clave de servicio de Firebase
+cred = credentials.Certificate('../travel/travel-app.json')
+firebase_admin.initialize_app(cred, {
+    'storageBucket': 'travel-app-47c04.appspot.com',  # Reemplaza con el nombre de tu bucket
+})
+
+
 cloudinary.config( 
   cloud_name = "dkgpxyew7", 
   api_key = "652259121345679", 
