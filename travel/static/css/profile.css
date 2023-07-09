@@ -1,0 +1,197 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.photos_profile{
+    width: 100%;
+    height: 180px;
+    background-color: rgb(73, 73, 73);
+    cursor: pointer;
+}
+.photo_portate {
+    width: 100%;
+    height: 100%;
+    border-bottom: 2px solid orangered;
+}
+.photo_profile {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    left: 20px;
+    bottom: 90px;
+    border: 2px solid white;
+}
+/* WINDOW PHOTO */
+.window_photo {
+    display: none;
+    width: 100%;
+    height: auto;
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: rgb(0, 0, 0, .5);
+    align-items: center;
+}
+.window_photo svg {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+.photo_window{
+    display: flex;
+    width: 100%;
+    height: auto;
+}
+
+/* INFORMATION */
+.information {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    font-family: 'Poppins';
+    border-bottom: 2px solid rgb(157, 157, 157);
+    padding-bottom: 15px;
+}
+.information .settings {
+    display: flex;
+    justify-content: right;
+    width: 100%;
+}
+.information .setting {
+    display: flex;
+    width: auto;
+    margin: 15px 15px 0px 15px;
+    padding: 8px 11px;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Poppins';
+    cursor: pointer;
+}
+.information .user {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+.information .name {
+    height: 25px;
+    color: black;
+    font-weight: bold;
+    font-size: 19px;
+}
+.information .username {
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+.information .description{
+    font-size: 16px;
+}
+
+/* SECTION */
+.sections {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.options {
+    width: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2px;
+    margin: 2px;
+    text-align: center;
+}
+.options p {
+    background-color: orangered;
+    color: white;
+    padding: 5px;
+    font-family: 'Poppins';
+    cursor: pointer;
+}
+.options .my_trips {
+    border-bottom: 2px solid black;
+}
+.section {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+}
+.my_trips_section{
+    
+}
+.my_dreams_section{
+    display: none;
+}
+.my_plans_section{
+    display: none;
+}
+
+/* MY TRIPS SECTION */
+.new_trip {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: right;
+    margin: 5px 5% 10px 0;
+    font-family: 'Rubik';
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.trip {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: auto;
+    margin: auto;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.structure_trip{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background-color: rgb(0, 0, 0, .1);
+}
+.title_trip {
+    font-size: 17px;
+    width: 100%;
+    margin-bottom: 5px;
+    font-family: 'Poppins';
+    font-weight: 500;
+}
+.trip img {
+    width: 30%;
+    height: 100%;
+}
+.trip .info_trip{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    height: auto;
+    /*background-color: rgb(151, 151, 151);*/
+    color: black;
+    font-family: 'Poppins';
+}
+.info_trip .section1 {
+    display: flex;
+    width: 80%;
+    align-items: center;
+    margin: auto;
+}
+.section1 .quantity_photos {
+    width: 50%;
+    text-align: right;
+    font-size: 14px;
+}
+.info_trip .location_trip {
+    font-size: 15px;
+    width: 50%;
+}
