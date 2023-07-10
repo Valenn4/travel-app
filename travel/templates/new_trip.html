@@ -22,11 +22,16 @@
                 {{form.title}}
             </div>
             <div class="section_form">
-                <label>Fotos del viaje</label>
+                <label>Foto de portada</label>
                 {{form.image}}
             </div>
             <input type="submit" value="Crear">
+            {% if result == 'Ya existe un viaje con el mismo nombre' %}
+                <p style="color:red">{{result}}</p>
+            {% else %}
+                <p style="color:green">{{result}}</p>
+            {% endif %}
         </form> 
     </body>
-    <script src="{% static 'js/new_trip.js' %}"></script>
+    <script src="{% static 'js/new_tripp.js' %}"></script>
 </html>

@@ -190,11 +190,11 @@
     margin: auto;
 }
 .section1 .quantity_photos {
-    width: 50%;
+    width: 30%;
     text-align: right;
     font-size: 15px;
 }
 .info_trip .location_trip {
     font-size: 16px;
-    width: 50%;
+    width: 70%;
 }

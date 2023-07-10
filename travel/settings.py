@@ -124,9 +124,9 @@ import firebase_admin
 from firebase_admin import credentials
 
 # Ruta al archivo JSON de la clave de servicio de Firebase
-cred = credentials.Certificate('../travel/travel-app.json')
+cred = credentials.Certificate('../travel/app-travel.json')
 firebase_admin.initialize_app(cred, {
-    'storageBucket': 'travel-app-47c04.appspot.com',  # Reemplaza con el nombre de tu bucket
+    'storageBucket': 'app-travel-25c6d.appspot.com',  # Reemplaza con el nombre de tu bucket
 })
 
 # Default primary key field type

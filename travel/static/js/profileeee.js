@@ -1,4 +1,9 @@
-
+/* click trip */
+document.querySelectorAll(".trip").forEach(el => {
+    el.addEventListener("click", () => {
+        window.location.href = `../trip/${el.id}`
+    })
+})
 /* open and close window photo */
 document.querySelector(".photo_profile").addEventListener("click", () => {
     document.querySelector(".window_photo").style.display = "flex"

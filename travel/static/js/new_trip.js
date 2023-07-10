@@ -1,1 +1,0 @@
-document.querySelector("#id_image").setAttribute("multiple", true)
