@@ -54,7 +54,7 @@ def new_trip(request):
                 user = request.user,
                 location = form.data["location"],
                 title = form.data["title"],
-                images = json.dumps({"images":list_images})
+                images = {"images":json.dumps(list_images)}
             )
             result = "Viaje creado exitosamente"
     else:
