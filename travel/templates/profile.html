@@ -6,7 +6,7 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static 'css/profilee.css' %}">
+        <link rel="stylesheet" href="{% static 'css/profile.css' %}">
         <link href="https://fonts.googleapis.com/css2?family=Belanosima:wght@400;600;700&family=Eczar:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=Poppins:wght@400;500;600&family=Roboto:wght@400;500;700&family=Rubik:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">    
     </head>
     <body>
@@ -14,14 +14,13 @@
             <div class="profile">
                 <div class="photos_profile">
                     <img class="photo_portate" src="https://plus.unsplash.com/premium_photo-1677093726619-8cf03e37a6af?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y29zdGElMjBhbWFsZml8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=700&q=60">
-                    <img class="photo_profile" src="{% url 'get_image' image='foto_perfil.jpg' %}" alt="Imagen">
-                    
+                    <img class="photo_profile" src="{% url 'get_image_user' image='foto_perfil.jpg' %}">
                     <div class="window_photo">
                         <svg class="close" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0,0,256,256"
                         style="fill:#000000;">
                         <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(10.66667,10.66667)"><path d="M4.99023,3.99023c-0.40692,0.00011 -0.77321,0.24676 -0.92633,0.62377c-0.15312,0.37701 -0.06255,0.80921 0.22907,1.09303l6.29297,6.29297l-6.29297,6.29297c-0.26124,0.25082 -0.36647,0.62327 -0.27511,0.97371c0.09136,0.35044 0.36503,0.62411 0.71547,0.71547c0.35044,0.09136 0.72289,-0.01388 0.97371,-0.27511l6.29297,-6.29297l6.29297,6.29297c0.25082,0.26124 0.62327,0.36648 0.97371,0.27512c0.35044,-0.09136 0.62411,-0.36503 0.71547,-0.71547c0.09136,-0.35044 -0.01388,-0.72289 -0.27512,-0.97371l-6.29297,-6.29297l6.29297,-6.29297c0.29576,-0.28749 0.38469,-0.72707 0.22393,-1.10691c-0.16075,-0.37985 -0.53821,-0.62204 -0.9505,-0.60988c-0.2598,0.00774 -0.50638,0.11632 -0.6875,0.30273l-6.29297,6.29297l-6.29297,-6.29297c-0.18827,-0.19353 -0.4468,-0.30272 -0.7168,-0.30273z"></path></g></g>
                         </svg>
-                        <img class="photo_window" src="{% url 'get_image' image='foto_perfil.jpg' %}">
+                        <img class="photo_window" src="{% url 'get_image_user' image='foto_perfil.jpg' %}">
                     </div>   
                 </div>
                 <div class="information">
@@ -29,8 +28,8 @@
                         <button class="setting">Editar perfil</button>
                     </div>
                     <div class="user">
-                        <p class="name">Valentino</p>
-                        <p class="username">@Valenn4</p>
+                        <p class="name">{{request.user.first_name}}</p>
+                        <p class="username">@{{request.user}}</p>
                         <p class="description">No dejes nada pendiente para el futuro. La vida es muy corta y no sabes cuando se acabará.</p>
                     </div>
 
@@ -45,42 +44,21 @@
                         <div class="add_trip">
                             <a class="new_trip" href="/new_trip">+ Agregar nuevo viaje</a>
                         </div>
+
+                        {% for trip in trips %}
                         <div class="trip">
-                            <p class="title_trip">¡Mi viaje a Roma con mi amigo Bruno!</p>
+                            <p class="title_trip">{{trip.title}}</p>
                             <div class="structure_trip">
-                                <img src="https://plus.unsplash.com/premium_photo-1677093726619-8cf03e37a6af?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y29zdGElMjBhbWFsZml8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=700&q=60">
+                                <img class="image_trip" src={% url 'get_image_trip' location=trip.location image=trip.last_image %}>
                                 <div class="info_trip">
                                     <div class="section1">
-                                        <p class="location_trip">Rome, Italy</p>
+                                        <p class="location_trip">{{trip.location}}</p>
                                         <p class="quantity_photos">14 fotos</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="trip">
-                            <p class="title_trip">Conociendo Francia</p>
-                            <div class="structure_trip">
-                                <img src="https://plus.unsplash.com/premium_photo-1666283181610-b95ee7e55465?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cGFyaXN8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60">
-                                <div class="info_trip">
-                                    <div class="section1">
-                                        <p class="location_trip">Francia</p>
-                                        <p class="quantity_photos">9 fotos</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="trip">
-                            <p class="title_trip">El mejor viaje de mi vida</p>
-                            <div class="structure_trip">
-                                <img src="https://plus.unsplash.com/premium_photo-1677093726619-8cf03e37a6af?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y29zdGElMjBhbWFsZml8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=700&q=60">
-                                <div class="info_trip">
-                                    <div class="section1">
-                                        <p class="location_trip">Rome, Italy</p>
-                                        <p class="quantity_photos">14 fotos</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                     <div class="my_plans_section section" id="my_plans">
                         <p>My plans</p>
@@ -89,23 +67,8 @@
                         <p>My dreams</p>
                     </div>
                 </div>
-                <!--
-                {% for el in trips %}
-                    <img src={{el.url}} width="50px" heigth="50px"></p>
-                {% endfor %}
-                -->
-
-                     
             </div>
         </div>
-        
-       <!--
-        <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{form.as_p}}
-            <input type="submit" value="Cargar">
-        </form>
-        -->
     </body>
-    <script src="{% static 'js/profilee.js' %}"></script>
+    <script src="{% static 'js/profileee.js' %}"></script>
 </html>

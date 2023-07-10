@@ -1,3 +1,4 @@
+
 /* open and close window photo */
 document.querySelector(".photo_profile").addEventListener("click", () => {
     document.querySelector(".window_photo").style.display = "flex"
