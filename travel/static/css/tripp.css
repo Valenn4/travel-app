@@ -36,16 +36,25 @@
 .header a span {
     font-size: 28px;
 }
-.header p {
+.header .title {
     font-size: 20px;
     font-family: 'Eczar';
     padding-left: 5px;
+    width: 100%;
 }
-.header .add {
-    position: absolute;
-    right: 20px;
-    font-size: 30px;
-    cursor: pointer;
+.add {
+    position: fixed;
+    text-align: center;
+    bottom: 30px;
+    right: 0px;
+    padding: 6px 15px;
+    font-size: 35px;
+    border-top-left-radius: 25%;
+    border-bottom-left-radius: 25%;
+    font-weight: bold;
+    background-color: #ff4500;
+    color: white;
+    text-decoration: none;
 }
 /* ADD IMAGE */
 .add_image {

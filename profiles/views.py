@@ -40,14 +40,15 @@ def profile(request):
 def new_trip(request):
     if request.method=='POST':
         form = FormNewTravel(request.POST,  request.FILES)
-        image = request.FILES.get("image")
-        bucket = storage.bucket()
-        blob = bucket.blob(f'trips/{request.user}/'+form.data["location"]+"/"+image.name)
-        blob.upload_from_file(image)
-
+    
         if(Trip.objects.filter(user = request.user,title=form.data["title"]).exists()):
             result = "Ya existe un viaje con el mismo nombre"
         else:
+            image = request.FILES.get("image")
+            bucket = storage.bucket()
+            blob = bucket.blob(f'trips/{request.user}/'+form.data["location"]+"/"+image.name)
+            blob.upload_from_file(image)
+
             list_images = []
             list_images.append(image.name)
             Trip.objects.create(
@@ -57,6 +58,7 @@ def new_trip(request):
                 images = {"images":json.dumps(list_images)}
             )
             result = "Viaje creado exitosamente"
+            return redirect("../profile")
     else:
         form = FormNewTravel()
         result = ""
