@@ -1,0 +1,58 @@
+{% load static %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'css/authentication/registerr.css' %}">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <link href="https://fonts.googleapis.com/css2?family=Belanosima:wght@400;600;700&family=Eczar:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=Poppins:wght@400;500;600&family=Roboto:wght@400;500;700&family=Rubik:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+            <form method="post" class="form">
+                {% csrf_token %}
+                <p class="title">Crear cuenta</p>
+                <div class="section">
+                    <label>Correo electronico</label>
+                    {{form.email}}
+                    {% for el in form.email.errors %}
+                        <p class="error">{{el}}</p>
+                    {% endfor %}
+                </div>
+                <div class="section">
+                    <label>Nombre</label>
+                    {{form.first_name}}
+                    {% for el in form.first_name.errors %}
+                        <p class="error">{{el}}</p>
+                    {% endfor %}
+                </div>
+                <div class="section">
+                    <label>Usuario</label>
+                    {{form.username}}
+                    {% for el in form.username.errors %}
+                        <p class="error">{{el}}</p>
+                    {% endfor %}
+                </div>
+                <div class="section">
+                    <label>Contraseña</label>
+                    {{form.password1}}
+                    {% for el in form.password1.errors %}
+                        <p class="error">{{el}}</p>
+                    {% endfor %}
+                </div>
+                <div class="section">
+                    <label>Repetir contraseña</label>
+                    {{form.password2}}
+                    {% for el in form.password2.errors %}
+                        <p class="error">{{el}}</p>
+                    {% endfor %}
+                </div>
+                <input class="submit" type="submit" value="Crear">
+            </form> 
+        </div>
+        <script src="" async defer></script>
+    </body>
+</html>

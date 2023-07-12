@@ -3,10 +3,10 @@ from django.contrib.auth.models import User, AbstractUser
 # Create your models here.
 
 class UserProfile(AbstractUser):
-    description = models.TextField(max_length=300, blank=True)
-    nacionality = models.CharField(max_length=100, blank=False)
-    image_profile = models.TextField(max_length=None, blank=False, null=False)
-    image_portate = models.TextField(max_length=None, blank=False, null=False)
+    description = models.TextField(max_length=300, blank=False, null=False, default="No has seleccionado ninguna descripcion")
+    nacionality = models.CharField(max_length=100, blank=True)
+    image_profile = models.TextField(max_length=None, blank=True)
+    image_portate = models.TextField(max_length=None, blank=True)
     #my_trips = models.JSONField(blank=True, null=True)
     #my_future_trips = models.JSONField(blank=True, null=True)
 

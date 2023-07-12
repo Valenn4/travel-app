@@ -18,11 +18,13 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from profiles import urls
+import profiles.urls as profiles_urls
+import authentication.urls as auth_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include(urls))
+    path('', include(profiles_urls)),
+    path('', include(auth_urls))
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

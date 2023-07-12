@@ -1,9 +1,10 @@
 import json
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from .forms import FormNewTravel
+from .forms import FormNewTravel, FormChangeUser
 from .models import Trip, UserProfile
 from firebase_admin import storage
+from django.contrib import auth
 # Create your views here.
 
 def get_image_trip(request, location, image):
@@ -35,22 +36,48 @@ def profile(request):
     context = {
         'trips':trips,
     }
-    return render(request, 'profile.html', context)
+    return render(request, 'profile/profile.html', context)
+
+def edit_profile(request, id):
+    if request.method == "POST":
+        form = FormChangeUser(request.POST, request.FILES, instance=request.user)
+        
+        bucket = storage.bucket()
+        
+        user = UserProfile.objects.get(id=request.user.id)
+        user.description = form.data["description"]
+        user.nacionality = form.data["nacionality"]
+        if(request.FILES.get("image_profile") != None):
+            user.image_profile = request.FILES.get("image_profile").name
+            blob = bucket.blob(f'users/{request.user}/'+request.FILES.get("image_profile").name)
+            blob.upload_from_file(request.FILES.get("image_profile"))
+        if(request.FILES.get("image_portate") != None):
+            user.image_portate = request.FILES.get("image_portate").name
+        user.save()
+    
+        return redirect("../../profile")
+    else:
+        form = FormChangeUser(instance = request.user)
+    context = {
+        'user': UserProfile.objects.get(id=id),
+        'form': form
+    }
+    return render(request, 'profile/edit_profile.html', context)
 
 def new_trip(request):
     if request.method=='POST':
-        form = FormNewTravel(request.POST,  request.FILES)
-    
+        form = FormNewTravel(request.POST, request.FILES)
+        
         if(Trip.objects.filter(user = request.user,title=form.data["title"]).exists()):
             result = "Ya existe un viaje con el mismo nombre"
         else:
-            image = request.FILES.get("image")
-            bucket = storage.bucket()
-            blob = bucket.blob(f'trips/{request.user}/'+form.data["location"]+"/"+image.name)
-            blob.upload_from_file(image)
-
             list_images = []
-            list_images.append(image.name)
+            for image in request.FILES.getlist("image"):
+                bucket = storage.bucket()
+                blob = bucket.blob(f'trips/{request.user}/'+form.data["location"]+"/"+image.name)
+                blob.upload_from_file(image)
+                list_images.append(image.name)
+                
             Trip.objects.create(
                 user = request.user,
                 location = form.data["location"],
@@ -68,7 +95,7 @@ def new_trip(request):
         "form":form,
         "result":result
     }
-    return render(request, 'new_trip.html', context)
+    return render(request, 'profile/new_trip.html', context)
 
 def trip (request, id):
     trip = Trip.objects.get(id=id)
@@ -81,8 +108,9 @@ def trip (request, id):
         else:
             images = json.loads(trip.images.get("images"))
             images.append(image.name)
-            Trip.objects.update(id=id, images={"images":json.dumps(images)})
-
+            
+            trip.images = {"images":json.dumps(images)}
+            trip.save()
             bucket = storage.bucket()
             blob = bucket.blob(f'trips/{request.user}/'+trip.location+"/"+image.name)
             blob.upload_from_file(image) 
@@ -97,4 +125,4 @@ def trip (request, id):
         'images':list_images,
         'result_form': result_form
     }
-    return render(request, 'trip.html', context)
+    return render(request, 'profile/trip.html', context)

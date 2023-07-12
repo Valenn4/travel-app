@@ -135,3 +135,5 @@ firebase_admin.initialize_app(cred, {
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'profiles.UserProfile'
+
+LOGOUT_REDIRECT_URL = '../../login/'
