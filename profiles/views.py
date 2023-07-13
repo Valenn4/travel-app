@@ -7,6 +7,16 @@ from firebase_admin import storage
 from django.contrib import auth
 # Create your views here.
 
+def get_image_user(request, image):
+    bucket = storage.bucket()
+    blob = bucket.blob(f"users/{request.user.username}/{image}")
+    
+    try:
+        image_data = blob.download_as_bytes()
+        return HttpResponse(image_data, content_type='image/jpg')  # Cambia el tipo de contenido según tus necesidades
+    except Exception as e:
+        return HttpResponse('Error al obtener la imagen: {}'.format(str(e)))
+
 def get_image_trip(request, location, image):
     bucket = storage.bucket()
     blob = bucket.blob(f"trips/{request.user.username}/{location}/{image}")
@@ -17,15 +27,15 @@ def get_image_trip(request, location, image):
     except Exception as e:
         return HttpResponse('Error al obtener la imagen: {}'.format(str(e)))
 
-def get_image_user(request, image):
+def get_image_portate(request, image):
     bucket = storage.bucket()
-    blob = bucket.blob(f"users/{request.user.username}/{image}")
-    
+    blob = bucket.blob(f"portate/{request.user.username}/{image}")
     try:
         image_data = blob.download_as_bytes()
         return HttpResponse(image_data, content_type='image/jpg')  # Cambia el tipo de contenido según tus necesidades
     except Exception as e:
         return HttpResponse('Error al obtener la imagen: {}'.format(str(e)))
+
 
 def profile(request):
 
@@ -53,6 +63,8 @@ def edit_profile(request, id):
             blob.upload_from_file(request.FILES.get("image_profile"))
         if(request.FILES.get("image_portate") != None):
             user.image_portate = request.FILES.get("image_portate").name
+            blob = bucket.blob(f'portate/{request.user}/'+request.FILES.get("image_portate").name)
+            blob.upload_from_file(request.FILES.get("image_portate"))
         user.save()
     
         return redirect("../../profile")
