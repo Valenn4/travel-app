@@ -141,6 +141,7 @@
 }
 .my_messages_section{
     display: none;
+    margin: 20px 0;
 }
 
 /* MY TRIPS SECTION */
@@ -220,4 +221,64 @@
     width: 100%;
     border: 1px solid rgb(0, 0, 0, .8);
     margin: 5px 0;
+}
+
+
+/* MY MESSAGES SECTION */
+.message{
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    margin-bottom: 15px;
+    width: 80%;
+    height: auto;
+    background-color: rgb(0, 0, 0, .1);
+    border-radius: 5px;
+    padding: 15px 25px;
+    font-family: 'Poppins';
+}
+
+.message .username_message {
+    width: 100%;
+    display: flex;
+}
+.message img{
+    display: flex;
+    width: 20%;
+    height:20%;
+    border-radius: 50%;
+    margin: auto;
+    margin-right: 20px;
+}
+.structure_message{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+.message .user_message{
+    display: flex;
+    align-items: center;
+    width: 60%;
+    font-family: 'Rubik';
+    font-size: 19px;
+}
+.message .date_message{
+    display: flex;
+    width: 40%;
+    align-items: center;
+    justify-content: right;
+    font-size: 16px;
+}
+
+.message .text_message{
+    margin: 10px 0;
+}
+
+.message .likes_message {
+    width: 100%;
+    display: flex;
+}
+.likes_message span {
+    cursor: pointer;
+    margin-right: 4px;
 }

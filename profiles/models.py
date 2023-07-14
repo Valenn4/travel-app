@@ -7,8 +7,6 @@ class UserProfile(AbstractUser):
     nacionality = models.CharField(max_length=100, blank=True)
     image_profile = models.TextField(max_length=None, blank=True)
     image_portate = models.TextField(max_length=None, blank=True)
-    #my_trips = models.JSONField(blank=True, null=True)
-    #my_future_trips = models.JSONField(blank=True, null=True)
 
 class Trip(models.Model):
     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE, blank=False, null=False)
@@ -18,3 +16,9 @@ class Trip(models.Model):
 
     def __str__(self):
         return f'{self.user} {self.title}'
+
+class Message(models.Model):
+    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    message = models.TextField(max_length=150, blank=False, null=False)
+    date = models.DateTimeField(auto_now=True, null=False, blank=False)
+    likes = models.IntegerField(default=0, blank=False, null=False)
