@@ -225,6 +225,25 @@
 
 
 /* MY MESSAGES SECTION */
+.form_new_message{
+    width: 90%;
+    margin: auto;
+    margin-bottom: 15px;
+}
+.form_new_message #id_message {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    justify-content: center;
+}
+.form_new_message input[type="submit"]{
+    display: flex;
+    width: auto;
+    padding: 5px 15px;
+    margin-top: 10px;
+}
+
 .message{
     display: flex;
     flex-direction: row;
@@ -244,16 +263,15 @@
 }
 .message img{
     display: flex;
-    width: 20%;
-    height:20%;
+    width: 60px;
+    height:60px;
     border-radius: 50%;
-    margin: auto;
-    margin-right: 20px;
+    margin-right: 15px;
 }
 .structure_message{
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 100%;
 }
 .message .user_message{
     display: flex;
@@ -264,21 +282,22 @@
 }
 .message .date_message{
     display: flex;
-    width: 40%;
-    align-items: center;
+    width: 20%;
     justify-content: right;
     font-size: 16px;
 }
 
 .message .text_message{
-    margin: 10px 0;
+    margin: 10px 5px;
 }
 
 .message .likes_message {
     width: 100%;
     display: flex;
 }
-.likes_message span {
+.likes_message img {
+    width: 23px;
+    height: 23px;
     cursor: pointer;
     margin-right: 4px;
 }

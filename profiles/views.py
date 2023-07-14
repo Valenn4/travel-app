@@ -1,7 +1,7 @@
 import json
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from .forms import FormNewTravel, FormChangeUser
+from .forms import FormNewTravel, FormChangeUser, FormNewMessage
 from .models import Trip, UserProfile, Message
 from firebase_admin import storage
 from django.contrib import auth
@@ -44,10 +44,23 @@ def profile(request):
         list_images = json.loads(trip.images.get("images"))
         trips.append({"id": trip.id, "title": trip.title, "location":trip.location, "images":list_images, "last_image":list_images[len(list_images)-1]})
     # MESSAGGES
+    if request.method == 'POST':
+        form_new_message = FormNewMessage(request.POST)
+        if form_new_message.is_valid():
+            new_message = Message.objects.create(
+                user = request.user,
+                message = form_new_message.data["message"],
+            )
+            new_message.save()
+        return redirect("../profile/")
+    else:
+        form_new_message = FormNewMessage()
     messages = Message.objects.filter(user=request.user).order_by("-id")
     context = {
         'trips':trips,
-        'messages': messages
+        'messages': messages,
+        'form_new_message': form_new_message
+
     }
     return render(request, 'profile/profile.html', context)
 
