@@ -128,9 +128,6 @@
     font-family: 'Poppins';
     cursor: pointer;
 }
-.options .my_trips {
-    border-bottom: 2px solid black;
-}
 .section {
     display: flex;
     flex-direction: column;

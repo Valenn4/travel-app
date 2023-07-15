@@ -44,6 +44,7 @@ def profile(request):
         list_images = json.loads(trip.images.get("images"))
         trips.append({"id": trip.id, "title": trip.title, "location":trip.location, "images":list_images, "last_image":list_images[len(list_images)-1]})
     # MESSAGGES
+    messages = Message.objects.filter(user=request.user).order_by("-id")
     if request.method == 'POST':
         form_new_message = FormNewMessage(request.POST)
         if form_new_message.is_valid():
@@ -52,15 +53,20 @@ def profile(request):
                 message = form_new_message.data["message"],
             )
             new_message.save()
-        return redirect("../profile/")
+        context = {
+            'trips':trips,
+            'messages': messages,
+            'form_new_message': FormNewMessage(),
+            'message_condition': True
+        }
+        return render(request, 'profile/profile.html', context)
     else:
         form_new_message = FormNewMessage()
-    messages = Message.objects.filter(user=request.user).order_by("-id")
     context = {
         'trips':trips,
         'messages': messages,
-        'form_new_message': form_new_message
-
+        'form_new_message': form_new_message,
+        'message_condition': False
     }
     return render(request, 'profile/profile.html', context)
 
