@@ -246,11 +246,11 @@
     flex-direction: row;
     margin: auto;
     margin-bottom: 15px;
-    width: 80%;
+    width: 85%;
     height: auto;
     background-color: rgb(0, 0, 0, .1);
     border-radius: 5px;
-    padding: 15px 25px;
+    padding: 10px;
     font-family: 'Poppins';
 }
 
@@ -260,8 +260,8 @@
 }
 .message img{
     display: flex;
-    width: 60px;
-    height:60px;
+    width: 50px;
+    height:50px;
     border-radius: 50%;
     margin-right: 15px;
 }
@@ -273,18 +273,21 @@
 .message .user_message{
     display: flex;
     align-items: center;
-    width: 60%;
     font-family: 'Rubik';
     font-size: 19px;
+    width: 60%;
 }
 .message .date_message{
     display: flex;
-    width: 20%;
     justify-content: right;
+    align-items: center;
     font-size: 16px;
+    width: 25%;
+    margin-right: 20px;
 }
 
 .message .text_message{
+    font-family: 'Poppins';
     margin: 10px 5px;
 }
 
@@ -292,9 +295,10 @@
     width: 100%;
     display: flex;
 }
-.likes_message img {
-    width: 23px;
-    height: 23px;
+.likes_message span {
+    display: flex;
+    align-items: center;
+    font-size: 19px;
     cursor: pointer;
-    margin-right: 4px;
+    margin-right: 3px;
 }
