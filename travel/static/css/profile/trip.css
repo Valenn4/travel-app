@@ -49,10 +49,11 @@
     justify-content: center;
     width: 100%;
     height: 100%;
-    margin-top: 20px;
+    margin-top: 2%;
 }
 .structure_add_image {
     display: flex;
+    flex-direction: column;
     width: 95%;
     margin: auto;
     background-color: white;
@@ -83,15 +84,15 @@
     white-space: nowrap;
     overflow: hidden;
 }
-.input_file .file{
+.input_file #id_image{
     position: fixed;
     opacity: 0;
     width: 180px;
     height: 40px;
 }
 .form_add_image .submit {
-    width: 10%;
     margin-left: 10px;
+    padding: 5px 10px;
 }
 .result_form {
     color: red;

@@ -6,7 +6,7 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static 'css/profile/profileeee.css' %}">
+        <link rel="stylesheet" href="{% static 'css/profile/profile.css' %}">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
         <link href="https://fonts.googleapis.com/css2?family=Belanosima:wght@400;600;700&family=Eczar:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=Poppins:wght@400;500;600&family=Roboto:wght@400;500;700&family=Rubik:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">    
     </head>
@@ -53,119 +53,69 @@
                         <p class="my_trips">Mis viajes</p>
                         <p class="my_messages">Mis mensajes</p>
                     </div>
-                    {% if message_condition == False %}
-                        <div style="display:flex;" class="my_trips_section section" id="my_trips">
-                            <a class="new_trip" href="/new_trip">+</a>
+                    <div class="my_trips_section section" id="my_trips">
+                        <a class="new_trip" href="/new_trip">
+                            <span class="material-symbols-outlined">
+                                add
+                            </span>
+                        </a>
 
-                            {% for trip in trips %}
-                            <div class="trip" id="{{trip.id}}">
-                                <p class="title_trip">{{trip.title}}</p>
-                                <div class="structure_trip">
-                                    <img class="image_trip" src={% url 'get_image_trip' location=trip.location image=trip.last_image %}>
-                                    <div class="info_trip">
-                                        <div class="section1">
-                                            <p class="location_trip">{{trip.location}}</p>
-                                            <div class="separate"></div>
-                                            {% if trip.images|length == 1 %}
-                                                <p class="quantity_photos">{{trip.images|length}} foto</p>
-                                            {% else %}
-                                                <p class="quantity_photos">{{trip.images|length}} fotos</p>
-                                            {% endif %}
-                                        </div>
+                        {% for trip in trips %}
+                        <div class="trip" id="{{trip.id}}">
+                            <p class="title_trip">{{trip.title}}</p>
+                            <div class="structure_trip">
+                                <img class="image_trip" src={% url 'get_image_trip' location=trip.location image=trip.last_image %}>
+                                <div class="info_trip">
+                                    <div class="section1">
+                                        <p class="location_trip">{{trip.location}}</p>
+                                        <div class="separate"></div>
+                                        {% if trip.images|length == 1 %}
+                                            <p class="quantity_photos">{{trip.images|length}} foto</p>
+                                        {% else %}
+                                            <p class="quantity_photos">{{trip.images|length}} fotos</p>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
-                            {% endfor %}
                         </div>
-                        <div style="display:none;" class="my_messages_section section" id="my_messages">
-                            <form method='POST' class="form_new_message">
-                                {% csrf_token %}
-                                {{form_new_message.message}}
-                                <input type="submit" value="Subir">
-                            </form>
+                        {% endfor %}
+                    </div>
+                    <div class="my_messages_section section" id="my_messages">
+                       <!--
+                        <form method='POST' class="form_new_message">
+                            {% csrf_token %}
+                            {{form_new_message.message}}
+                            <input type="submit" value="Subir">
+                        </form>
+                        -->
 
-                            {% if messages|length == 0%}
-                            <p>No has subido ningún mensaje</p>
-                            {% endif %}
+                        {% if messages|length == 0%}
+                        <p>No has subido ningún mensaje</p>
+                        {% endif %}
 
-                            {% for message in messages %}
-                            <div class="message">
-                                <div class="structure_message">
-                                    <div class="username_message">
-                                        <img src="https://images.unsplash.com/photo-1648183185045-7a5592e66e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8Zm90byUyMGRlJTIwcGVyZmlsfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60">
-                                        <!--<img src="{% url 'get_image_user' image=request.user.image_profile %}">-->
-                                        <p class="user_message">{{message.user.username}}</p>
-                                        <p class="date_message">{{message.date|date:"j M"}}</p>
-                                    </div>
-                                    <p class="text_message">{{message.message}}</p>
-                                    <div class="likes_message">
-                                        <span class="material-symbols-outlined">
-                                            favorite
-                                        </span>
-                                        <p class="like_message">{{message.likes}}</p>
-                                    </div>
+                        {% for message in messages %}
+                        <div class="message">
+                            <div class="structure_message">
+                                <div class="username_message">
+                                    <img src="https://images.unsplash.com/photo-1648183185045-7a5592e66e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8Zm90byUyMGRlJTIwcGVyZmlsfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60">
+                                    <!--<img src="{% url 'get_image_user' image=request.user.image_profile %}">-->
+                                    <p class="user_message">{{message.user.username}}</p>
+                                    <p class="date_message">{{message.date|date:"j M"}}</p>
+                                </div>
+                                <p class="text_message">{{message.message}}</p>
+                                <div class="likes_message">
+                                    <span class="material-symbols-outlined">
+                                        favorite
+                                    </span>
+                                    <p class="like_message">{{message.likes}}</p>
                                 </div>
                             </div>
-                            {% endfor %}
                         </div>
-                    {% else %}
-                        <div style="display:none;" class="my_trips_section section" id="my_trips">
-                            <a class="new_trip" href="/new_trip">+</a>
-
-                            {% for trip in trips %}
-                            <div class="trip" id="{{trip.id}}">
-                                <p class="title_trip">{{trip.title}}</p>
-                                <div class="structure_trip">
-                                    <img class="image_trip" src={% url 'get_image_trip' location=trip.location image=trip.last_image %}>
-                                    <div class="info_trip">
-                                        <div class="section1">
-                                            <p class="location_trip">{{trip.location}}</p>
-                                            <div class="separate"></div>
-                                            {% if trip.images|length == 1 %}
-                                                <p class="quantity_photos">{{trip.images|length}} foto</p>
-                                            {% else %}
-                                                <p class="quantity_photos">{{trip.images|length}} fotos</p>
-                                            {% endif %}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            {% endfor %}
-                        </div>
-                        <div style="display:flex;" class="my_messages_section section" id="my_messages">
-                            <form method='POST' class="form_new_message">
-                                {% csrf_token %}
-                                {{form_new_message.message}}
-                                <input type="submit" value="Subir">
-                            </form>
-
-                            {% if messages|length == 0%}
-                            <p>No has subido ningún mensaje</p>
-                            {% endif %}
-
-                            {% for message in messages %}
-                            <div class="message">
-                                <div class="structure_message">
-                                    <div class="username_message">
-                                        <img src="{% url 'get_image_user' image=request.user.image_profile %}">
-                                        <p class="user_message">{{message.user.username}}</p>
-                                        <p class="date_message">{{message.date|date:"j M y"}}</p>
-                                    </div>
-                                    <p class="text_message">{{message.message}}</p>
-                                    <div class="likes_message">
-                                        <span class="material-symbols-outlined">
-                                            favorite
-                                        </span>
-                                        <p class="like_message">{{message.likes}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            {% endfor %}
-                        </div>
-                    {% endif %}
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>
     </body>
-    <script src="{% static 'js/profileee.js' %}"></script>
+    <script src="{% static 'js/profile.js' %}"></script>
 </html>

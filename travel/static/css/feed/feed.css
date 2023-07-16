@@ -1,0 +1,117 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    background-color: orangered;
+    padding-bottom: 60px;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+/* HEADER */
+.header {
+    display: flex;
+    width: 98%;
+    height: 60px;
+    justify-content: center;
+    background-color: white;
+    position: fixed;
+    bottom: 0px;
+    padding: 0 1%;
+}
+.options_header {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.options_header li {
+    list-style: none;
+    font-family: 'Poppins';
+    text-align: center;
+    font-size: 21px;
+    cursor: pointer;
+    margin: 0 10px;
+    width: 20%;
+}
+.options_header a{
+    color: orangered;
+}
+.option_div{
+    display: flex;
+    flex-direction: column;
+}
+.logo {
+    color: white;
+    background-color: orangered;
+    border-bottom-left-radius: 100%;
+    border-bottom-right-radius: 100%;
+    font-size: 30px;
+    padding: 15px;
+}
+/* TITLE */
+.title {
+    color: white;
+    font-family: 'Poppins';
+    margin: 20px 30px;
+    font-size: 22px;
+}
+
+/* PUBLICATIONS */
+.publications {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.publication{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: auto;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    color: white;
+    font-family: 'Poppins';
+    border-bottom: 2px solid white;
+}
+.info_publication{
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+.info_publication .image_publication {
+    width: 15%;
+    height: 15%;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+.info_publication .user_publication{
+    width: 60%;
+    font-size: 18px;
+}
+.info_publication .date_publication{
+    text-align: right;
+    width: 25%;
+}
+
+.message_publication {
+    display: flex;
+    margin: 15px auto 10px auto;
+    width: 95%;
+}
+
+.likes_publication {
+    display: flex;
+    margin: auto;
+    align-items: center;
+    width: 95%;
+}
+
+.likes_publication i {
+    margin-right: 4px;
+    cursor: pointer;
+}
+

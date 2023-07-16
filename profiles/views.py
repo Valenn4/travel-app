@@ -1,7 +1,7 @@
 import json
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from .forms import FormNewTravel, FormChangeUser, FormNewMessage
+from .forms import FormNewTravel, FormChangeUser, FormNewMessage, FormAddImage
 from .models import Trip, UserProfile, Message
 from firebase_admin import storage
 from django.contrib import auth
@@ -38,6 +38,8 @@ def get_image_portate(request, image):
 
 
 def profile(request):
+    if request.user.is_authenticated == False:
+        return redirect("../login")
     # TRIPS
     trips = []
     for trip in Trip.objects.filter(user=request.user).order_by("-id"):
@@ -45,6 +47,7 @@ def profile(request):
         trips.append({"id": trip.id, "title": trip.title, "location":trip.location, "images":list_images, "last_image":list_images[len(list_images)-1]})
     # MESSAGGES
     messages = Message.objects.filter(user=request.user).order_by("-id")
+    '''
     if request.method == 'POST':
         form_new_message = FormNewMessage(request.POST)
         if form_new_message.is_valid():
@@ -62,15 +65,16 @@ def profile(request):
         return render(request, 'profile/profile.html', context)
     else:
         form_new_message = FormNewMessage()
+    '''
     context = {
         'trips':trips,
         'messages': messages,
-        'form_new_message': form_new_message,
-        'message_condition': False
     }
     return render(request, 'profile/profile.html', context)
 
 def edit_profile(request, id):
+    if request.user.is_authenticated == False:
+        return redirect("../login")
     if request.method == "POST":
         form = FormChangeUser(request.POST, request.FILES, instance=request.user)
         
@@ -103,6 +107,8 @@ def edit_profile(request, id):
     return render(request, 'profile/edit_profile.html', context)
 
 def new_trip(request):
+    if request.user.is_authenticated == False:
+        return redirect("../login")
     if request.method=='POST':
         form = FormNewTravel(request.POST, request.FILES)
         
@@ -135,12 +141,16 @@ def new_trip(request):
     }
     return render(request, 'profile/new_trip.html', context)
 
-def trip (request, id):
+def trip (request, id): 
+    if request.user.is_authenticated == False:
+        return redirect("../login")
+    
     trip = Trip.objects.get(id=id)
     list_images =json.loads(trip.images.get("images"))
     list_images.reverse()
     if request.method == 'POST' and request.FILES:
-        image = request.FILES.get("image")
+        form = FormAddImage(request.POST)
+        image = request.FILES['image']
         if(image.name in list_images):
             result_form = "Ya existe la imagen en el album"
         else:
@@ -155,12 +165,15 @@ def trip (request, id):
             
             result_form = ""   
             return redirect(f"../../trip/{id}")
+
     else:
+        form = FormAddImage(request.POST)
         result_form = ""     
    
     context = {
         'trip':trip,
         'images':list_images,
-        'result_form': result_form
+        'result_form': result_form,
+        'form': form
     }
     return render(request, 'profile/trip.html', context)

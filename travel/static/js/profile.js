@@ -15,11 +15,6 @@ document.querySelector(".close").addEventListener("click", () => {
 })
 
 /* options click */
-if(document.querySelector(".my_trips_section").getAttribute("style")=="display:flex;"){
-    document.querySelector(".my_trips").style.borderBottom = "2px solid black"
-} else {
-    document.querySelector(".my_messages").style.borderBottom = "2px solid black"
-}
 document.querySelectorAll(".options p").forEach(el => {
     el.addEventListener("click", () => {
         document.querySelectorAll(".options p").forEach(x => {

@@ -7,6 +7,9 @@ class FormNewTravel(forms.Form):
     title = forms.CharField(max_length=100)
     image = forms.ImageField()
 
+class FormAddImage(forms.Form):
+    image = forms.ImageField()
+
 class FormChangeUser(forms.ModelForm):
     image_portate = forms.ImageField(max_length=None, required=False)
     image_profile = forms.ImageField(max_length=None, required= False)
