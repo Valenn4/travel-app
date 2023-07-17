@@ -116,7 +116,7 @@
 
 /* SECTION */
 .sections {
-    display: flex;
+    display: none;
     flex-direction: column;
     width: 100%;
 }

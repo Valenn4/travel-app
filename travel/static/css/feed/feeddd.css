@@ -37,22 +37,29 @@ body{
 }
 .form_new_message #id_message{
     font-family: 'Poppins';
-    padding: 10px;
+    padding: 10px 10px 0px 10px;
     font-size: 16px;
     border: none;
     resize: none;
+    border-bottom: 1px solid rgb(128, 128, 128, .5);
 }
 #id_message:hover{
     outline: none;
     border: none;
 }
+.button_submit{
+    display: flex;
+    justify-content: right;
+    width: 100%;
+    background-color: white;
+}
 .form_new_message .submit{
     display: flex;
     flex-direction: column;
-    margin-top: 10px;
-    margin-right: auto;
     padding: 10px 15px;
     border: none;
+    font-size: 15px;
+    font-family: 'Poppins';
 }
 .publications {
     display: flex;
@@ -85,14 +92,15 @@ body{
     width: 60%;
 }
 .info_publication .name_publication{
-    font-size: 19px;
+    font-size: 17px;
 }
 .info_publication .user_publication{
-    font-size: 18px;
+    font-size: 16px;
 }
 .info_publication .date_publication{
     text-align: right;
     width: 25%;
+    font-size: 16px;
 }
 
 .message_publication {

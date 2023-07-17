@@ -8,7 +8,7 @@ def login(request):
     if request.method == 'POST':
         form = FormLogin(data=request.POST)
         if form.is_valid():
-            user = form.get_user()
+            user = auth.authenticate(request, username=form.data['username'], password=form.data['password'])
             auth.login(request, user)
             return redirect("../profile")
         else:

@@ -1,6 +1,5 @@
-document.querySelector(".section").style.display = 'none'
 window.addEventListener("load", e => {
-    document.querySelector(".section").style.display = 'flex'
+    document.querySelector(".sections").style.display = 'flex'
     document.querySelector(".load").style.display = 'none'
 })
 
