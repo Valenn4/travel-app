@@ -11,47 +11,7 @@ body{
     flex-direction: column;
     width: 100%;
 }
-/* HEADER */
-.header {
-    display: flex;
-    width: 98%;
-    height: 60px;
-    justify-content: center;
-    background-color: white;
-    position: fixed;
-    bottom: 0px;
-    padding: 0 1%;
-}
-.options_header {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-}
-.options_header li {
-    list-style: none;
-    font-family: 'Poppins';
-    text-align: center;
-    font-size: 21px;
-    cursor: pointer;
-    margin: 0 10px;
-    width: 20%;
-}
-.options_header a{
-    color: orangered;
-}
-.option_div{
-    display: flex;
-    flex-direction: column;
-}
-.logo {
-    color: white;
-    background-color: orangered;
-    border-bottom-left-radius: 100%;
-    border-bottom-right-radius: 100%;
-    font-size: 30px;
-    padding: 15px;
-}
+
 /* TITLE */
 .title {
     color: white;
@@ -61,6 +21,13 @@ body{
 }
 
 /* PUBLICATIONS */
+.load {
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-family: 'Poppins';
+    font-size: 19px;
+}
 .form_new_message {
     display: flex;
     flex-direction: column;
@@ -109,13 +76,18 @@ body{
     align-items: center;
 }
 .info_publication .image_publication {
-    width: 15%;
-    height: 15%;
+    width: 55px;
+    height: 55px;
     margin-right: 10px;
     border-radius: 50%;
 }
-.info_publication .user_publication{
+.info_publication .info_user{
     width: 60%;
+}
+.info_publication .name_publication{
+    font-size: 19px;
+}
+.info_publication .user_publication{
     font-size: 18px;
 }
 .info_publication .date_publication{

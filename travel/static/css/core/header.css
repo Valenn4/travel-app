@@ -1,0 +1,51 @@
+/* HEADER */
+.header {
+    display: flex;
+    width: 98%;
+    height: 60px;
+    justify-content: center;
+    position: fixed;
+    bottom: 0px;
+    padding: 0 1%;
+}
+.options_header {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.options_header li {
+    list-style: none;
+    font-family: 'Poppins';
+    text-align: center;
+    font-size: 21px;
+    cursor: pointer;
+    margin: 0 10px;
+    width: 20%;
+}
+.options_header a{
+    color: white;
+}
+.options_header .option_orangered{
+    color: orangered;
+}
+.option_div{
+    display: flex;
+    flex-direction: column;
+}
+.logo {
+    color: orangered;
+    background-color: white;
+    border-bottom-left-radius: 10%;
+    border-bottom-right-radius: 10%;
+    font-size: 30px;
+    padding: 15px;
+}
+.logo_orangered{
+    color: white;
+    background-color: orangered;
+    border-bottom-left-radius: 10%;
+    border-bottom-right-radius: 10%;
+    font-size: 30px;
+    padding: 15px;
+}

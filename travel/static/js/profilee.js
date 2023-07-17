@@ -1,3 +1,9 @@
+document.querySelector(".section").style.display = 'none'
+window.addEventListener("load", e => {
+    document.querySelector(".section").style.display = 'flex'
+    document.querySelector(".load").style.display = 'none'
+})
+
 /* click trip */
 document.querySelectorAll(".trip").forEach(el => {
     el.addEventListener("click", () => {
@@ -33,8 +39,3 @@ document.querySelectorAll(".options p").forEach(el => {
         })
     })
 })
-
-
-/* NEW MESSAGE */
-document.querySelector("#id_message").setAttribute("rows", 0)
-document.querySelector("#id_message").setAttribute("placeholder", "Escriba un mensaje...")

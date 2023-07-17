@@ -9,7 +9,14 @@
     'GRAD' 0,
     'opsz' 48;
 }
-
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.header {
+    background-color: orangered;
+}
 .photos_profile{
     width: 100%;
     height: 180px;
@@ -141,6 +148,14 @@
     margin: 20px 0;
 }
 
+.load {
+    width: 100%;
+    text-align: center;
+    color: orangered;
+    font-family: 'Poppins';
+    font-size: 19px;
+    margin-top: 20px;
+}
 /* MY TRIPS SECTION */
 .my_trips{
     border-bottom: 2px solid black;
@@ -229,25 +244,6 @@
 
 
 /* MY MESSAGES SECTION */
-.form_new_message{
-    width: 90%;
-    margin: auto;
-    margin-bottom: 15px;
-}
-.form_new_message #id_message {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    padding: 5px;
-    justify-content: center;
-}
-.form_new_message input[type="submit"]{
-    display: flex;
-    width: auto;
-    padding: 5px 15px;
-    margin-top: 10px;
-}
-
 .message{
     display: flex;
     flex-direction: row;

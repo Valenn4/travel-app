@@ -6,32 +6,28 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static 'css/feed/feedd.css' %}">
+        <link rel="stylesheet" href="{% static 'css/feed/feed.css' %}">
         <link href="https://fonts.googleapis.com/css2?family=Belanosima:wght@400;600;700&family=Eczar:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=Poppins:wght@400;500;600&family=Roboto:wght@400;500;700&family=Rubik:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">    
-        <script src="https://kit.fontawesome.com/9702b0450a.js" crossorigin="anonymous"></script>
+    </head>
     <body>
         <div class="container">
-            <header class="header">
-                <ul class="options_header">
-                    <li class="option_header"><a href=""><i class="fa-solid fa-house"></i></a></li>
-                    <li class="option_header"><a><i class="fa-solid fa-magnifying-glass"></i></a></li>
-                    <li><i class="fa-solid fa-plane-departure logo"></i></li>
-                    <li class="option_header"><a href="../profile"><i class="fa-solid fa-user"></i></a></li>
-                    <li class="option_header"><a><i class="fa-solid fa-gear"></i></a></li>    
-                </ul>
-            </header>
+            {% include 'core/header.html' %}
             <p class="title">Ultimas publicaciones</p>
             <form method='POST' class="form_new_message">
                 {% csrf_token %}
                 {{form_new_message.message}}
                 <input type="submit" value="Subir" class="submit">
             </form>
+            <p class="load">Cargando...</p>
             <div class="publications">
                 {% for m in list_messages %}
                 <div class="publication">
                     <div class="info_publication">
                         <img class="image_publication" src="{% url 'get_image_user' image=m.user.image_profile%}">
-                        <p class="user_publication">{{m.user.username}}</p>
+                        <div class="info_user">
+                            <p class="name_publication">{{m.user.first_name}}</p>
+                            <p class="user_publication">@{{m.user.username}}</p>
+                        </div>
                         <p class="date_publication">{{m.date|date:'d M'}}</p>
                     </div>
                     <p class="message_publication">{{m.message}}</p>
@@ -41,5 +37,5 @@
             </div>
         </div>
     </body>
-    <script src="{% static 'js/feed/feed.js' %}"></script>
+    <script src="{% static 'js/feed/feedd.js' %}"></script>
 </html>
