@@ -56,11 +56,37 @@ body{
 .title {
     color: white;
     font-family: 'Poppins';
-    margin: 20px 30px;
+    margin: 35px 30px;
     font-size: 22px;
 }
 
 /* PUBLICATIONS */
+.form_new_message {
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+    margin: auto;
+    margin-bottom: 40px;
+}
+.form_new_message #id_message{
+    font-family: 'Poppins';
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    resize: none;
+}
+#id_message:hover{
+    outline: none;
+    border: none;
+}
+.form_new_message .submit{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-right: auto;
+    padding: 10px 15px;
+    border: none;
+}
 .publications {
     display: flex;
     flex-direction: column;
@@ -69,7 +95,7 @@ body{
 .publication{
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 85%;
     margin: auto;
     margin-bottom: 20px;
     padding-bottom: 15px;
@@ -99,7 +125,7 @@ body{
 
 .message_publication {
     display: flex;
-    margin: 15px auto 10px auto;
+    margin: 10px auto;
     width: 95%;
 }
 

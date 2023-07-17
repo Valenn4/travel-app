@@ -81,14 +81,6 @@
                         {% endfor %}
                     </div>
                     <div class="my_messages_section section" id="my_messages">
-                       <!--
-                        <form method='POST' class="form_new_message">
-                            {% csrf_token %}
-                            {{form_new_message.message}}
-                            <input type="submit" value="Subir">
-                        </form>
-                        -->
-
                         {% if messages|length == 0%}
                         <p>No has subido ningún mensaje</p>
                         {% endif %}

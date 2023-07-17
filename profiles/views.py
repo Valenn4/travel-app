@@ -1,7 +1,7 @@
 import json
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from .forms import FormNewTravel, FormChangeUser, FormNewMessage, FormAddImage
+from .forms import FormNewTravel, FormChangeUser, FormAddImage
 from .models import Trip, UserProfile, Message
 from firebase_admin import storage
 from django.contrib import auth
