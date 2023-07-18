@@ -138,14 +138,12 @@
 .section {
     display: flex;
     flex-direction: column;
-    margin-top: 5px;
+    padding: 20px 0 65px 0;
 }
 .my_trips_section{
-    margin-top: 20px;
 }
 .my_messages_section{
     display: none;
-    margin: 20px 0;
 }
 
 .load {
