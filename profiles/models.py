@@ -19,6 +19,7 @@ class Trip(models.Model):
 
 class Message(models.Model):
     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    location = models.CharField(max_length=50, blank=False, null=False)
     message = models.TextField(max_length=150, blank=False, null=False)
     date = models.DateTimeField(auto_now=True, null=False, blank=False)
     likes = models.IntegerField(default=0, blank=False, null=False)

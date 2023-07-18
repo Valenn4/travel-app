@@ -30,7 +30,14 @@
                     </div>
                     <div class="section">
                         <label>Nacionalidad</label>
-                        {{form.nacionality}}
+                        <select name="nacionality">
+                            <option>{{request.user.nacionality}}</option>
+                            {% for c in countries %}
+                                {% if request.user.nacionality != c.name %}
+                                <option>{{c.name}}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
                     </div>
                     {% for el in form.non_field_errors %}
                             <p class="error">{{el}}</p>

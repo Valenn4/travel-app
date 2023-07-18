@@ -26,7 +26,7 @@
 .options_header a{
     color: white;
 }
-.options_header .world{
+.options_header .add{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -50,4 +50,21 @@
     border-bottom-right-radius: 10%;
     font-size: 30px;
     padding: 15px;
+}
+
+.add_window {
+    display: none;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    position: fixed;
+    bottom: 60px;
+}
+.add_window a {
+    text-align: center;
+    background-color: orangered;
+    color: white;
+    font-size: 18px;
+    font-family: 'Poppins';
+    padding: 15px 0;
+    text-decoration: none;
 }

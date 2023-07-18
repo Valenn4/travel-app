@@ -10,7 +10,7 @@ def login(request):
         if form.is_valid():
             user = auth.authenticate(request, username=form.data['username'], password=form.data['password'])
             auth.login(request, user)
-            return redirect("../profile")
+            return redirect("../feed")
         else:
             print(form.errors)
     else:

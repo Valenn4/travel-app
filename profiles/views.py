@@ -1,10 +1,12 @@
 import json
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from .forms import FormNewTravel, FormChangeUser, FormAddImage
+from .forms import FormNewTravel, FormChangeUser, FormAddImage, FormNewMessage
 from .models import Trip, UserProfile, Message
 from firebase_admin import storage
 from django.contrib import auth
+
+from restcountries import RestCountryApiV2 as rapi
 # Create your views here.
 
 def get_image_user(request, image):
@@ -76,6 +78,7 @@ def edit_profile(request, id):
     if request.user.is_authenticated == False:
         return redirect("../login")
     if request.method == "POST":
+        print(request.POST)
         form = FormChangeUser(request.POST, request.FILES, instance=request.user)
         
         bucket = storage.bucket()
@@ -102,7 +105,8 @@ def edit_profile(request, id):
         form = FormChangeUser(instance = request.user)
     context = {
         'user': UserProfile.objects.get(id=id),
-        'form': form
+        'form': form,
+        'countries': rapi.get_all()
     }
     return render(request, 'profile/edit_profile.html', context)
 
@@ -133,13 +137,29 @@ def new_trip(request):
     else:
         form = FormNewTravel()
         result = ""
-
-    
     context={
         "form":form,
-        "result":result
+        "result":result,
+        'countries': rapi.get_all()
     }
     return render(request, 'profile/new_trip.html', context)
+
+def new_message(request):
+    if request.method == 'POST':
+        form_new_message = FormNewMessage(request.POST)
+        Message.objects.create(
+            user = request.user,
+            location = form_new_message.data["location"], 
+            message = form_new_message.data["message"]
+        )
+        return redirect("../feed")
+    else:
+        form_new_message = FormNewMessage()
+    context = {
+        'form_new_message': form_new_message,
+        'countries': rapi.get_all()
+    }
+    return render(request, 'profile/new_message.html', context)
 
 def trip (request, id): 
     if request.user.is_authenticated == False:

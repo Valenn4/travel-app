@@ -1,5 +1,5 @@
 from django import forms
-from .models import UserProfile
+from .models import UserProfile, Message
 
 class FormNewTravel(forms.Form):
     location = forms.CharField(max_length=100)
@@ -15,3 +15,9 @@ class FormChangeUser(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ['image_portate', 'image_profile', 'description', 'nacionality']
+
+
+class FormNewMessage(forms.ModelForm):
+    class Meta:
+        model = Message
+        fields = ['message']

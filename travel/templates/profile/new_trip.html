@@ -15,7 +15,11 @@
             {% csrf_token %}
             <div class="section_form">
                 <label>Destino</label>
-                {{form.location}}
+                <select name="location">
+                {% for c in countries %}
+                    <option>{{c.name}}</option>
+                {% endfor %}
+                </select>
             </div>
             <div class="section_form">
                 <label>Titulo</label>
