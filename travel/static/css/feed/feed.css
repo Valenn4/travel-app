@@ -3,7 +3,7 @@
     padding: 0px;
 }
 body{
-    background-color: orangered;
+    background-color: white;
     padding-bottom: 60px;
 }
 .container {
@@ -12,32 +12,37 @@ body{
     width: 100%;
 }
 
-/* TITLE */
-.title {
+/* HEADER TOP */
+.header_top{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: orangered;
+    padding: 18px 0;
+}
+.logo {
     color: white;
-    font-family: 'Poppins';
-    margin: 35px 30px;
-    font-size: 22px;
+    font-size: 33px;
 }
 
 /* PUBLICATIONS */
 .load {
     width: 100%;
     text-align: center;
-    color: white;
+    color: orangered;
     font-family: 'Poppins';
     font-size: 19px;
 }
 .form_new_message {
     display: flex;
-    flex-direction: column;
-    width: 85%;
-    margin: auto;
-    margin-bottom: 40px;
+    width: 92%;
+    margin: 30px auto;
 }
 .form_new_message #id_message{
+    width: 90%;
+    height: 40px;
     font-family: 'Poppins';
-    padding: 10px 10px 0px 10px;
+    padding: 0px 10px;
     font-size: 16px;
     border: none;
     resize: none;
@@ -46,21 +51,33 @@ body{
 #id_message:hover{
     outline: none;
     border: none;
+    border-bottom: 1px solid rgb(128, 128, 128, .5);
 }
 .button_submit{
     display: flex;
-    justify-content: right;
-    width: 100%;
+    width: 10%;
     background-color: white;
+    border-bottom: 1px solid rgb(128, 128, 128, .5);
 }
-.form_new_message .submit{
+.button_submit .submit{
     display: flex;
     flex-direction: column;
-    padding: 10px 15px;
     border: none;
     font-size: 15px;
     font-family: 'Poppins';
+    opacity: 0;
+    position: relative;
+    z-index: 1;
 }
+.button_submit .send {
+    font-size: 22px;
+    position: relative;
+    z-index: 0;
+    right: 30px;
+    top: 8px;
+}
+
+/* PUBLICATIONS */
 .publications {
     display: flex;
     flex-direction: column;
@@ -69,13 +86,14 @@ body{
 .publication{
     display: flex;
     flex-direction: column;
-    width: 85%;
+    width: 86%;
     margin: auto;
-    margin-bottom: 20px;
-    padding-bottom: 15px;
+    margin-bottom: 10px;
+    padding: 15px 3%;
     color: white;
     font-family: 'Poppins';
     border-bottom: 2px solid white;
+    background-color: orangered;
 }
 .info_publication{
     display: flex;

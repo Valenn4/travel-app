@@ -6,31 +6,19 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static 'css/core/headerr.css' %}">
+        <link rel="stylesheet" href="{% static 'css/core/headerrr.css' %}">
         <script src="https://kit.fontawesome.com/9702b0450a.js" crossorigin="anonymous"></script>
     </head>
     <body>
-        {% if request.path == '/profile/' %}
-        <header class="header" style="background-color:orangered">
+        <header class="header">
             <ul class="options_header">
                 <li class="option_header"><a href="../feed"><i class="fa-solid fa-house"></i></a></li>
                 <li class="option_header"><a><i class="fa-solid fa-magnifying-glass"></i></a></li>
-                <li><i class="fa-solid fa-plane-departure logo"></i></li>
+                <li><i class="fa-solid fa-earth-americas world"></i></a></li>
                 <li class="option_header"><a href="../profile"><i class="fa-solid fa-user"></i></a></li>
                 <li class="option_header"><a><i class="fa-solid fa-gear"></i></a></li>    
             </ul>
         </header>
-        {% else %}
-        <header class="header" style="background-color:white">
-            <ul class="options_header">
-                <li class="option_header"><a href="../feed" class="option_orangered"><i class="fa-solid fa-house"></i></a></li>
-                <li class="option_header"><a class="option_orangered"><i class="fa-solid fa-magnifying-glass"></i></a></li>
-                <li><i class="fa-solid fa-plane-departure logo_orangered"></i></li>
-                <li class="option_header"><a class="option_orangered" href="../profile"><i class="fa-solid fa-user"></i></a></li>
-                <li class="option_header"><a class="option_orangered"><i class="fa-solid fa-gear"></i></a></li>    
-            </ul>
-        </header>
-        {% endif %}
     </body>
 </html>
 
