@@ -138,12 +138,13 @@
 .section {
     display: flex;
     flex-direction: column;
-    padding: 20px 0;
 }
 .my_trips_section{
+    padding: 20px 0 50px 0;
 }
 .my_messages_section{
     display: none;
+    padding-bottom: 50px;
 }
 
 .load {
@@ -155,6 +156,12 @@
     margin-top: 20px;
 }
 /* MY TRIPS SECTION */
+.length_trips {
+    color: orangered;
+    text-align: center;
+    font-family: 'Poppins';
+    font-size: 19px;
+}
 .my_trips{
     border-bottom: 2px solid black;
 }
@@ -223,7 +230,13 @@
 
 
 /* MY MESSAGES SECTION */
-/* PUBLICATIONS */
+.length_messages {
+    margin-top: 20px;
+    color: orangered;
+    text-align: center;
+    font-family: 'Poppins';
+    font-size: 19px;
+}
 .publications {
     display: flex;
     flex-direction: column;
@@ -234,7 +247,7 @@
     flex-direction: column;
     width: 94%;
     margin: auto;
-    padding: 0px 3% 14px 3%;
+    padding: 14px 3%;
     color: black;
     font-family: 'Poppins';
     border-bottom: 1px solid rgb(128, 128, 128, .5);

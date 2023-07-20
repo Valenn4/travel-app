@@ -6,35 +6,45 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static 'css/feed/feeddd.css' %}">
+        <link rel="stylesheet" href="{% static 'css/feed/feeddddd.css' %}">
         <link href="https://fonts.googleapis.com/css2?family=Belanosima:wght@400;600;700&family=Eczar:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=Poppins:wght@400;500;600&family=Roboto:wght@400;500;700&family=Rubik:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">    
     </head>
     <body>
         <div class="container">
             <div class="header_top">
                 <i class="fa-solid fa-plane-departure logo"></i>
+                {% if request.user.image_profile == '' %}
+                <a href="../profile" class="user"><img src="{% static 'images/profile.png' %}"></a>
+                {% else %}
                 <a href="../profile" class="user"><img src="{% url 'get_image_user'  image=request.user.image_profile%}"></a>
+                {% endif %}
             </div>
             {% include 'core/header.html' %}
+
             <p class="load">Cargando...</p>
+            
             <div class="publications">
-                {% for m in list_messages %}
-                <div class="publication">
-                    <div class="info_publication">
-                        <img class="image_publication" src="{% url 'get_image_user' image=m.user.image_profile%}">
-                        <div class="info_user">
-                            <p class="name_publication">{{m.user.first_name}}</p>
-                            <p class="user_publication">@{{m.user.username}}</p>
+                {% if list_messages|length == 0 %}
+                <p class="length_messages">No hay mensajes disponibles.<br><br>¡Sigue a otros usuarios o publica tus propios mensajes!</p>
+                {% else %}
+                    {% for m in list_messages %}
+                    <div class="publication">
+                        <div class="info_publication">
+                            <img class="image_publication" src="{% url 'get_image_user' image=m.user.image_profile%}">
+                            <div class="info_user">
+                                <p class="name_publication">{{m.user.first_name}}</p>
+                                <p class="user_publication">@{{m.user.username}}</p>
+                            </div>
+                            <p class="date_publication">{{m.date|date:'d M'}}</p>
                         </div>
-                        <p class="date_publication">{{m.date|date:'d M'}}</p>
+                        <p class="location_publication">{{m.location}}</p>
+                        <p class="message_publication">{{m.message}}</p>
+                        <p class="likes_publication"><i class="fa-regular fa-heart"></i> {{m.likes}}</p>
                     </div>
-                    <p class="location_publication">{{m.location}}</p>
-                    <p class="message_publication">{{m.message}}</p>
-                    <p class="likes_publication"><i class="fa-regular fa-heart"></i> {{m.likes}}</p>
-                </div>
-                {% endfor %}
+                    {% endfor %}
+                {% endif %}
             </div>
         </div>
     </body>
-    <script src="{% static 'js/feed/feedd.js' %}"></script>
+    <script src="{% static 'js/feed/feeddd.js' %}"></script>
 </html>
