@@ -138,7 +138,7 @@
 .section {
     display: flex;
     flex-direction: column;
-    padding: 20px 0 65px 0;
+    padding: 20px 0;
 }
 .my_trips_section{
 }
@@ -157,25 +157,6 @@
 /* MY TRIPS SECTION */
 .my_trips{
     border-bottom: 2px solid black;
-}
-.new_trip{
-    display: flex;
-    margin: auto;
-    width: 15%;
-    position: fixed;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    justify-content: center;
-    padding: 6px 0px;
-    border-top-left-radius: 50%;
-    border-top-right-radius: 50%;
-    background-color: #ff4500;
-    color: white;
-    text-decoration: none;
-}
-.new_trip span {
-    font-size: 43px;
 }
 
 .trip {
@@ -242,64 +223,70 @@
 
 
 /* MY MESSAGES SECTION */
-.message{
-    display: flex;
-    flex-direction: row;
-    margin: auto;
-    margin-bottom: 15px;
-    width: 85%;
-    height: auto;
-    background-color: rgb(0, 0, 0, .1);
-    border-radius: 5px;
-    padding: 10px;
-    font-family: 'Poppins';
-}
-
-.message .username_message {
-    width: 100%;
-    display: flex;
-}
-.message img{
-    display: flex;
-    width: 50px;
-    height:50px;
-    border-radius: 50%;
-    margin-right: 10px;
-}
-.structure_message{
+/* PUBLICATIONS */
+.publications {
     display: flex;
     flex-direction: column;
     width: 100%;
 }
-.message .user_message{
+.publication{
     display: flex;
+    flex-direction: column;
+    width: 94%;
+    margin: auto;
+    padding: 0px 3% 14px 3%;
+    color: black;
+    font-family: 'Poppins';
+    border-bottom: 1px solid rgb(128, 128, 128, .5);
+}
+.info_publication{
+    display: flex;
+    width: 100%;
     align-items: center;
-    font-family: 'Rubik';
-    font-size: 19px;
+}
+.info_publication .image_publication {
+    width: 55px;
+    height: 55px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+.info_publication .info_user{
     width: 60%;
 }
-.message .date_message{
-    display: flex;
-    justify-content: right;
-    align-items: center;
+.info_publication .name_publication{
+    font-size: 17px;
+}
+.info_publication .user_publication{
     font-size: 16px;
+}
+.info_publication .date_publication{
+    text-align: right;
     width: 25%;
-    margin-right: 20px;
+    font-size: 16px;
+    margin-right: 10px;
 }
 
-.message .text_message{
-    font-family: 'Poppins';
-    margin: 10px 5px;
+.location_publication {
+    display: flex;
+    margin: 10px auto auto auto;
+    width: 95%;
+    font-weight: bold;
 }
 
-.message .likes_message {
-    width: 100%;
+.message_publication {
     display: flex;
+    margin: 3px auto;
+    width: 95%;
 }
-.likes_message span {
+
+.likes_publication {
     display: flex;
+    margin: auto;
     align-items: center;
-    font-size: 19px;
+    width: 95%;
+}
+
+.likes_publication i {
+    margin-right: 4px;
     cursor: pointer;
-    margin-right: 3px;
 }

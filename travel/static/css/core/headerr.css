@@ -30,11 +30,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 100%;
+    width: 85%;
+    height: 85%;
     color: orangered;
     background-color: white;
+    border-radius: 10%;
     font-size: 30px;
+    margin: auto;
 }
 .options_header .option_orangered{
     color: orangered;

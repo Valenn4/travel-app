@@ -70,7 +70,7 @@ def profile(request):
     '''
     context = {
         'trips':trips,
-        'messages': messages,
+        'list_messages': Message.objects.filter(user=request.user).order_by("-id")
     }
     return render(request, 'profile/profile.html', context)
 
