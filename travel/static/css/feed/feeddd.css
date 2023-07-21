@@ -38,12 +38,10 @@ body{
 }
 
 .load {
-    width: 100%;
     text-align: center;
     color: orangered;
-    font-family: 'Poppins';
-    font-size: 19px;
-    margin-top: 20px;
+    font-size: 40px;
+    margin-top: 55px;
 }
 
 .length_messages {
