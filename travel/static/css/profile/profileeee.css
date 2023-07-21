@@ -140,11 +140,11 @@
     flex-direction: column;
 }
 .my_trips_section{
-    padding: 20px 0 50px 0;
+    padding: 20px 0 70px 0;
 }
 .my_messages_section{
     display: none;
-    padding-bottom: 50px;
+    padding-bottom: 70px;
 }
 
 .load {

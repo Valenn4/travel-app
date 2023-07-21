@@ -150,7 +150,7 @@ body{
 
 .message_publication {
     display: flex;
-    margin: 3px auto;
+    margin: 3px auto 7px auto;
     width: 95%;
 }
 
