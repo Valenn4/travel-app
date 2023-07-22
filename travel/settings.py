@@ -63,6 +63,7 @@ DATABASES = {
     }
 }
 
+AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.AllowAllUsersModelBackend']
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -120,3 +121,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'profiles.UserProfile'
 
 LOGOUT_REDIRECT_URL = '../../login/'
+LOGIN_REDIRECT_URL = '../feed/'

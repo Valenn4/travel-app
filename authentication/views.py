@@ -1,35 +1,21 @@
 from django.shortcuts import render, redirect
-from .forms import FormRegister, FormLogin
-from profiles.models import UserProfile
-from django.contrib import auth
+from .forms import FormRegister
+from django.contrib import messages
+from django.contrib.auth.views import LoginView
 # Create your views here.
 
-def login(request):
-    if request.method == 'POST':
-        form = FormLogin(data=request.POST)
-        if form.is_valid():
-            user = auth.authenticate(request, username=form.data['username'], password=form.data['password'])
-            auth.login(request, user)
-            return redirect("../feed")
-        else:
-            print(form.errors)
-    else:
-        form = FormLogin()
-    context = {
-        'form': form
-    }
-    return render(request, 'authentication/login.html', context)
+
+class LoginView(LoginView):
+    redirect_authenticated_user = True
+    
 def register(request):
+    if request.user.is_authenticated():
+        return redirect("../feed")
     if request.method == 'POST':
         form = FormRegister(request.POST)
-        
         if form.is_valid():
-            UserProfile.objects.create_user(
-                username=form.data['username'],
-                password=form.data['password1'],
-                email=form.data['email'],
-                first_name=form.data['first_name']
-            )
+            form.save()
+            messages.success(request, message="Usuario creado exitosamente")
             return redirect("../login")
         else:
             error = ''

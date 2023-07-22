@@ -10,6 +10,23 @@
     height: 100vh;
     background-color: orangered;
 }
+.message {
+    left: 20px;
+    top: 20px;
+    position: absolute;
+    padding: 10px;
+    color: white;
+    font-family: 'Poppins';
+    background-color: darkgreen;
+    list-style: none;
+}
+.message li {
+    font-size: 18px;
+}
+.message i {
+    margin-right: 5px;
+    font-size: 20px;
+}
 .title {
     font-family: 'Rubik';
     font-size: 24px;
