@@ -120,5 +120,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'profiles.UserProfile'
 
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_WHITELIST = (
+"http://valenn2.pythonanywhere.com",
+)
+LOGOUT_URL = 'auth_logout'
 LOGOUT_REDIRECT_URL = '../../login/'
+
+LOGIN_URL = 'auth_login'
 LOGIN_REDIRECT_URL = '../feed/'

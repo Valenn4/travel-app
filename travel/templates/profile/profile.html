@@ -6,7 +6,7 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static 'css/profile/profilee.css' %}">
+        <link rel="stylesheet" href="{% static 'css/profile/profileee.css' %}">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
         <link href="https://fonts.googleapis.com/css2?family=Belanosima:wght@400;600;700&family=Eczar:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=Poppins:wght@400;500;600&family=Roboto:wght@400;500;700&family=Rubik:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">    
     </head>
@@ -43,27 +43,28 @@
                     {% if request.user.username == user_connected.username %}
                     <div class="settings">
                         <a href="{% url 'auth_logout' %}" class="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
-                        <button class="setting"><a href="{% url 'edit_profile' id=user_connected.id%}">Editar perfil</a></button>
+                        <button class="setting"><a href="{% url 'edit_profile'%}">Editar perfil</a></button>
                     </div>
+                    {% else %}
+                    <div class="settings">
+                        <button class="setting follow">Seguir</button>
+                    </div>
+                    {% endif %}
                     <div class="user">
                         <p class="name">{{user_connected.first_name}}</p>
                         <p class="username">@{{user_connected.username}}</p>
                         <p class="description">{{user_connected.description}}</p>
                     </div>
-                    {% else %}
-                    <div class="other_user">
-                        <p class="name">{{user_connected.first_name}}</p>
-                        <p class="username">@{{user_connected.username}}</p>
-                        <p class="description">{{user_connected.description}}</p>
-                    </div>
-                    {% endif %}
-                    
-
                 </div>
                 <div class="sections">
                     <div class="options">
+                        {% if request.user.username == user_connected.username %}
                         <p class="my_trips">Mis viajes</p>
                         <p class="my_messages">Mis mensajes</p>
+                        {% else %}
+                        <p class="my_trips">Sus viajes</p>
+                        <p class="my_messages">Sus mensajes</p>
+                        {% endif %}
                     </div>
                     <div class="my_trips_section section" id="my_trips">
                         {% if trips|length == 0 %}

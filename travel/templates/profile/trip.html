@@ -14,7 +14,7 @@
         <div class="container">
             <div class="album_trip">
                 <div class="header">
-                    <a href="../../profile/">
+                    <a href="../../profile/{{user_trip}}">
                         <span class="material-symbols-outlined">
                             navigate_before
                         </span>
@@ -39,7 +39,7 @@
                 </div>
                 <div class="grid_images">
                     {% for image in images %}
-                    <img src="{% url 'get_image_trip' location=trip.location image=image%}">
+                    <img src="{% url 'get_image_trip' location=trip.location image=image user=user_trip%}">
                     {% endfor %}
                 </div>
             </div>

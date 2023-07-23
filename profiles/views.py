@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from .forms import FormNewTravel, FormChangeUser, FormAddImage, FormNewMessage
 from .models import Trip, UserProfile, Message
 from firebase_admin import storage
-from django.contrib import auth
+from django.contrib.auth.decorators import login_required
 
 from restcountries import RestCountryApiV2 as rapi
 # Create your views here.
@@ -38,11 +38,8 @@ def get_image_portate(request, image, user):
     except Exception as e:
         return HttpResponse('Error al obtener la imagen: {}'.format(str(e)))
 
-
+@login_required(redirect_field_name=None)
 def profile(request, user):
-    if request.user.is_authenticated == False:
-        return redirect("../login")
-
     user = UserProfile.objects.get(username=user)
     # TRIPS
     trips = []
@@ -59,9 +56,8 @@ def profile(request, user):
     }
     return render(request, 'profile/profile.html', context)
 
-def edit_profile(request, id):
-    if request.user.is_authenticated == False:
-        return redirect("../login")
+@login_required(redirect_field_name=None)
+def edit_profile(request):
     if request.method == "POST":
         print(request.POST)
         form = FormChangeUser(request.POST, request.FILES, instance=request.user)
@@ -89,15 +85,14 @@ def edit_profile(request, id):
     else:
         form = FormChangeUser(instance = request.user)
     context = {
-        'user': UserProfile.objects.get(id=id),
+        'user': UserProfile.objects.get(id=request.user.id),
         'form': form,
         'countries': rapi.get_all()
     }
     return render(request, 'profile/edit_profile.html', context)
 
+@login_required(redirect_field_name=None)
 def new_trip(request):
-    if request.user.is_authenticated == False:
-        return redirect("../login")
     if request.method=='POST':
         form = FormNewTravel(request.POST, request.FILES)
         
@@ -129,6 +124,7 @@ def new_trip(request):
     }
     return render(request, 'profile/new_trip.html', context)
 
+@login_required(redirect_field_name=None)
 def new_message(request):
     if request.method == 'POST':
         form_new_message = FormNewMessage(request.POST)
@@ -146,10 +142,8 @@ def new_message(request):
     }
     return render(request, 'profile/new_message.html', context)
 
-def trip (request, id): 
-    if request.user.is_authenticated == False:
-        return redirect("../login")
-    
+@login_required(redirect_field_name=None)
+def trip (request, id):
     trip = Trip.objects.get(id=id)
     list_images =json.loads(trip.images.get("images"))
     list_images.reverse()
@@ -165,7 +159,7 @@ def trip (request, id):
             trip.images = {"images":json.dumps(images)}
             trip.save()
             bucket = storage.bucket()
-            blob = bucket.blob(f'trips/{request.user}/'+trip.location+"/"+image.name)
+            blob = bucket.blob(f'trips/{Trip.objects.get(id=id).user.username}/'+trip.location+"/"+image.name)
             blob.upload_from_file(image) 
             
             result_form = ""   
@@ -179,6 +173,7 @@ def trip (request, id):
         'trip':trip,
         'images':list_images,
         'result_form': result_form,
-        'form': form
+        'form': form,
+        'user_trip': Trip.objects.get(id=id).user.username
     }
     return render(request, 'profile/trip.html', context)
