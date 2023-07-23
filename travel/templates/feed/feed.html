@@ -6,7 +6,7 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static 'css/feed/feeddd.css' %}">
+        <link rel="stylesheet" href="{% static 'css/feed/feedd.css' %}">
         <link href="https://fonts.googleapis.com/css2?family=Belanosima:wght@400;600;700&family=Eczar:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=Poppins:wght@400;500;600&family=Roboto:wght@400;500;700&family=Rubik:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">    
     </head>
     <body>
@@ -14,9 +14,9 @@
             <div class="header_top">
                 <i class="fa-solid fa-plane-departure logo"></i>
                 {% if request.user.image_profile == '' %}
-                <a href="../profile" class="user"><img src="{% static 'images/profile.png' %}"></a>
+                <a href="{% url 'profile' user=request.user.username%}" class="user"><img src="{% static 'images/profile.png' %}"></a>
                 {% else %}
-                <a href="../profile" class="user"><img src="{% url 'get_image_user'  image=request.user.image_profile%}"></a>
+                <a href="{% url 'profile' user=request.user.username %}" class="user"><img src="{% url 'get_image_user'  image=request.user.image_profile user=request.user.username%}"></a>
                 {% endif %}
             </div>
             {% include 'core/header.html' %}
@@ -30,7 +30,7 @@
                     {% for m in list_messages %}
                     <div class="publication">
                         <div class="info_publication">
-                            <img class="image_publication" src="{% url 'get_image_user' image=m.user.image_profile%}">
+                            <img class="image_publication" src="{% url 'get_image_user' image=m.user.image_profile user=m.user.username%}">
                             <div class="info_user">
                                 <p class="name_publication">{{m.user.first_name}}</p>
                                 <p class="user_publication">@{{m.user.username}}</p>
@@ -46,5 +46,5 @@
             </div>
         </div>
     </body>
-    <script src="{% static 'js/feed/feedddddd.js' %}"></script>
+    <script src="{% static 'js/feed/feed.js' %}"></script>
 </html>

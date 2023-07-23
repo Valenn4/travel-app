@@ -9,14 +9,8 @@ class FormRegister(UserCreationForm):
         fields = ['username', 'password1', 'password2', 'first_name', 'email']
 
 
-class LoginView(FormView):
-    pass    
-
 
 class FormLogin(AuthenticationForm):
     error_messages = {
         'invalid_login': ("El usuario o la contraseña es incorrecto.")
     }
-    class Meta:
-        model = UserProfile
-        fields = '__all__'

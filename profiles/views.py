@@ -9,9 +9,9 @@ from django.contrib import auth
 from restcountries import RestCountryApiV2 as rapi
 # Create your views here.
 
-def get_image_user(request, image):
+def get_image_user(request, image, user):
     bucket = storage.bucket()
-    blob = bucket.blob(f"users/{request.user.username}/{image}")
+    blob = bucket.blob(f"users/{user}/{image}")
     
     try:
         image_data = blob.download_as_bytes()
@@ -19,9 +19,9 @@ def get_image_user(request, image):
     except Exception as e:
         return HttpResponse('Error al obtener la imagen: {}'.format(str(e)))
 
-def get_image_trip(request, location, image):
+def get_image_trip(request, location, image, user):
     bucket = storage.bucket()
-    blob = bucket.blob(f"trips/{request.user.username}/{location}/{image}")
+    blob = bucket.blob(f"trips/{user}/{location}/{image}")
     
     try:
         image_data = blob.download_as_bytes()
@@ -29,9 +29,9 @@ def get_image_trip(request, location, image):
     except Exception as e:
         return HttpResponse('Error al obtener la imagen: {}'.format(str(e)))
 
-def get_image_portate(request, image):
+def get_image_portate(request, image, user):
     bucket = storage.bucket()
-    blob = bucket.blob(f"portate/{request.user.username}/{image}")
+    blob = bucket.blob(f"portate/{user}/{image}")
     try:
         image_data = blob.download_as_bytes()
         return HttpResponse(image_data, content_type='image/jpg')  # Cambia el tipo de contenido según tus necesidades
@@ -39,38 +39,23 @@ def get_image_portate(request, image):
         return HttpResponse('Error al obtener la imagen: {}'.format(str(e)))
 
 
-def profile(request):
+def profile(request, user):
     if request.user.is_authenticated == False:
         return redirect("../login")
+
+    user = UserProfile.objects.get(username=user)
     # TRIPS
     trips = []
-    for trip in Trip.objects.filter(user=request.user).order_by("-id"):
+    for trip in Trip.objects.filter(user=user).order_by("-id"):
         list_images = json.loads(trip.images.get("images"))
         trips.append({"id": trip.id, "title": trip.title, "location":trip.location, "images":list_images, "last_image":list_images[len(list_images)-1]})
     # MESSAGGES
-    messages = Message.objects.filter(user=request.user).order_by("-id")
-    '''
-    if request.method == 'POST':
-        form_new_message = FormNewMessage(request.POST)
-        if form_new_message.is_valid():
-            new_message = Message.objects.create(
-                user = request.user,
-                message = form_new_message.data["message"],
-            )
-            new_message.save()
-        context = {
-            'trips':trips,
-            'messages': messages,
-            'form_new_message': FormNewMessage(),
-            'message_condition': True
-        }
-        return render(request, 'profile/profile.html', context)
-    else:
-        form_new_message = FormNewMessage()
-    '''
+    messages = Message.objects.filter(user=user).order_by("-id")
+    
     context = {
+        'user_connected': user,
         'trips':trips,
-        'list_messages': Message.objects.filter(user=request.user).order_by("-id")
+        'list_messages': Message.objects.filter(user=user).order_by("-id")
     }
     return render(request, 'profile/profile.html', context)
 

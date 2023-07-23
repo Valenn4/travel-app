@@ -42,8 +42,12 @@ body{
     color: orangered;
     font-size: 40px;
     margin-top: 55px;
+    animation: spin 2s linear infinite;
 }
-
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
 .length_messages {
     margin-top: 45px;
     color: orangered;
@@ -142,21 +146,21 @@ body{
 .location_publication {
     display: flex;
     margin: 10px auto auto auto;
-    width: 95%;
+    width: 98%;
     font-weight: bold;
 }
 
 .message_publication {
     display: flex;
     margin: 3px auto 7px auto;
-    width: 95%;
+    width: 98%;
 }
 
 .likes_publication {
     display: flex;
     margin: auto;
     align-items: center;
-    width: 95%;
+    width: 98%;
 }
 
 .likes_publication i {
