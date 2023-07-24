@@ -22,12 +22,14 @@ from .views import home
 import profiles.urls as profiles_urls
 import authentication.urls as auth_urls
 import feed.urls as feed_urls
+import api_rest.urls as api_urls
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name="home"),
     path('', include(profiles_urls)),
     path('', include(auth_urls)),
-    path('', include(feed_urls))
+    path('', include(feed_urls)),
+    path('', include(api_urls))
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

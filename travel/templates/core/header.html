@@ -6,7 +6,7 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static 'css/core/header.css' %}">
+        <link rel="stylesheet" href="{% static 'css/core/headerrrrr.css' %}">
         <script src="https://kit.fontawesome.com/9702b0450a.js" crossorigin="anonymous"></script>
     </head>
     <body>
@@ -23,29 +23,20 @@
             <a href="{% url 'new_message' %}">Nuevo mensaje</a>
             <a href="{% url 'new_trip' %}">Nuevo viaje</a>
         </div>
-        {% if flag_search %}
-        <div class="search_window" style="display:block;">
-            <form method="post">
+        <div class="search_window">
+            <form method="post" class="form_search">
                 {% csrf_token %}
-                <input type="search" name="result" required placeholder="Escriba el nombre de un usuario o destino">
+                <div class="div_input">
+                    <input type="search" name="result" class="input_result" required placeholder="Escriba el nombre de un usuario o destino">
+                    <i class="fa-solid fa-xmark close"></i>
+                </div>
                 <input type="submit" value="Buscar">
             </form>
+            <p class="not_results"></p>
             <ul class="list_users">
-            {% for el in list_users %}
-            <li><a href="{% url 'profile' user=el%}">{{el}}</a></li>
-            {% endfor %}
             </ul>
         </div>
-        {% else %}
-        <div class="search_window" style="display:none;">
-            <form method="POST">
-                {% csrf_token %}
-                <input type="search" name="result" placeholder="Escriba el nombre de un usuario o destino">
-                <input type="submit" value="Buscar">
-            </form>
-        </div>
-        {% endif %}
     </body>
-    <script src="{% static 'js/core/header.js' %}"></script>
+    <script src="{% static 'js/core/headerrr.js' %}"></script>
 </html>
 
