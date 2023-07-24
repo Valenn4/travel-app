@@ -9,8 +9,9 @@ class LoginView(LoginView):
     redirect_authenticated_user = True
     
 def register(request):
-    if request.user.is_authenticated():
+    if request.user.is_authenticated:
         return redirect("../feed")
+    
     if request.method == 'POST':
         form = FormRegister(request.POST)
         if form.is_valid():
