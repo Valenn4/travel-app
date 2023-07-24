@@ -1,14 +1,13 @@
 import os
 from pathlib import Path
+from environments import env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-zov$(cf@@p!(%@e!q3%_xkj859nhe!r+hdzws_5g5x2$gbw%8)'
+SECRET_KEY = env("SECRET_KEY")
 
-DEBUG = True
-
-ALLOWED_HOSTS = ['valenn2.pythonanywhere.com', '127.0.0.1', 'localhost']
+DEBUG = env("DEBUG")
 
 # Application definition
 
@@ -37,7 +36,7 @@ ROOT_URLCONF = 'travel.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'travel/templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -52,16 +51,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'travel.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 
 AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.AllowAllUsersModelBackend']
 
@@ -100,7 +89,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'travel/static/')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static/')]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
@@ -120,12 +109,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'profiles.UserProfile'
 
-CORS_ORIGIN_ALLOW_ALL = False
-CORS_ORIGIN_WHITELIST = (
-"http://valenn2.pythonanywhere.com",
-)
 LOGOUT_URL = 'auth_logout'
 LOGOUT_REDIRECT_URL = '../../login/'
 
 LOGIN_URL = 'auth_login'
 LOGIN_REDIRECT_URL = '../feed/'
+

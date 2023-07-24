@@ -54,6 +54,7 @@
     padding: 15px;
 }
 
+/* ADD WINDOW */
 .add_window {
     display: none;
     grid-template-columns: repeat(2, 1fr);
@@ -69,4 +70,38 @@
     font-family: 'Poppins';
     padding: 15px 0;
     text-decoration: none;
+}
+
+/* SEARCH WINDOW */
+.search_window{
+    width: 100%;
+    height: 100%;
+    background-color: grey;
+    position: absolute;
+    z-index: 1;
+}
+.search_window input {
+    width: 100%;
+    border: none;
+    padding: 20px;
+    font-family: 'Poppins';
+}
+.search_window input:hover {
+    outline: none;
+    border: none;
+}
+
+.list_users{
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    margin: 20px;
+}
+.list_users li {
+    list-style: none;
+    font-family: 'Poppins';
+    font-size: 19px;
+}
+.list_users a {
+    color: white;
 }

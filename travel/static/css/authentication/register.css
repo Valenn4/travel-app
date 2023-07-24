@@ -60,3 +60,9 @@
     font-family: 'Poppins';
     text-transform: uppercase;
 }
+
+.login {
+    color: white;
+    font-family: 'Poppins';
+    margin-top: 15px;
+}
