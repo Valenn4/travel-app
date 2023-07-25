@@ -5,3 +5,8 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserProfile
         fields = ['username']
+
+class FollowingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserProfile
+        fields = ['following']

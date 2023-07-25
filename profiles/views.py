@@ -48,9 +48,9 @@ def profile(request, user):
         trips.append({"id": trip.id, "title": trip.title, "location":trip.location, "images":list_images, "last_image":list_images[len(list_images)-1]})
     # MESSAGGES
     messages = Message.objects.filter(user=user).order_by("-id")
-    
     context = {
-        'user_connected': user,
+        'is_following': request.user.following["followings"],
+        'user_profile': user,
         'trips':trips,
         'list_messages': Message.objects.filter(user=user).order_by("-id")
     }
@@ -81,7 +81,7 @@ def edit_profile(request):
             blob.upload_from_file(request.FILES.get("image_portate"))
         user.save()
     
-        return redirect("../../profile")
+        return redirect(f'../../profile/{request.user.username}')
     else:
         form = FormChangeUser(instance = request.user)
     context = {
@@ -113,7 +113,7 @@ def new_trip(request):
                 images = {"images":json.dumps(list_images)}
             )
             result = "Viaje creado exitosamente"
-            return redirect("../profile")
+            return redirect(f'../profile/{request.user.username}')
     else:
         form = FormNewTravel()
         result = ""

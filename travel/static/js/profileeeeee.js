@@ -14,11 +14,42 @@ document.querySelector(".photo_profile").addEventListener("click", () => {
     document.querySelector(".window_photo").style.display = "flex"
     document.querySelector("body").style.overflow = "hidden"
 })
-document.querySelector(".close").addEventListener("click", () => {
+document.querySelector(".close_image").addEventListener("click", () => {
+    console.log("ok")
     document.querySelector(".window_photo").style.display = "none"
     document.querySelector("body").style.overflow = "auto"
 })
 
+/* BUTTON FOLLOW */
+document.querySelector(".follow").addEventListener("click", () => {
+    id = document.querySelector(".follow").id
+    const user = window.location.pathname.substring(9);
+    fetch(`http://127.0.0.1:8000/api/v1/following/${id}`)
+    .then(response => response.json())
+    .then(json => {
+        if(json.following.followings.includes(user)){
+            list = json.following.followings.filter(username => username != user)
+            changeFollowings(id, {"followings":list})
+            document.querySelector(".follow").innerHTML="Seguir"
+        } else{
+            json.following.followings.push(user)
+            changeFollowings(id, json.following)
+            document.querySelector(".follow").innerHTML="Siguiendo"
+        }
+    })
+})
+function changeFollowings(user, list){
+    csrftoken = document.cookie.substring(10)
+    fetch(`http://127.0.0.1:8000/api/v1/following/${user}`, {
+        method:'PUT',
+        body:JSON.stringify({"following":list}), 
+        headers:{"Content-Type": 'application/json', "X-Csrftoken": csrftoken}
+    })
+    .then(response => response.json())
+    .then(json => {
+        console.log(json)
+    })
+}
 /* options click */
 document.querySelectorAll(".options p").forEach(el => {
     el.addEventListener("click", () => {
