@@ -7,7 +7,7 @@ class UserProfile(AbstractUser):
     nacionality = models.CharField(max_length=100, blank=True)
     image_profile = models.TextField(max_length=None, blank=True)
     image_portate = models.TextField(max_length=None, blank=True)
-    following = models.JSONField(blank=True, null=True)
+    following = models.JSONField(blank=True, null=True, default="{'following':[]}")
 
 class Trip(models.Model):
     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE, blank=False, null=False)
