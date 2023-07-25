@@ -23,7 +23,8 @@ document.querySelector(".form_search").addEventListener("submit", (e)=>{
     document.querySelector(".not_results").innerHTML = ''
     e.preventDefault()
 
-    fetch(`http://127.0.0.1:8000/api/v1/users/${e.target.result.value}`)
+    /*fetch(`http://127.0.0.1:8000/api/v1/users/${e.target.result.value}`)*/
+    fetch(`http://valenn2.pythonanywhere.com/api/v1/users/${e.target.result.value}`)
     .then(response => response.json())
     .then(json =>{
         if(json.length == 0){

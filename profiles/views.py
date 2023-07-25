@@ -49,7 +49,7 @@ def profile(request, user):
     # MESSAGGES
     messages = Message.objects.filter(user=user).order_by("-id")
     context = {
-        'is_following': request.user.following["followings"],
+        'is_following': request.user.following[0],
         'user_profile': user,
         'trips':trips,
         'list_messages': Message.objects.filter(user=user).order_by("-id")
