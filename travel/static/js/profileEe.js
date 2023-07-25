@@ -66,6 +66,5 @@ function changeFollowings(user, list){
     })
     .then(response => response.json())
     .then(json => {
-        console.log(json)
     })
 }

@@ -11,7 +11,7 @@ class UserViewSet(APIView):
     permission_classes = [permissions.IsAuthenticated]
     def get(self, request, contains):
         queryset = UserProfile.objects.filter(username__contains=contains)
-        serializer = FollowingSerializer(queryset, many=True)
+        serializer = UserSerializer(queryset, many=True)
         return Response(serializer.data)
 
 class FollowingViewSet(APIView):

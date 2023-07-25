@@ -7,3 +7,5 @@ DATABASES = {
         'NAME': BASE_DIR / 'local.sqlite3',
     }
 }
+
+CORS_ORIGIN_ALLOW_ALL = True
