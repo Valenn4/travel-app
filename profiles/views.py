@@ -155,13 +155,12 @@ def new_message(request):
 def trip (request, id):
     trip = Trip.objects.get(id=id)
     list_images =json.loads(trip.images.get("images"))
-    list_images.reverse()
     if request.method == 'POST':
         form = FormAddImage(request.POST, request.FILES)
-
+        result_form = []
         for image in request.FILES.getlist("image"):
             if(image.name in list_images):
-                result_form = "Ya existe la imagen en el album"
+                result_form.append(image.name)
             else:
                 images = json.loads(trip.images.get("images"))
                 images.append(image.name)
@@ -172,12 +171,10 @@ def trip (request, id):
                 blob = bucket.blob(f'trips/{request.user}/'+trip.location+"/"+image.name)
                 blob.upload_from_file(image)
                 list_images.append(image.name)
-                result_form = ""   
-                return redirect(f"../../trip/{id}")
     else:
         form = FormAddImage(request.POST)
         result_form = ""     
-   
+    list_images.reverse()
     context = {
         'trip':trip,
         'images':list_images,
