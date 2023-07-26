@@ -77,9 +77,14 @@ def edit_profile(request):
             user.image_profile = request.FILES.get("image_profile").name
             blob = bucket.blob(f'users/{request.user}/'+request.FILES.get("image_profile").name)
             blob.upload_from_file(request.FILES.get("image_profile"))
-        if(request.FILES.get("image_portate") != None):
+        
+        if(request.FILES.get("image_portate") != None and request.user.image_portate != ''):
             image_last = bucket.blob(f'portate/{request.user}/{request.user.image_portate}')
             image_last.delete()
+            user.image_portate = request.FILES.get("image_portate").name
+            blob = bucket.blob(f'portate/{request.user}/'+request.FILES.get("image_portate").name)
+            blob.upload_from_file(request.FILES.get("image_portate"))
+        elif(request.FILES.get("image_portate") != None and request.user.image_portate == ''):
             user.image_portate = request.FILES.get("image_portate").name
             blob = bucket.blob(f'portate/{request.user}/'+request.FILES.get("image_portate").name)
             blob.upload_from_file(request.FILES.get("image_portate"))
