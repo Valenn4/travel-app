@@ -45,23 +45,30 @@ document.querySelector(".follow").addEventListener("click", () => {
     fetch(`http://valenn2.pythonanywhere.com/api/v1/following/${id}`)
     .then(response => response.json())
     .then(json => {
-        if(json.following.followings.includes(user)){
-            list = json.following.followings.filter(username => username != user)
-            changeFollowings(id, {"followings":list})
-            document.querySelector(".follow").innerHTML="Seguir"
-        } else{
-            json.following.followings.push(user)
-            changeFollowings(id, json.following)
-            document.querySelector(".follow").innerHTML="Siguiendo"
-        }
+        /*fetch(`http://127.0.0.1:8000/api/v1/user/${user}`)*/
+        fetch(`http://valenn2.pythonanywhere.com/api/v1/user/${user}`)
+        .then(response => response.json())
+        .then(username => {
+            if(json.following.followings.includes(username.id)){
+                list = json.following.followings.filter(user => user != username.id)
+                changeFollowings(id, {"followings":list})
+                document.querySelector(".follow").innerHTML="Seguir"
+            } else{
+                json.following.followings.push(username.id)
+                changeFollowings(id, json.following)
+                document.querySelector(".follow").innerHTML="Siguiendo"
+            }
+        })
     })
 })
+
+
 function changeFollowings(user, list){
     csrftoken = document.cookie.substring(10)
     /*fetch(`http://127.0.0.1:8000/api/v1/following/${user}`*/
     fetch(`http://valenn2.pythonanywhere.com/api/v1/following/${user}`, {
         method:'PUT',
-        body:JSON.stringify({"following":list}), 
+        body:JSON.stringify({"following":list}),
         headers:{"Content-Type": 'application/json', "X-Csrftoken": csrftoken}
     })
     .then(response => response.json())

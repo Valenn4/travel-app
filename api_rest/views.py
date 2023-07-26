@@ -9,6 +9,17 @@ from profiles.models import UserProfile
 
 class UserViewSet(APIView):
     permission_classes = [permissions.IsAuthenticated]
+
+    def get(self, request, username):
+        try:
+            queryset = UserProfile.objects.get(username=username)
+            serializer = UserSerializer(queryset)
+            return Response(serializer.data)
+        except:
+            return Response("No existe ningun usuario")
+
+class UserContainsViewSet(APIView):
+    permission_classes = [permissions.IsAuthenticated]
     def get(self, request, contains):
         queryset = UserProfile.objects.filter(username__contains=contains)
         serializer = UserSerializer(queryset, many=True)

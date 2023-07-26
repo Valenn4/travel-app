@@ -36,7 +36,7 @@
                         {% if user_profile.image_profile == '' %}
                         <img class="photo_window" src="https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg">
                         {% else %}
-                            <img class="photo_window" src="{% url 'get_image_user' image=user_profile.image_profile user=user_connected.username %}">
+                            <img class="photo_window" src="{% url 'get_image_user' image=user_profile.image_profile user=user_profile.username %}">
                         {% endif %}
                     </div>   
                 </div>
@@ -48,7 +48,7 @@
                     </div>
                     {% else %}
                     <div class="settings">
-                        {% if user_profile.username in is_following %}
+                        {% if user_profile.id in is_following %}
                         <button class="setting follow" id={{request.user.username}}>Siguiendo</button>
                         {% else %}
                         <button class="setting follow" id={{request.user.username}}>Seguir</button>
@@ -128,5 +128,5 @@
             </div>
         </div>
     </body>
-    <script src="{% static 'js/profileEe.js' %}"></script>
+    <script src="{% static 'js/profileEee.js' %}"></script>
 </html>

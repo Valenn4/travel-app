@@ -67,9 +67,13 @@ def edit_profile(request):
         user = UserProfile.objects.get(id=request.user.id)
         user.description = form.data["description"]
         user.nacionality = form.data["nacionality"]
-        if(request.FILES.get("image_profile") != None):
+        if(request.FILES.get("image_profile") != None and request.user.image_profile != ''):
             image_last = bucket.blob(f'users/{request.user}/{request.user.image_profile}')
             image_last.delete()
+            user.image_profile = request.FILES.get("image_profile").name
+            blob = bucket.blob(f'users/{request.user}/'+request.FILES.get("image_profile").name)
+            blob.upload_from_file(request.FILES.get("image_profile"))
+        elif(request.FILES.get("image_profile") != None and request.user.image_profile == ''):
             user.image_profile = request.FILES.get("image_profile").name
             blob = bucket.blob(f'users/{request.user}/'+request.FILES.get("image_profile").name)
             blob.upload_from_file(request.FILES.get("image_profile"))
