@@ -5,7 +5,10 @@ from django.contrib.auth.decorators import login_required
 
 @login_required(redirect_field_name=None)
 def feed(request): 
+    followings = request.user.following["followings"]
+    followings.append(request.user)
     context = {
-        'list_messages': Message.objects.filter(user=request.user).order_by("-id"),
+        'list_messages': Message.objects.filter(user__in=followings).order_by("-id"),
     }
+    print(Message.objects.filter(user__in=followings).order_by("-id"))
     return render(request, 'feed/feed.html', context)

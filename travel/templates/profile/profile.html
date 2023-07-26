@@ -24,7 +24,7 @@
                     {% endif %}
                     
                     {% if user_profile.image_profile == '' %}
-                        <img class="photo_profile" src="https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg">
+                        <img class="photo_profile" src="{% static 'images/profile.png' %}">
                     {% else %}
                         <img class="photo_profile" src="{% url 'get_image_user' image=user_profile.image_profile user=user_profile.username %}">
                     {% endif %}
