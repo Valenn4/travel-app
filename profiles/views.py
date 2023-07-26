@@ -156,24 +156,24 @@ def trip (request, id):
     trip = Trip.objects.get(id=id)
     list_images =json.loads(trip.images.get("images"))
     list_images.reverse()
-    if request.method == 'POST' and request.FILES:
-        form = FormAddImage(request.POST)
-        image = request.FILES['image']
-        if(image.name in list_images):
-            result_form = "Ya existe la imagen en el album"
-        else:
-            images = json.loads(trip.images.get("images"))
-            images.append(image.name)
-            
-            trip.images = {"images":json.dumps(images)}
-            trip.save()
-            bucket = storage.bucket()
-            blob = bucket.blob(f'trips/{Trip.objects.get(id=id).user.username}/'+trip.location+"/"+image.name)
-            blob.upload_from_file(image) 
-            
-            result_form = ""   
-            return redirect(f"../../trip/{id}")
+    if request.method == 'POST':
+        form = FormAddImage(request.POST, request.FILES)
 
+        for image in request.FILES.getlist("image"):
+            if(image.name in list_images):
+                result_form = "Ya existe la imagen en el album"
+            else:
+                images = json.loads(trip.images.get("images"))
+                images.append(image.name)
+                
+                trip.images = {"images":json.dumps(images)}
+                trip.save()
+                bucket = storage.bucket()
+                blob = bucket.blob(f'trips/{request.user}/'+trip.location+"/"+image.name)
+                blob.upload_from_file(image)
+                list_images.append(image.name)
+                result_form = ""   
+                return redirect(f"../../trip/{id}")
     else:
         form = FormAddImage(request.POST)
         result_form = ""     

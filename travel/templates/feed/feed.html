@@ -32,11 +32,13 @@
                     {% for m in list_messages %}
                     <div class="publication">
                         <div class="info_publication">
+                            <a href="{% url 'profile' user=m.user.username%}">
                             {% if m.user.image_profile != '' %}
                             <img class="image_publication" src="{% url 'get_image_user' image=m.user.image_profile user=m.user.username%}">
                             {% else %}
                             <img class="image_publication" src="{% static 'images/profile.png' %}">
-                            {% endif %}                            
+                            {% endif %}        
+                            </a>                    
                             <div class="info_user">
                                 <p class="name_publication">{{m.user.first_name}}</p>
                                 <p class="user_publication">@{{m.user.username}}</p>
