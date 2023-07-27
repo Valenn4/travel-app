@@ -6,10 +6,12 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static 'css/core/headerrrrr.css' %}">
+        <link rel="stylesheet" href="{% static 'css/core/header.css' %}">
         <script src="https://kit.fontawesome.com/9702b0450a.js" crossorigin="anonymous"></script>
     </head>
     <body>
+        {% load envs %}
+        <input id="DEBUG" value="{% get_env 'DEBUG' %}" type="hidden"> 
         <header class="header">
             <ul class="options_header">
                 <li class="option_header"><a href="{% url 'feed' %}"><i class="fa-solid fa-house"></i></a></li>
@@ -33,10 +35,18 @@
                 <input type="submit" value="Buscar">
             </form>
             <p class="not_results"></p>
-            <ul class="list_users">
-            </ul>
+            <div class="users_results">
+                <p>Usuarios</p>
+                <ul class="list_users">
+                </ul>
+            </div>
+            <div class="countries_results">
+                <p>Paises</p>
+                <ul class="list_countries">
+                </ul>
+            </div>
         </div>
     </body>
-    <script src="{% static 'js/core/headerrrrr.js' %}"></script>
+    <script src="{% static 'js/core/header.js' %}"></script>
 </html>
 

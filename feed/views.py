@@ -10,5 +10,4 @@ def feed(request):
     context = {
         'list_messages': Message.objects.filter(user__in=followings).order_by("-id"),
     }
-    print(Message.objects.filter(user__in=followings).order_by("-id"))
     return render(request, 'feed/feed.html', context)

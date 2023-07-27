@@ -9,6 +9,7 @@ SECRET_KEY = env("SECRET_KEY")
 
 DEBUG = env("DEBUG")
 
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -48,6 +49,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'libraries':{
+                'envs': 'travel.templatetags.envs',
+            }
         },
     },
 ]

@@ -112,17 +112,20 @@
     font-size: 22px;
     margin-top: 20px;
 }
-.list_users{
+.users_results, .countries_results{
+    display: none;
+}
+.list_users, .list_countries{
     display: flex;
     flex-direction: column;
     width: auto;
     margin: 20px;
 }
-.list_users li {
+.list_users li, .list_countries li {
     list-style: none;
     font-family: 'Poppins';
     font-size: 19px;
 }
-.list_users a {
+.list_users a, .list_countries a {
     color: white;
 }
