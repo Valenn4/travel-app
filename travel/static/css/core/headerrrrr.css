@@ -1,5 +1,5 @@
 /* HEADER */
-.header {
+.header_mobile .header {
     display: flex;
     width: 98%;
     height: 60px;
@@ -9,13 +9,13 @@
     padding: 0 1%;
     background-color: orangered;
 }
-.options_header {
+.header_mobile .options_header {
     display: flex;
     width: 100%;
     align-items: center;
     justify-content: center;
 }
-.options_header li {
+.header_mobile .options_header li {
     list-style: none;
     font-family: 'Poppins';
     text-align: center;
@@ -23,10 +23,10 @@
     cursor: pointer;
     width: 20%;
 }
-.options_header a{
+.header_mobile .options_header a{
     color: white;
 }
-.options_header .add{
+.header_mobile .options_header .add{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -38,14 +38,14 @@
     font-size: 30px;
     margin: auto;
 }
-.options_header .option_orangered{
+.header_mobile .options_header .option_orangered{
     color: orangered;
 }
-.option_div{
+.header_mobile .option_div{
     display: flex;
     flex-direction: column;
 }
-.logo_orangered{
+.header_mobile .logo_orangered{
     color: white;
     background-color: orangered;
     border-bottom-left-radius: 10%;
@@ -55,7 +55,7 @@
 }
 
 /* ADD WINDOW */
-.add_window {
+.header_mobile .add_window {
     display: none;
     grid-template-columns: repeat(2, 1fr);
     width: 100%;

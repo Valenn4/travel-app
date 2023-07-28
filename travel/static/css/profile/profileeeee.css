@@ -40,7 +40,7 @@
     border-radius: 50%;
     left: 20px;
     bottom: 80px;
-    border: 2px solid white;
+    border: 2px solid black;
 }
 /* WINDOW PHOTO */
 .window_photo {
@@ -155,8 +155,7 @@
     cursor: pointer;
 }
 .section {
-    display: flex;
-    flex-direction: column;
+    display: grid;
 }
 .my_trips_section{
     padding: 20px 0 70px 0;
@@ -261,8 +260,7 @@
     font-size: 19px;
 }
 .publications {
-    display: flex;
-    flex-direction: column;
+    display: grid;
     width: 100%;
 }
 .publication{
@@ -325,4 +323,60 @@
 .likes_publication i {
     margin-right: 4px;
     cursor: pointer;
+}
+
+@media screen and (min-width: 50em){
+    .photo_profile {
+        left: 30px;
+    }
+    .information .name {
+        font-size: 20px;
+    }
+    .information .username {
+        font-size: 16px;
+    }
+    .information .description{
+        font-size: 17px;
+    }
+    /*  MY TRIPS */
+    .my_trips_section{
+        display: grid;
+        width: auto;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 15px;
+        margin: 0 25px;
+    }
+    .trip{
+        width: 100%;
+    }
+    .structure_trip{
+        height: 130px;
+    }
+    .trip img {
+        width: 60%;
+    }
+    /* MY MESSAGES */
+    .publications{
+        width: auto;
+        grid-template-columns: repeat(2, 1fr);
+        margin: 0 20px;
+        grid-gap: 20px;
+    }
+    .publication{
+        width: auto;
+        margin: 10px 0px;
+    }
+
+}
+
+@media screen and (min-width: 65em){
+    .photo_profile {
+        left: 50px;
+    }
+    .my_trips_section{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 25px;
+    }
+    /* MY MESSAGES */
 }

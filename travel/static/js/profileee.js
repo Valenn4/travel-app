@@ -30,7 +30,7 @@ document.querySelectorAll(".options p").forEach(el => {
         })
         document.querySelectorAll(".section").forEach(section => {
             if(el.getAttribute("class") == section.id){
-                section.style.display="flex"
+                section.style.display="grid"
             } else {
                 section.style.display="none"
             }

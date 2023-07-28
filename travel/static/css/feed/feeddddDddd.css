@@ -55,54 +55,20 @@ body{
     font-family: 'Poppins';
     font-size: 19px;
 }
-.form_new_message {
-    display: flex;
+.section{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+/* SUGGESTIONS */
+.suggestions{
     width: 100%;
-    margin: 20px auto 0px auto;
+    height: auto;
+    display: none;
 }
-.form_new_message #id_message{
-    width: 90%;
-    height: 40px;
-    font-family: 'Poppins';
-    padding: 0px 0px 0 15px;
-    font-size: 16px;
-    border: none;
-    resize: none;
-    border-bottom: 1px solid rgb(128, 128, 128, .5);
-}
-#id_message:hover{
-    outline: none;
-    border: none;
-    border-bottom: 1px solid rgb(128, 128, 128, .5);
-}
-.button_submit{
-    display: flex;
-    width: 10%;
-    background-color: white;
-    border-bottom: 1px solid rgb(128, 128, 128, .5);
-    padding-right: 10px;
-}
-.button_submit .submit{
-    display: flex;
-    flex-direction: column;
-    border: none;
-    font-size: 15px;
-    font-family: 'Poppins';
-    opacity: 0;
-    position: relative;
-    z-index: 1;
-}
-.button_submit .send {
-    font-size: 20px;
-    position: relative;
-    z-index: 0;
-    right: 32px;
-    top: 6px;
-}
-
 /* PUBLICATIONS */
 .publications {
-    display: flex;
+    display: grid;
+    grid-column: 1/4;
     flex-direction: column;
     width: 100%;
 }
@@ -111,7 +77,7 @@ body{
     flex-direction: column;
     width: 94%;
     margin: auto;
-    padding: 14px 3%;
+    padding: 20px 3%;
     color: black;
     font-family: 'Poppins';
     border-bottom: 1px solid rgb(128, 128, 128, .5);
@@ -168,3 +134,42 @@ body{
     cursor: pointer;
 }
 
+@media screen and (min-width: 50em){
+    .suggestions{
+        display: flex;
+        flex-direction: column;
+        grid-column: 3/4;
+        width: auto;
+        height: 350px;
+        margin: 30px 10px;
+        border-radius: 5px;
+        justify-content: right;
+    }
+    .suggestions .title_suggestions{
+        text-align: right;
+        margin: 10px 0;
+        color: black;
+        font-family: 'Poppins';
+        font-size: 20px;
+    }
+    .suggestions .list_suggestions {
+        width: 100%;
+        height: auto;
+        background-color: gray;
+        text-align: right;
+    }
+    .publications{
+        grid-column: 1/3;
+    }
+    .publication{
+        width: auto;
+        margin: 10px 20px;
+    }
+}
+
+@media screen and (min-width: 65em){
+    .suggestions{
+        width: 70%;
+        margin: 30px auto;
+    }
+}

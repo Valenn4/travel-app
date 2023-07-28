@@ -6,47 +6,49 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static 'css/core/header.css' %}">
+        <link rel="stylesheet" href="{% static 'css/core/headerrrrr.css' %}">
         <script src="https://kit.fontawesome.com/9702b0450a.js" crossorigin="anonymous"></script>
     </head>
     <body>
         {% load envs %}
-        <input id="DEBUG" value="{% get_env 'DEBUG' %}" type="hidden"> 
-        <header class="header">
-            <ul class="options_header">
-                <li class="option_header"><a href="{% url 'feed' %}"><i class="fa-solid fa-house"></i></a></li>
-                <li class="option_header"><a><i class="fa-solid fa-magnifying-glass search"></i></a></li>
-                <li class="add_option" id="close" onclick="openAdd()"><a><i class="fa-solid fa-plus add"></i></a></li>
-                <li class="option_header"><a href=""><i class="fa-solid fa-earth-americas world"></i></a></li>
-                <li class="option_header"><a><i class="fa-solid fa-gear"></i></a></li>    
-            </ul>
-        </header>
-        <div class="add_window">
-            <a href="{% url 'new_message' %}">Nuevo mensaje</a>
-            <a href="{% url 'new_trip' %}">Nuevo viaje</a>
-        </div>
-        <div class="search_window">
-            <form method="post" class="form_search">
-                {% csrf_token %}
-                <div class="div_input">
-                    <input type="search" name="result" class="input_result" required placeholder="Escriba el nombre de un usuario o destino">
-                    <i class="fa-solid fa-xmark close"></i>
-                </div>
-                <input type="submit" value="Buscar">
-            </form>
-            <p class="not_results"></p>
-            <div class="users_results">
-                <p>Usuarios</p>
-                <ul class="list_users">
+        <input id="DEBUG" value="{% get_env 'DEBUG' %}" type="hidden">
+        <div class="header_mobile"> 
+            <header class="header">
+                <ul class="options_header">
+                    <li class="option_header"><a href="{% url 'feed' %}"><i class="fa-solid fa-house"></i></a></li>
+                    <li class="option_header"><a><i class="fa-solid fa-magnifying-glass search"></i></a></li>
+                    <li class="add_option" id="close" onclick="openAdd()"><a><i class="fa-solid fa-plus add"></i></a></li>
+                    <li class="option_header"><a href=""><i class="fa-solid fa-earth-americas world"></i></a></li>
+                    <li class="option_header"><a><i class="fa-solid fa-gear"></i></a></li>    
                 </ul>
+            </header>
+            <div class="add_window">
+                <a href="{% url 'new_message' %}">Nuevo mensaje</a>
+                <a href="{% url 'new_trip' %}">Nuevo viaje</a>
             </div>
-            <div class="countries_results">
-                <p>Paises</p>
-                <ul class="list_countries">
-                </ul>
+            <div class="search_window">
+                <form method="post" class="form_search">
+                    {% csrf_token %}
+                    <div class="div_input">
+                        <input type="search" name="result" class="input_result" required placeholder="Escriba el nombre de un usuario o destino">
+                        <i class="fa-solid fa-xmark close"></i>
+                    </div>
+                    <input type="submit" value="Buscar">
+                </form>
+                <p class="not_results"></p>
+                <div class="users_results">
+                    <p>Usuarios</p>
+                    <ul class="list_users">
+                    </ul>
+                </div>
+                <div class="countries_results">
+                    <p>Paises</p>
+                    <ul class="list_countries">
+                    </ul>
+                </div>
             </div>
         </div>
     </body>
-    <script src="{% static 'js/core/header.js' %}"></script>
+    <script src="{% static 'js/core/headerrR.js' %}"></script>
 </html>
 
