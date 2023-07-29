@@ -1,6 +1,6 @@
-document.querySelector(".publications").style.display = 'none'
+document.querySelector(".section_center").style.display = 'none'
 window.addEventListener("load", e => {
-    document.querySelector(".publications").style.display = 'flex'
+    document.querySelector(".section_center").style.display = 'flex'
     document.querySelector(".load").style.display = 'none'
 })
 
