@@ -1,10 +1,11 @@
 from django import forms
-from .models import UserProfile, Message
+from .models import UserProfile, Message, Trip
 
-class FormNewTravel(forms.Form):
-    location = forms.CharField(max_length=100)
-    title = forms.CharField(max_length=100)
-    image = forms.ImageField()
+class FormNewTravel(forms.ModelForm):
+    image = forms.ImageField(required=True)
+    class Meta:
+        model = Trip
+        fields = ['location', 'title']
 
 class FormAddImage(forms.Form):
     image = forms.ImageField()
@@ -20,4 +21,4 @@ class FormChangeUser(forms.ModelForm):
 class FormNewMessage(forms.ModelForm):
     class Meta:
         model = Message
-        fields = ['message']
+        fields = ['message','location']

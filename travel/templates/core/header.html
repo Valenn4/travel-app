@@ -6,7 +6,7 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static 'css/core/headerrrrr.css' %}">
+        <link rel="stylesheet" href="{% static 'css/core/headerrrrrr.css' %}">
         <script src="https://kit.fontawesome.com/9702b0450a.js" crossorigin="anonymous"></script>
     </head>
     <body>
@@ -26,10 +26,6 @@
                     </ul>
                 </div>
             </header>
-            <div class="add_window">
-                <a href="{% url 'new_message' %}">Nuevo mensaje</a>
-                <a href="{% url 'new_trip' %}">Nuevo viaje</a>
-            </div>
             <div class="search_window">
                 <form method="post" class="form_search">
                     {% csrf_token %}
@@ -51,8 +47,58 @@
                     </ul>
                 </div>
             </div>
+            <div class="new">
+                <a class="add_trip"><i class="fa-solid fa-plane"></i></a>
+                <a class="add_message"><i class="fa-regular fa-comment"></i></a>
+                <i class="fa-solid fa-plus add" onclick="openAdd()"></i>
+
+                <div class="new_message">
+                    <i class="fa-solid fa-xmark close"></i>
+                    <p class="title_new_message">Agregar nuevo mensaje</p>
+                    <form method='POST' class="form_new_message" name="form_new_message">
+                        {% csrf_token %}
+                        <div class="div_location">
+                            <label>Elegir un destino:</label>
+                            {{form_new_message.location}}
+                        </div>
+                        <div class="div_form_submit">
+                            <div class="div_form_textarea">
+                                {{form_new_message.message}}
+                            </div>
+                            <div class="div_form_button_submit">
+                                <input type="submit" name="form_new_message" value="Subir" class="submit">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="new_trip">
+                    <i class="fa-solid fa-xmark close"></i>
+                    <p class="title_new_trip">Agregar nuevo viaje</p>
+                    <form class="form_new_trip" name="form_new_trip" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="section_form">
+                            <label>Destino</label>
+                            {{form_new_trip.location}}
+                        </div>
+                        <div class="section_form">
+                            <label>Titulo</label>
+                            {{form_new_trip.title}}
+                        </div>
+                        <div class="section_form">
+                            <label>Fotos</label>
+                            {{form_new_trip.image}}
+                        </div>
+                        <input type="submit" value="Crear" name="form_new_trip">
+                        {% if result == 'Ya existe un viaje con el mismo nombre' %}
+                            <p style="color:red">{{result}}</p>
+                        {% else %}
+                            <p style="color:green">{{result}}</p>
+                        {% endif %}
+                    </form> 
+                </div>
+            </div>
         </div>
     </body>
-    <script src="{% static 'js/core/header.js' %}"></script>
+    <script src="{% static 'js/core/headerrrrr.js' %}"></script>
 </html>
 

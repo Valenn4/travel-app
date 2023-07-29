@@ -1,27 +1,31 @@
-
-/* OPEN HEADER WEB */
-function open_header(){
-    document.querySelector(".header").style.width = "100%";
-    document.querySelector(".open_header").setAttribute("onclick", "close_header()")
-    document.querySelector(".open_header").innerHTML = '<i class="fa-solid fa-xmark"></i>'
-    document.querySelector(".div_options_header").style.display = "flex"
-}
-function close_header(){
-    document.querySelector(".header").style.width = "auto";
-    document.querySelector(".open_header").setAttribute("onclick", "open_header()")
-    document.querySelector(".open_header").innerHTML = ' <i class="fa-solid fa-angle-right"></i>'
-    document.querySelector(".div_options_header").style.display = "none"
-}
-/* ADD WINDOW */
+/* ADD */
 function openAdd(){
-    document.querySelector(".add_window").style.display = "grid"
-    document.querySelector(".add_option").setAttribute("onclick", "closeAdd()")
-
+    document.querySelector(".add_trip").style.display = "block"
+    document.querySelector(".add_message").style.display = "block"
+    document.querySelector(".add").setAttribute("onclick", "closeAdd()")
+    document.querySelector(".add").setAttribute("class","fa-solid fa-xmark add")
 }
 function closeAdd(){
-    document.querySelector(".add_window").style.display = "none"
-    document.querySelector(".add_option").setAttribute("onclick", "openAdd()")
+    document.querySelector(".add_trip").style.display = "none"
+    document.querySelector(".add_message").style.display = "none"
+    document.querySelector(".add").setAttribute("onclick", "openAdd()")
+    document.querySelector(".add").setAttribute("class","fa-solid fa-plus add")
 }
+
+/* add message */
+document.querySelector(".add_message").addEventListener("click", () => {
+    document.querySelector(".new_message").style.display="block"
+})
+document.querySelector(".new_message .close").addEventListener("click", () => {
+    document.querySelector(".new_message").style.display="none"    
+})
+/* add trip */
+document.querySelector(".add_trip").addEventListener("click", () => {
+    document.querySelector(".new_trip").style.display="block"
+})
+document.querySelector(".new_trip .close").addEventListener("click", () => {
+    document.querySelector(".new_trip").style.display="none"    
+})
 
 /* SEARCH WINDOW */
 document.querySelector(".search").addEventListener("click", () => {

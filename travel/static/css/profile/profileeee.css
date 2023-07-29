@@ -24,6 +24,8 @@ body{
     display: none;
 }
 .photos_profile{
+    position: relative;
+    z-index: -1;
     width: 100%;
     height: 180px;
     background-color: rgb(73, 73, 73);
@@ -31,6 +33,7 @@ body{
     object-fit: cover;
 }
 .photo_portate {
+    position: relative;
     width: 100%;
     height: 100%;
     border-bottom: 2px solid orangered;
@@ -93,6 +96,7 @@ body{
     color: white;
 }
 .settings .follow {
+    color: black;
     margin: 5px 15px 0 0px;
 }
 .settings .setting {
@@ -104,6 +108,7 @@ body{
     border-radius: 10px;
     font-family: 'Poppins';
     cursor: pointer;
+    color: black;
 }
 .setting a {
     text-decoration: none;
@@ -179,19 +184,6 @@ body{
     100% { transform: rotate(360deg); }
 }
 /* MY TRIPS SECTION */
-.add_trip{
-    color: white;
-}
-.add {
-    position: fixed;
-    bottom: 80px;
-    right: 20px;
-    font-size: 28px;
-    background-color: orangered;
-    color: white;
-    border-radius: 50%;
-    padding: 15px 17px;
-}
 .length_trips {
     color: white;
     text-align: center;

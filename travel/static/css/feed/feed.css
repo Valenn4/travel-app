@@ -73,74 +73,10 @@ body{
 /* PUBLICATIONS */
 .section_center{
     width: 100%;
-    display: grid;
+    display: none;
     grid-column: 1/4;
 }
-.div_form_message{
-    display: flex;
-    margin: auto;
-    width: 92%;
-    margin-top: 15px;
-}
-.div_form_message form {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-.div_form_message form select{
-    width: 100%;
-    padding: 2px;
-    background: none;
-    border: none;
-    color: white;
-    font-family: 'Rubik';
-    font-size: 17px;
-}
-.div_form_message form select option {
-    color: black;
-}
-.div_form_message form select:focus{
-    outline: none;
-}
-.div_form_message select::-ms-expand {
-    display: none;
-}
-.div_form_message select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-}
 
-
-.div_form_message form textarea{
-    width: 100%;
-    margin: 10px 0;
-    padding: 5px 30px 0 10px;
-    font-family: 'Poppins';
-    resize: none;
-}
-.div_form_submit {
-    display: flex;
-    width: 100%;
-}
-.div_form_textarea{
-    width: 90%;
-}
-.div_form_button_submit{
-    display: flex;
-    flex-direction: column;
-    width: 10%;
-    justify-content: center;
-}
-.div_form_submit input{
-    position: absolute;
-    opacity: 0;
-}
-.div_form_submit i{
-    display: flex;
-    font-size: 17px;
-    justify-content: center;
-    color: white;
-}
 .publications {
     flex-direction: column;
     width: 100%;
@@ -171,9 +107,6 @@ body{
 }
 .info_publication .name_publication{
     font-size: 16px;
-}
-.info_publication .user_publication{
-    font-size: 15px;
 }
 .info_publication .date_publication{
     text-align: right;

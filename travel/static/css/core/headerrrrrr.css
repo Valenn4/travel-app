@@ -61,23 +61,6 @@
     padding: 15px;
 }
 
-/* ADD WINDOW */
-.header_mobile .add_window {
-    display: none;
-    grid-template-columns: repeat(2, 1fr);
-    width: 100%;
-    position: fixed;
-    bottom: 60px;
-}
-.add_window a {
-    text-align: center;
-    background-color: orangered;
-    color: white;
-    font-size: 18px;
-    font-family: 'Poppins';
-    padding: 15px 0;
-    text-decoration: none;
-}
 
 /* SEARCH WINDOW */
 .search_window{
@@ -136,8 +119,113 @@
 .list_users a, .list_countries a {
     color: white;
 }
+.new{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    align-items: center;
+}
+.add_trip,.add_message{    
+    display: none;
+    font-size: 24px;
+    background-color: white;
+    color: orangered;
+    border-radius: 50%;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+.add {
+    font-size: 29px;
+    background-color: orangered;
+    color: white;
+    border-radius: 50%;
+    padding: 15px 17px;
+}
+.new_message, .new_trip{
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #141d26;
+}
+.new_message i, .new_trip i {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: white;
+    font-size: 22px;
+}
+.title_new_message, .title_new_trip{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 35px auto;
+    color: white;
+    font-size: 22px;
+    font-family: 'Rubik';
+}
+.form_new_message, .form_new_trip{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: auto;
+    justify-content: center;
+}
+.form_new_message .div_location{
+    display: flex;
+    margin-bottom: 10px;
+}
+.form_new_message label, .form_new_trip label{
+    width: 50%;
+    color: white;
+    font-size: 18px;
+    font-family: 'Poppins';
+}
+.form_new_message select {
+    width: 50%;
+    border: none;
+    background: none;
+    color: white;
+    font-size: 16px;
+    font-family: 'Poppins';
+}
+select:focus{
+    outline: none;
+}
+select::-ms-expand {
+    display: none;
+}
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+select option {
+    color: black;
+}
+.form_new_message textarea{
+    resize: none;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+.form_new_message input{
+    padding: 5px 10px;
+    border: none;
+    background: orangered;
+    color: white;
+    font-size: 15px;
+    font-family: 'Rubik';
+}
 
-
+.form_new_trip .section_form{
+    display: flex;
+    flex-direction: column;
+}
 @media screen and (min-width:50em){
     .header_mobile .header {
         display:none;
