@@ -344,7 +344,7 @@
         width: auto;
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 15px;
-        margin: 0 25px;
+        margin: 0 30px;
     }
     .trip{
         width: 100%;

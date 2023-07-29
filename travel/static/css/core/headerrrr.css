@@ -7,7 +7,14 @@
     position: fixed;
     bottom: 0px;
     padding: 0 1%;
-    background-color: orangered;
+    background-color: #0c1217;
+}
+.open_header {
+   display: none;
+}
+.div_options_header {
+    display: flex;
+    width: 100%;
 }
 .header_mobile .options_header {
     display: flex;
@@ -128,4 +135,26 @@
 }
 .list_users a, .list_countries a {
     color: white;
+}
+
+
+@media screen and (min-width:50em){
+    .header_mobile .header {
+        display:none;
+        width: auto;
+        padding: 0;
+    }
+    .open_header{
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+        border-right: 2px solid black;
+    }
+    .open_header i{
+        color: white;
+        font-size: 30px;
+    }
+    .div_options_header{
+        display: none;
+    }
 }

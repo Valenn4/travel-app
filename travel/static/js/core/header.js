@@ -1,4 +1,17 @@
 
+/* OPEN HEADER WEB */
+function open_header(){
+    document.querySelector(".header").style.width = "100%";
+    document.querySelector(".open_header").setAttribute("onclick", "close_header()")
+    document.querySelector(".open_header").innerHTML = '<i class="fa-solid fa-xmark"></i>'
+    document.querySelector(".div_options_header").style.display = "flex"
+}
+function close_header(){
+    document.querySelector(".header").style.width = "auto";
+    document.querySelector(".open_header").setAttribute("onclick", "open_header()")
+    document.querySelector(".open_header").innerHTML = ' <i class="fa-solid fa-angle-right"></i>'
+    document.querySelector(".div_options_header").style.display = "none"
+}
 /* ADD WINDOW */
 function openAdd(){
     document.querySelector(".add_window").style.display = "grid"
