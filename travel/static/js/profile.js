@@ -25,7 +25,7 @@ document.querySelectorAll(".options p").forEach(el => {
             if(el != x){
                 x.style.borderBottom = "none"
             } else {
-                el.style.borderBottom = "2px solid black"
+                el.style.borderBottom = "2px solid white"
             }
         })
         document.querySelectorAll(".section").forEach(section => {
