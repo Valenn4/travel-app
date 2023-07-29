@@ -50,10 +50,11 @@ def profile(request, user):
                     message = form_new_message.data["message"]
                 )
                 return redirect("../feed")
-            form_new_message = FormNewMessage()
-        elif 'form_new_trip' in request.POST:
+            else:
+                form_new_message = FormNewMessage()
+        if 'form_new_trip' in request.POST:
             form_new_trip = FormNewTravel(request.POST, request.FILES)
-            if(Trip.objects.filter(user = request.user,title=form_new_trip.data["title"]).exists()):
+            if(Trip.objects.filter(user = request.user,title=form_new_trip.data["title"]).exists()==False):
                 list_images = []
                 for image in request.FILES.getlist("image"):
                     bucket = storage.bucket()
@@ -68,10 +69,10 @@ def profile(request, user):
                     images = {"images":json.dumps(list_images)}
                 )
                 return redirect(f'../profile/{request.user.username}')
-            form_new_trip = FormNewTravel()
-        else:
-            form_new_message = FormNewMessage()
-            form_new_trip = FormNewTravel()
+            else:
+                form_new_trip = FormNewTravel()
+        form_new_message = FormNewMessage()
+        form_new_trip = FormNewTravel()
     else:
         form_new_message = FormNewMessage()
         form_new_trip = FormNewTravel()

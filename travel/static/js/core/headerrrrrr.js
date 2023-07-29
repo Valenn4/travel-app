@@ -32,9 +32,11 @@ document.querySelector(".search").addEventListener("click", () => {
     document.querySelector(".input_result").value=''
     document.querySelector(".not_results").innerHTML = ''
     document.querySelector(".search_window").style.display = 'block'
+    document.querySelector("body").style.overflow = "hidden"
 })
 document.querySelector(".close").addEventListener("click", () => {
     document.querySelector(".search_window").style.display = 'none'
+    document.querySelector("body").style.overflow = "auto"
 })
 document.querySelector(".form_search").addEventListener("submit", (e)=>{
     document.querySelector(".list_users").innerHTML = ''

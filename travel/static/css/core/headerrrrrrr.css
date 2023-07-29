@@ -70,6 +70,8 @@
     background-color: grey;
     position: absolute;
     z-index: 1;
+    top: 0;
+    bottom: 0;
 }
 .div_input{
     width: 100%;

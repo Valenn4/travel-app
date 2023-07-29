@@ -6,7 +6,7 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static 'css/core/headerrrrrr.css' %}">
+        <link rel="stylesheet" href="{% static 'css/core/headerrrrrrr.css' %}">
         <script src="https://kit.fontawesome.com/9702b0450a.js" crossorigin="anonymous"></script>
     </head>
     <body>
@@ -47,6 +47,7 @@
                     </ul>
                 </div>
             </div>
+            {% if request.path == '/profile/'|add:request.user.username or request.path == '/feed/' %}
             <div class="new">
                 <a class="add_trip"><i class="fa-solid fa-plane"></i></a>
                 <a class="add_message"><i class="fa-regular fa-comment"></i></a>
@@ -97,8 +98,9 @@
                     </form> 
                 </div>
             </div>
+            {% endif %}
         </div>
     </body>
-    <script src="{% static 'js/core/headerrrrr.js' %}"></script>
+    <script src="{% static 'js/core/headerrrrrr.js' %}"></script>
 </html>
 
