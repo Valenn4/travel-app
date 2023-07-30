@@ -110,7 +110,7 @@ body{
 }
 .info_publication .date_publication{
     text-align: right;
-    width: 25%;
+    width: 100%;
     font-size: 16px;
     margin-right: 5px;
 }
@@ -142,53 +142,27 @@ body{
 }
 
 @media screen and (min-width: 50em){
+    .user img{
+        width: 40px;
+        height: 40px;
+    }
+    
+    .section{
+        margin-top: 10px;
+    }
     .length_messages {
         font-size: 18px;
     }
-    .header_web{
-        display: flex;
-        flex-direction: column;
-        width: 20%;
-    }
-    .header{
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        height: auto;
-        padding:10px 40px;
-    }
-    .options_header{
-        display: flex;
-        flex-direction: column;
-        width: 80%;
-        height: auto;
-        padding-top: 50px;
-        border-right: 2px solid rgb(12, 18, 23, .6);
-    }
-    .options_header li{
-        margin-bottom: 50px;
-        list-style: none;
-    }
-    .options_header li a {
-        color: white;
-        text-decoration: none;
-        font-family: 'Rubik';
-        font-size: 17px;
-    }
-    .options_header li i {
-        color: white;
-        font-size: 22px;
-        margin-right: 10px;
-    }
-    .add_window{
-        display: none;
-    }
+    
     .div_form_message form select{
         font-size: 15px;
     }
     .section_center{
-        width: 45%;
-        margin: 20px 4%;
+        width: 48%;
+        padding: 0 3%;
+        margin: 30px 0;
+        border-left: 2px solid rgb(12, 18, 23, .6);
+        border-right: 2px solid rgb(12, 18, 23, .6);
     }
     .div_form_message{
         width: 100%;
@@ -198,41 +172,43 @@ body{
         flex-direction: column;
         background-color: #0c1217;
         border-radius: 10px;
-        padding: 15px 20px;
-        width: auto;
+        padding: 15px 4%;
+        width: 85%;
         height: auto;
+        margin: auto;
     }
     .publication{
         width: 100%;
         margin: 10px 0;
-        padding: 20px 0;
+        padding: 0 0 15px 0;
         color: white;
     }
     .info_publication .date_publication{
-        margin-right: 0px;
+        margin: 0px;
     }
     .suggestions{
         display: flex;
         flex-direction: column;
-        width: 22%;
+        width: 24%;
         height: auto;
-        margin: 30px 0% 30px 3%;
+        margin: 30px 2% 30px 0;
         border-radius: 2px;
         justify-content: right;
+        align-items: end;
         color: white;
     }
     .suggestions .title_suggestions{
+        width: 80%;
         text-align: right;
         font-family: 'Rubik';
         font-size: 20px;
-        padding: 10px;
+        padding-bottom: 10px;
         border-bottom: 2px solid rgb(179, 179, 179);
     }
     .suggestions .list_suggestions {
-        width: auto;
+        width: 80%;
         height: auto;
-        text-align: right;
-        margin: 15px;
+        margin: 15px 0;
     }
     .suggestion{
         display: flex;
@@ -254,13 +230,7 @@ body{
 }
 
 @media screen and (min-width: 65em){
-    .header{
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        height: auto;
-        padding:10px 50px;
-    }
+
     .div_form_message form select{
         font-size: 17px;
     }
@@ -277,10 +247,17 @@ body{
     }
     .section_center{
         width: 50%;
-        margin: 20px 60px;
+        padding: 0 2%;
     }
     .suggestions{
-        width: 18%;
-        margin: 30px 2% 30px 2%;
+        width: 21%;
+        margin: 20px 0;
+        padding:10px 30px;
+    }
+    .suggestions .title_suggestions{
+        width: 80%;
+    }
+    .suggestions .list_suggestions{
+        width: 80%;
     }
 }

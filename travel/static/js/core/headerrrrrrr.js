@@ -26,14 +26,15 @@ document.querySelector(".add_trip").addEventListener("click", () => {
 document.querySelector(".new_trip .close").addEventListener("click", () => {
     document.querySelector(".new_trip").style.display="none"    
 })
-
 /* SEARCH WINDOW */
-document.querySelector(".search").addEventListener("click", () => {
+function openSearch(){
+    document.querySelector(".users_results").value=''
+    document.querySelector(".countries_results").value=''
     document.querySelector(".input_result").value=''
     document.querySelector(".not_results").innerHTML = ''
     document.querySelector(".search_window").style.display = 'block'
     document.querySelector("body").style.overflow = "hidden"
-})
+}
 document.querySelector(".close").addEventListener("click", () => {
     document.querySelector(".search_window").style.display = 'none'
     document.querySelector("body").style.overflow = "auto"

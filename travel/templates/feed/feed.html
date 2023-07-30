@@ -7,7 +7,7 @@
         <meta name="description" content="">
         <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static 'css/feed/feedd.css' %}">
+        <link rel="stylesheet" href="{% static 'css/feed/feeddd.css' %}">
         <link href="https://fonts.googleapis.com/css2?family=Belanosima:wght@400;600;700&family=Eczar:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=Poppins:wght@400;500;600&family=Roboto:wght@400;500;700&family=Rubik:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">    
         <script src="https://kit.fontawesome.com/9702b0450a.js" crossorigin="anonymous"></script>
     </head>
@@ -21,46 +21,12 @@
                 <a href="{% url 'profile' user=request.user.username %}" class="user"><img src="{% url 'get_image_user'  image=request.user.image_profile user=request.user.username%}"></a>
                 {% endif %}
             </div>
-            {% include 'core/header.html' %}
 
             <i class="fa-solid fa-spinner load"></i>
             
             <div class="section">
-                <div class="header_web"> 
-                    <header class="header">
-                        <ul class="options_header">
-                            <li class="option_header"><a href="{% url 'feed' %}"><i class="fa-solid fa-house"></i> Inicio</a></li>
-                            <li class="option_header"><a><i class="fa-solid fa-magnifying-glass search"></i> Buscar</a></li>
-                            <li class="option_header"><a href=""><i class="fa-solid fa-earth-americas world"></i> Trivia</a></li>
-                            <li class="option_header"><a><i class="fa-solid fa-gear"></i> Ajustes</a></li>    
-                        </ul>
-                    </header>
-                    <div class="add_window">
-                        <a href="{% url 'new_message' %}">Nuevo mensaje</a>
-                        <a href="{% url 'new_trip' %}">Nuevo viaje</a>
-                    </div>
-                    <div class="search_window">
-                        <form method="post" class="form_search">
-                            {% csrf_token %}
-                            <div class="div_input">
-                                <input type="search" name="result" class="input_result" required placeholder="Escriba el nombre de un usuario o destino">
-                                <i class="fa-solid fa-xmark close"></i>
-                            </div>
-                            <input type="submit" value="Buscar">
-                        </form>
-                        <p class="not_results"></p>
-                        <div class="users_results">
-                            <p>Usuarios</p>
-                            <ul class="list_users">
-                            </ul>
-                        </div>
-                        <div class="countries_results">
-                            <p>Paises</p>
-                            <ul class="list_countries">
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                {% include 'core/header.html' %}
+                
                 <div class="section_center">
                     <div class="publications">
                         
@@ -109,5 +75,5 @@
             </div>
         </div>
     </body>
-    <script src="{% static 'js/feed/feedd.js' %}"></script>
+    <script src="{% static 'js/feed/feeddd.js' %}"></script>
 </html>

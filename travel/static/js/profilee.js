@@ -1,5 +1,5 @@
 window.addEventListener("load", e => {
-    document.querySelector(".profile").style.display = 'block'
+    document.querySelector(".container").style.display = 'flex'
     document.querySelector(".load").style.display = 'none'
 })
 

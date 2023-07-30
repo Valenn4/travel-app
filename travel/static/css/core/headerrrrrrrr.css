@@ -229,22 +229,64 @@ select option {
     flex-direction: column;
 }
 @media screen and (min-width:50em){
-    .header_mobile .header {
+    .new{
+        bottom: 25px;
+        right: 25px;
+    }
+    .header_mobile {
         display:none;
         width: auto;
         padding: 0;
     }
-    .open_header{
+    .header_web{
         display: flex;
+        flex-direction: column;
+        width: 20%;
+    }
+    .header{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        margin:  0 auto;
+        justify-content: center;
         align-items: center;
-        padding: 0 20px;
-        border-right: 2px solid black;
     }
-    .open_header i{
+    .options_header{
+        display: flex;
+        flex-direction: column;
+        width: auto;
+        margin: auto;
+        height: auto;
+        padding-top: 35px;
+    }
+    .options_header li{
+        margin-bottom: 50px;
+        list-style: none;
+    }
+    .options_header li a {
         color: white;
-        font-size: 30px;
+        text-decoration: none;
+        font-family: 'Rubik';
+        font-size: 19px;
     }
-    .div_options_header{
-        display: none;
+    .options_header li i {
+        color: white;
+        font-size: 22px;
+        margin-right: 10px;
+    }
+}
+
+@media screen and (min-width: 65em){
+    .header_web{
+        width: 20%;
+    }
+    .header{
+        width: 100%;
+        height: auto;
+        align-items: start;
+    }
+    .options_header{
+        width: 70%;
     }
 }

@@ -6,7 +6,7 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static 'css/core/headerrrrrrr.css' %}">
+        <link rel="stylesheet" href="{% static 'css/core/headerrrrrrrr.css' %}">
         <script src="https://kit.fontawesome.com/9702b0450a.js" crossorigin="anonymous"></script>
     </head>
     <body>
@@ -14,93 +14,101 @@
         <input id="DEBUG" value="{% get_env 'DEBUG' %}" type="hidden">
         <div class="header_mobile"> 
             <header class="header">
-                <div class="open_header" onclick="open_header()">
-                    <i class="fa-solid fa-angle-right"></i>
-                </div>
                 <div class="div_options_header">
                     <ul class="options_header">
                         <li class="option_header"><a href="{% url 'feed' %}"><i class="fa-solid fa-house"></i></a></li>
-                        <li class="option_header"><a><i class="fa-solid fa-magnifying-glass search"></i></a></li>
+                        <li class="option_header" onclick="openSearch()"><a><i class="fa-solid fa-magnifying-glass search"></i></a></li>
                         <li class="option_header"><a href=""><i class="fa-solid fa-earth-americas world"></i></a></li>
                         <li class="option_header"><a><i class="fa-solid fa-gear"></i></a></li>    
                     </ul>
                 </div>
             </header>
-            <div class="search_window">
-                <form method="post" class="form_search">
-                    {% csrf_token %}
-                    <div class="div_input">
-                        <input type="search" name="result" class="input_result" required placeholder="Escriba el nombre de un usuario o destino">
-                        <i class="fa-solid fa-xmark close"></i>
-                    </div>
-                    <input type="submit" value="Buscar">
-                </form>
-                <p class="not_results"></p>
-                <div class="users_results">
-                    <p>Usuarios</p>
-                    <ul class="list_users">
-                    </ul>
-                </div>
-                <div class="countries_results">
-                    <p>Paises</p>
-                    <ul class="list_countries">
-                    </ul>
-                </div>
-            </div>
-            {% if request.path == '/profile/'|add:request.user.username or request.path == '/feed/' %}
-            <div class="new">
-                <a class="add_trip"><i class="fa-solid fa-plane"></i></a>
-                <a class="add_message"><i class="fa-regular fa-comment"></i></a>
-                <i class="fa-solid fa-plus add" onclick="openAdd()"></i>
-
-                <div class="new_message">
-                    <i class="fa-solid fa-xmark close"></i>
-                    <p class="title_new_message">Agregar nuevo mensaje</p>
-                    <form method='POST' class="form_new_message" name="form_new_message">
-                        {% csrf_token %}
-                        <div class="div_location">
-                            <label>Elegir un destino:</label>
-                            {{form_new_message.location}}
-                        </div>
-                        <div class="div_form_submit">
-                            <div class="div_form_textarea">
-                                {{form_new_message.message}}
-                            </div>
-                            <div class="div_form_button_submit">
-                                <input type="submit" name="form_new_message" value="Subir" class="submit">
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="new_trip">
-                    <i class="fa-solid fa-xmark close"></i>
-                    <p class="title_new_trip">Agregar nuevo viaje</p>
-                    <form class="form_new_trip" name="form_new_trip" method="POST" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        <div class="section_form">
-                            <label>Destino</label>
-                            {{form_new_trip.location}}
-                        </div>
-                        <div class="section_form">
-                            <label>Titulo</label>
-                            {{form_new_trip.title}}
-                        </div>
-                        <div class="section_form">
-                            <label>Fotos</label>
-                            {{form_new_trip.image}}
-                        </div>
-                        <input type="submit" value="Crear" name="form_new_trip">
-                        {% if result == 'Ya existe un viaje con el mismo nombre' %}
-                            <p style="color:red">{{result}}</p>
-                        {% else %}
-                            <p style="color:green">{{result}}</p>
-                        {% endif %}
-                    </form> 
-                </div>
-            </div>
-            {% endif %}
         </div>
+        <div class="header_web"> 
+            <header class="header">
+                <ul class="options_header">
+                    <li class="option_header"><a href="{% url 'feed' %}"><i class="fa-solid fa-house"></i> Inicio</a></li>
+                    <li class="option_header" onclick="openSearch()"><a><i class="fa-solid fa-magnifying-glass search"></i> Buscar</a></li>
+                    <li class="option_header"><a href=""><i class="fa-solid fa-earth-americas world"></i> Trivia</a></li>
+                    <li class="option_header"><a><i class="fa-solid fa-gear"></i> Ajustes</a></li>    
+                </ul>
+            </header>
+        </div>
+
+        <div class="search_window">
+            <form method="post" class="form_search">
+                {% csrf_token %}
+                <div class="div_input">
+                    <input type="search" name="result" class="input_result" required placeholder="Escriba el nombre de un usuario o destino">
+                    <i class="fa-solid fa-xmark close"></i>
+                </div>
+                <input type="submit" value="Buscar">
+            </form>
+            <p class="not_results"></p>
+            <div class="users_results">
+                <p>Usuarios</p>
+                <ul class="list_users">
+                </ul>
+            </div>
+            <div class="countries_results">
+                <p>Paises</p>
+                <ul class="list_countries">
+                </ul>
+            </div>
+        </div>
+        {% if request.path == '/profile/'|add:request.user.username or request.path == '/feed/' %}
+        <div class="new">
+            <a class="add_trip"><i class="fa-solid fa-plane"></i></a>
+            <a class="add_message"><i class="fa-regular fa-comment"></i></a>
+            <i class="fa-solid fa-plus add" onclick="openAdd()"></i>
+
+            <div class="new_message">
+                <i class="fa-solid fa-xmark close"></i>
+                <p class="title_new_message">Agregar nuevo mensaje</p>
+                <form method='POST' class="form_new_message" name="form_new_message">
+                    {% csrf_token %}
+                    <div class="div_location">
+                        <label>Elegir un destino:</label>
+                        {{form_new_message.location}}
+                    </div>
+                    <div class="div_form_submit">
+                        <div class="div_form_textarea">
+                            {{form_new_message.message}}
+                        </div>
+                        <div class="div_form_button_submit">
+                            <input type="submit" name="form_new_message" value="Subir" class="submit">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="new_trip">
+                <i class="fa-solid fa-xmark close"></i>
+                <p class="title_new_trip">Agregar nuevo viaje</p>
+                <form class="form_new_trip" name="form_new_trip" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="section_form">
+                        <label>Destino</label>
+                        {{form_new_trip.location}}
+                    </div>
+                    <div class="section_form">
+                        <label>Titulo</label>
+                        {{form_new_trip.title}}
+                    </div>
+                    <div class="section_form">
+                        <label>Fotos</label>
+                        {{form_new_trip.image}}
+                    </div>
+                    <input type="submit" value="Crear" name="form_new_trip">
+                    {% if result == 'Ya existe un viaje con el mismo nombre' %}
+                        <p style="color:red">{{result}}</p>
+                    {% else %}
+                        <p style="color:green">{{result}}</p>
+                    {% endif %}
+                </form> 
+            </div>
+        </div>
+        {% endif %}
     </body>
-    <script src="{% static 'js/core/headerrrrrr.js' %}"></script>
+    <script src="{% static 'js/core/headerrrrrrr.js' %}"></script>
 </html>
 

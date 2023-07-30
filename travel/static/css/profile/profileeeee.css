@@ -13,14 +13,11 @@ body{
     'opsz' 48;
 }
 .container {
-    display: flex;
+    display: none;
     flex-direction: column;
     width: 100%;
 }
-.header {
-    background-color: orangered;
-}
-.profile{
+.header_web{
     display: none;
 }
 .photos_profile{
@@ -108,10 +105,10 @@ body{
     border-radius: 10px;
     font-family: 'Poppins';
     cursor: pointer;
-    color: black;
 }
 .setting a {
     text-decoration: none;
+    color: black;
 }
 
 .information .user {
@@ -172,10 +169,12 @@ body{
 }
 
 .load {
+    display: flex;
     text-align: center;
+    width: 100%;
     color: white;
     font-size: 40px;
-    margin-top: 60px;
+    margin: 60px auto;
     animation: spin 2s linear infinite;
 }
 
@@ -333,6 +332,16 @@ body{
 }
 
 @media screen and (min-width: 50em){
+    .container {
+        flex-direction: row;
+    }
+    .options_header{
+        padding-top: 60px !important;
+    }
+    .profile {
+        width: 100%;
+        border-left: 2px solid #11191f;
+    }
     .photo_profile {
         left: 30px;
     }
@@ -376,14 +385,14 @@ body{
 
 }
 
-@media screen and (min-width: 65em){
+@media screen and (min-width: 70em){
+    .options_header li{
+        margin-bottom: 70px !important;
+    }
     .photo_profile {
         left: 50px;
     }
     .my_trips_section{
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
         grid-gap: 25px;
     }
-    /* MY MESSAGES */
 }
