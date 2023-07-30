@@ -157,6 +157,9 @@ body{
     .div_form_message form select{
         font-size: 15px;
     }
+    .length_messages {
+        margin-top: 0px;
+    }
     .section_center{
         width: 48%;
         padding: 0 3%;

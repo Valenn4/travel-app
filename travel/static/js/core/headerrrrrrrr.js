@@ -73,7 +73,7 @@ function getUsers(e){
                 node_a = document.createElement("a")
                 const textnode_a = document.createTextNode(el.username)
                 node_a.appendChild(textnode_a)
-                node_a.setAttribute("href", `../profile/${el.username}`)
+                node_a.setAttribute("href", `../../profile/${el.username}`)
                 node_li.appendChild(node_a)
 
                 document.querySelector(".list_users").appendChild(node_li)
@@ -101,7 +101,7 @@ function getCountries(){
                     node_a = document.createElement("a")
                     const textnode_a = document.createTextNode(el.name.common)
                     node_a.appendChild(textnode_a)
-                    /*node_a.setAttribute("href", `../profile/${el.username}`)*/
+                    node_a.setAttribute("href", `../search/country/${el.name.common}`)
                     node_li.appendChild(node_a)
 
                     document.querySelector(".list_countries").appendChild(node_li)

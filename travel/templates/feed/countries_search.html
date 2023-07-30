@@ -1,0 +1,28 @@
+{% extends 'feed/feed.html' %}
+{% load static %}
+{% block content %}
+    {% if messages_country|length == 0 %}
+        <p class="length_messages">No hay mensajes disponibles.<br><br>¡Sigue a otros usuarios o publica tus propios mensajes!</p>
+    {% else %}
+    {% for m in messages_country %}
+    <div class="publication">
+        <div class="info_publication">
+            <a href="{% url 'profile' user=m.user.username%}">
+            {% if m.user.image_profile != '' %}
+            <img class="image_publication" src="{% url 'get_image_user' image=m.user.image_profile user=m.user.username%}">
+            {% else %}
+            <img class="image_publication" src="{% static 'images/profile.png' %}">
+            {% endif %}        
+            </a>                    
+            <div class="info_user">
+                <p class="name_publication">{{m.user.first_name}}</p>
+            </div>
+            <p class="date_publication">{{m.date|date:'d M'}}</p>
+        </div>
+        <p class="location_publication">{{m.location}}</p>
+        <p class="message_publication">{{m.message}}</p>
+        <p class="likes_publication"><i class="fa-regular fa-heart"></i> {{m.likes}}</p>
+    </div>
+    {% endfor %}
+    {% endif %}
+{% endblock %}
