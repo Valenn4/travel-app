@@ -73,7 +73,7 @@ body{
 /* PUBLICATIONS */
 .section_center{
     width: 100%;
-    display: none;
+    display: flex;
     grid-column: 1/4;
 }
 
