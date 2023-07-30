@@ -57,7 +57,7 @@ body{
     margin-top: 20px;
 }
 .section{
-    display: flex;
+    display: none;
     width: 100%;
 }
 /* HEADER WEB */
