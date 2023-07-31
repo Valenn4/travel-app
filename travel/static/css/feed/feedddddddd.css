@@ -121,6 +121,7 @@ body{
     width: 98%;
     font-weight: bold;
     text-decoration: underline;
+    color: white;
 }
 
 .message_publication {
@@ -141,6 +142,16 @@ body{
     cursor: pointer;
 }
 
+.title_country{
+    display: flex;
+    flex-direction: column;
+    margin: 30px auto 20px auto;
+    color: white;
+    font-size: 25px;
+    font-family: 'Rubik';
+    width: 90%;
+    text-decoration: underline;
+}
 @media screen and (min-width: 50em){
     .user img{
         width: 40px;

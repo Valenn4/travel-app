@@ -1,6 +1,9 @@
 {% extends 'feed/feed.html' %}
 {% load static %}
 {% block content %}
+    {% block header_top %}
+    {% endblock %}
+    <p class="title_country">Mensajes sobre {{request.path|slice:'16::'}}</p>
     {% if messages_country|length == 0 %}
         <p class="length_messages">No hay mensajes disponibles.<br><br>¡Sigue a otros usuarios o publica tus propios mensajes!</p>
     {% else %}
