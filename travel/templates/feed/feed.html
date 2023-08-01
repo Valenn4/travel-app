@@ -13,24 +13,12 @@
     </head>
     <body>
         <div class="container">
-            {% block header_top %}
-            <div class="header_top">
-                <i class="fa-solid fa-plane-departure logo"></i>
-                {% if request.user.image_profile == '' %}
-                <a href="{% url 'profile' user=request.user.username%}" class="user"><img src="{% static 'images/profile.png' %}"></a>
-                {% else %}
-                <a href="{% url 'profile' user=request.user.username %}" class="user"><img src="{% url 'get_image_user'  image=request.user.image_profile user=request.user.username%}"></a>
-                {% endif %}
-            </div>
-            {% endblock %}
+            {% include 'core/header_top.html' %}
             <i class="fa-solid fa-spinner load"></i>
-            
             <div class="section">
                 {% include 'core/header.html' %}
                 <div class="section_center">
                     <div class="publications">
-                        
-                        {% block content %}
                         {% if list_messages|length == 0 %}
                         <p class="length_messages">No hay mensajes disponibles.<br><br>¡Sigue a otros usuarios o publica tus propios mensajes!</p>
                         {% else %}
@@ -55,8 +43,6 @@
                             </div>
                             {% endfor %}
                         {% endif %}
-                        {% endblock %}
-
                     </div>
                 </div>
                 <div class="suggestions">

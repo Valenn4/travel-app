@@ -95,7 +95,7 @@ def countries_search(request, country):
         form_new_message = FormNewMessage()
         form_new_trip = FormNewTravel()
     context = {
-        'list_suggestions': UserProfile.objects.all()[0:5],
+        'trips_country': Trip.objects.filter(location=country),
         'messages_country': Message.objects.filter(location=country),
         'form_new_message': form_new_message,
         'form_new_trip': form_new_trip,

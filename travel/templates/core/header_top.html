@@ -1,0 +1,24 @@
+{% load static %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'css/core/header_top.css' %}">
+        <script src="https://kit.fontawesome.com/9702b0450a.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div class="header_top">
+            <a href="{% url 'feed' %}"><i class="fa-solid fa-plane-departure logo"></i></a>
+            {% if request.user.image_profile == '' %}
+            <a href="{% url 'profile' user=request.user.username%}" class="user"><img src="{% static 'images/profile.png' %}"></a>
+            {% else %}
+            <a href="{% url 'profile' user=request.user.username %}" class="user"><img src="{% url 'get_image_user'  image=request.user.image_profile user=request.user.username%}"></a>
+            {% endif %}
+        </div>
+    </body>
+    <script src="{% static 'js/core/headerrrrrrrr.js' %}"></script>
+</html>
+

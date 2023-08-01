@@ -1,0 +1,187 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: #141d26;
+    padding-bottom: 60px;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.length_messages {
+    color: white;
+    text-align: center;
+    font-family: 'Poppins';
+    font-size: 19px;
+}
+.section{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+/* PUBLICATIONS */
+.section_center{
+    width: 88%;
+    padding: 0 2%;
+    margin: 30px auto;
+}
+.publications{
+    display: flex;
+    flex-direction: column;
+    background-color: #0c1217;
+    border-radius: 10px;
+    padding: 10px 4%;
+    width: 92%;
+    height: auto;
+    margin: auto;
+}
+.publication{
+    width: 100%;
+    margin: 10px 0;
+    color: white;
+    font-family: 'Poppins';
+    padding-bottom: 15px;
+    border-bottom: 2px solid #141e27;
+}
+.info_publication{
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+.info_publication .image_publication {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+.info_publication .info_user{
+    width: 60%;
+}
+.info_publication .name_publication{
+    font-size: 16px;
+}
+.info_publication .date_publication{
+    text-align: right;
+    width: 100%;
+    font-size: 16px;
+    margin-right: 5px;
+}
+
+.location_publication {
+    display: flex;
+    margin: 10px auto auto auto;
+    width: 98%;
+    font-weight: bold;
+    text-decoration: underline;
+    color: white;
+}
+
+.message_publication {
+    display: flex;
+    margin: 5px auto 10px auto;
+    width: 98%;
+}
+
+.likes_publication {
+    display: flex;
+    margin: auto;
+    align-items: center;
+    width: 98%;
+}
+
+.likes_publication i {
+    margin-right: 4px;
+    cursor: pointer;
+}
+
+.title_country{
+    width: 100%;
+    text-align: left;
+    font-family: 'Rubik';
+    font-size: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgb(179, 179, 179);
+    color: white;
+    margin-bottom: 20px;
+}
+.suggestions{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: auto;
+    margin: 30px auto;
+    align-items: end;
+    color: white;
+}
+.suggestions .title_suggestions{
+    width: 100%;
+    font-family: 'Rubik';
+    font-size: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgb(179, 179, 179);
+    margin-bottom: 20px;
+}
+.suggestions .list_suggestions {
+    width: 100%;
+    height: auto;
+}
+.suggestion{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    font-family: 'Poppins';
+    margin-bottom: 15px;
+}
+.div_suggestion{
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    color: white;
+}
+.div_suggestion a {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+.div_suggestion p{
+    margin-top: 5px;
+}
+.suggestion img {
+    width: 120px;
+    height: 90px;
+    object-fit: cover;
+}
+
+@media screen and (min-width: 50em){
+    .section{
+        flex-direction: row;
+        margin-top: 10px;
+    }
+    .length_messages {
+        font-size: 18px;
+    }
+    .section_center{
+        width: 46%;
+        padding: 0 2%;
+    }
+    .suggestions{
+        width: 46%;
+        margin: 30px 2%;
+    }
+    .suggestions .title_suggestions{
+        text-align: right;
+    }
+    
+}
+
+@media screen and (min-width: 65em){
+    
+    .suggestion img {
+        width: 120px;
+        height: 100px;
+    }
+}
