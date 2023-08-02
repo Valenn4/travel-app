@@ -55,7 +55,7 @@
                             {% else %}
                                 <img class="image_publication" src="{% static 'images/profile.png' %}">
                             {% endif %}
-                            <a>{{el}}</a>
+                            <a href="{% url 'profile' user=el.username%}">{{el}}</a>
                         </div>
                         {% endfor %}
                     </div>

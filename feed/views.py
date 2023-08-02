@@ -96,7 +96,7 @@ def countries_search(request, country):
         form_new_trip = FormNewTravel()
     context = {
         'trips_country': Trip.objects.filter(location=country),
-        'messages_country': Message.objects.filter(location=country),
+        'messages_country': Message.objects.filter(location=country).order_by("-id"),
         'form_new_message': form_new_message,
         'form_new_trip': form_new_trip,
     }

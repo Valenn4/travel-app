@@ -12,7 +12,13 @@ body{
     flex-direction: column;
     width: 100%;
 }
-
+.load {
+    text-align: center;
+    color: white;
+    font-size: 40px;
+    margin-top: 55px;
+    animation: spin 2s linear infinite;
+}
 .length_messages {
     color: white;
     text-align: center;
@@ -20,13 +26,13 @@ body{
     font-size: 19px;
 }
 .section{
-    display: flex;
+    display: none;
     flex-direction: column;
     width: 100%;
 }
 /* PUBLICATIONS */
 .section_center{
-    width: 88%;
+    width: 92%;
     padding: 0 2%;
     margin: 30px auto;
 }
@@ -172,6 +178,10 @@ body{
         width: 46%;
         margin: 30px 2%;
     }
+    .suggestion img {
+        width: 150px;
+        height: 110px;
+    }
     .suggestions .title_suggestions{
         text-align: right;
     }
@@ -179,9 +189,11 @@ body{
 }
 
 @media screen and (min-width: 65em){
-    
     .suggestion img {
-        width: 120px;
-        height: 100px;
+        width: 200px;
+        height: 120px;
+    }
+    .div_suggestion{
+        margin-left: 20px;
     }
 }
