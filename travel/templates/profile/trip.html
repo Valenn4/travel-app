@@ -21,6 +21,7 @@
                     </a>
                     <p class="title">{{trip.title}}</p>
                 </div>
+                {% if request.user.username == trip.user.username %}
                 <div class="add_image">
                     <div class="structure_add_image">
                         <form class="form_add_image" method="POST" enctype="multipart/form-data">
@@ -47,6 +48,7 @@
                         {% endif %}
                     </div>
                 </div>
+                {% endif %}
                 <div class="grid_images">
                     {% for image in images %}
                     <img src="{% url 'get_image_trip' location=trip.location image=image user=user_trip%}">
