@@ -32,7 +32,7 @@ body{
 }
 /* PUBLICATIONS */
 .section_center{
-    width: 92%;
+    width: 95%;
     padding: 0 2%;
     margin: 30px auto;
 }
@@ -118,7 +118,8 @@ body{
 .suggestions{
     display: flex;
     flex-direction: column;
-    width: 90%;
+    width: 94%;
+    padding: 0 2%;
     height: auto;
     margin: 30px auto;
     align-items: end;
