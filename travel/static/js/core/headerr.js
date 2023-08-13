@@ -2,12 +2,14 @@
 function openAdd(){
     document.querySelector(".add_trip").style.display = "block"
     document.querySelector(".add_message").style.display = "block"
+    document.querySelector(".add_livingroom").style.display = "block"
     document.querySelector(".add").setAttribute("onclick", "closeAdd()")
     document.querySelector(".add").setAttribute("class","fa-solid fa-xmark add")
 }
 function closeAdd(){
     document.querySelector(".add_trip").style.display = "none"
     document.querySelector(".add_message").style.display = "none"
+    document.querySelector(".add_livingroom").style.display = "none"
     document.querySelector(".add").setAttribute("onclick", "openAdd()")
     document.querySelector(".add").setAttribute("class","fa-solid fa-plus add")
 }
@@ -25,6 +27,13 @@ document.querySelector(".add_trip").addEventListener("click", () => {
 })
 document.querySelector(".new_trip .close").addEventListener("click", () => {
     document.querySelector(".new_trip").style.display="none"    
+})
+/* add living room */
+document.querySelector(".add_livingroom").addEventListener("click", () => {
+    document.querySelector(".new_livingroom").style.display="block"
+})
+document.querySelector(".new_livingroom .close").addEventListener("click", () => {
+    document.querySelector(".new_livingroom").style.display="none"    
 })
 /* SEARCH WINDOW */
 function openSearch(){

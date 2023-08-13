@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User, AbstractUser
-from django.forms import ValidationError
 from restcountries import RestCountryApiV2 as rapi
 # Create your models here.
 
@@ -26,7 +25,7 @@ class Trip(models.Model):
 
 
 
-class Message(models.Model):
+class Publication(models.Model):
     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     location = models.CharField(max_length=200, choices=tuple(list_countries), blank=False)
     message = models.TextField(max_length=150, blank=False, null=False)

@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import UserProfile, Trip, Message
+from .models import UserProfile, Trip, Publication
 # Register your models here.
 
 admin.site.register(UserProfile)
 admin.site.register(Trip)
-admin.site.register(Message)
+admin.site.register(Publication)

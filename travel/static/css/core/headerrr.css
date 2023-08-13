@@ -129,7 +129,7 @@
     right: 20px;
     align-items: center;
 }
-.add_trip,.add_message{    
+.add_trip,.add_message, .add_livingroom{    
     display: none;
     font-size: 24px;
     background-color: white;
@@ -145,7 +145,7 @@
     border-radius: 50%;
     padding: 15px 17px;
 }
-.new_message, .new_trip{
+.new_message, .new_trip, .new_livingroom{
     display: none;
     width: 100%;
     height: 100%;
@@ -156,14 +156,14 @@
     left: 0;
     background-color: #141d26;
 }
-.new_message i, .new_trip i {
+.new_message i, .new_trip i, .new_livingroom i {
     position: absolute;
     top: 15px;
     right: 15px;
     color: white;
     font-size: 22px;
 }
-.title_new_message, .title_new_trip{
+.title_new_message, .title_new_trip, .title_new_livingroom{
     display: flex;
     flex-direction: column;
     width: 80%;

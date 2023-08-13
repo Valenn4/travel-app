@@ -6,7 +6,7 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static 'css/core/header.css' %}">
+        <link rel="stylesheet" href="{% static 'css/core/headerrr.css' %}">
         <script src="https://kit.fontawesome.com/9702b0450a.js" crossorigin="anonymous"></script>
     </head>
     <body>
@@ -58,6 +58,7 @@
         </div>
         {% if request.path == '/profile/'|add:request.user.username or request.path == '/feed/' or '/search/country/' in request.path %}
         <div class="new">
+            <a class="add_livingroom"><i class="fa-solid fa-people-group"></i></a>
             <a class="add_trip"><i class="fa-solid fa-plane"></i></a>
             <a class="add_message"><i class="fa-regular fa-comment"></i></a>
             <i class="fa-solid fa-plus add" onclick="openAdd()"></i>
@@ -106,9 +107,26 @@
                     {% endif %}
                 </form> 
             </div>
+            <div class="new_livingroom">
+                <i class="fa-solid fa-xmark close"></i>
+                <p class="title_new_livingroom">Crear nuevo grupo</p>
+
+                <form method='POST' name="form_new_livingroom">
+                    {% csrf_token %}
+                    <div class="section_form">
+                        <label>Nombre del grupo</label>
+                        {{form_new_livingroom.name}}
+                    </div>
+                    <div class="section_form">
+                        <label>¿Sobre que pais se tratará el grupo?</label>
+                        {{form_new_livingroom.nacionality}}
+                    </div>
+                    <input type="submit" name="form_new_livingroom" value="Crear">
+                </form>
+            </div>
         </div>
         {% endif %}
     </body>
-    <script src="{% static 'js/core/headerrrrrrrr.js' %}"></script>
+    <script src="{% static 'js/core/headerr.js' %}"></script>
 </html>
 

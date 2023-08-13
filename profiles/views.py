@@ -2,7 +2,7 @@ import json
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .forms import FormNewTravel, FormChangeUser, FormAddImage, FormNewMessage
-from .models import Trip, UserProfile, Message
+from .models import Trip, UserProfile, Publication
 from firebase_admin import storage
 from django.contrib.auth.decorators import login_required
 
@@ -44,7 +44,7 @@ def profile(request, user):
         if 'form_new_message' in request.POST:
             form_new_message = FormNewMessage(request.POST)
             if form_new_message.is_valid():
-                Message.objects.create(
+                Publication.objects.create(
                     user = request.user,
                     location = form_new_message.data["location"], 
                     message = form_new_message.data["message"]
@@ -83,12 +83,12 @@ def profile(request, user):
         list_images = json.loads(trip.images.get("images"))
         trips.append({"id": trip.id, "title": trip.title, "location":trip.location, "images":list_images, "last_image":list_images[len(list_images)-1]})
     # MESSAGGES
-    messages = Message.objects.filter(user=user).order_by("-id")
+    messages = Publication.objects.filter(user=user).order_by("-id")
     context = {
         'is_following': request.user.following["followings"],
         'user_profile': user,
         'trips':trips,
-        'list_messages': Message.objects.filter(user=user).order_by("-id"),
+        'list_messages': Publication.objects.filter(user=user).order_by("-id"),
         'form_new_message': form_new_message,
         'form_new_trip': form_new_trip,
     }
@@ -175,7 +175,7 @@ def new_trip(request):
 def new_message(request):
     if request.method == 'POST':
         form_new_message = FormNewMessage(request.POST)
-        Message.objects.create(
+        Publication.objects.create(
             user = request.user,
             location = form_new_message.data["location"], 
             message = form_new_message.data["message"]

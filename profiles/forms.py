@@ -1,5 +1,5 @@
 from django import forms
-from .models import UserProfile, Message, Trip
+from .models import UserProfile, Publication, Trip
 
 class FormNewTravel(forms.ModelForm):
     image = forms.ImageField(required=True)
@@ -20,5 +20,5 @@ class FormChangeUser(forms.ModelForm):
 
 class FormNewMessage(forms.ModelForm):
     class Meta:
-        model = Message
+        model = Publication
         fields = ['message','location']
