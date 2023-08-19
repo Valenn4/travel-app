@@ -13,6 +13,8 @@ DEBUG = env("DEBUG")
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -58,7 +60,13 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'travel.wsgi.application'
+ASGI_APPLICATION = 'travel.asgi.application'
 
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND':'channels.layers.InMemoryChannelLayer'
+    }
+}
 
 AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.AllowAllUsersModelBackend']
 

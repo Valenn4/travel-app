@@ -7,7 +7,7 @@
         <meta name="description" content="">
         <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static 'css/feed/countries_search.css' %}">
+        <link rel="stylesheet" href="{% static 'css/feed/countries_searchh.css' %}">
         <link href="https://fonts.googleapis.com/css2?family=Belanosima:wght@400;600;700&family=Eczar:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=Poppins:wght@400;500;600&family=Roboto:wght@400;500;700&family=Rubik:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">    
         <script src="https://kit.fontawesome.com/9702b0450a.js" crossorigin="anonymous"></script>
     </head>
@@ -16,12 +16,12 @@
             {% include 'core/header_top.html' %}
             <i class="fa-solid fa-spinner load"></i>
             <div class="section">
-                <div class="section_center">
-                    <p class="title_country">Mensajes sobre {{request.path|slice:"16::"}}</p>
+                <div class="div_section section_center">
+                    <p class="title">Mensajes sobre {{request.path|slice:"16::"}}</p>
                     {% if messages_country|length == 0 %}
                         <p class="length_messages">No hay mensajes disponibles.<br><br>¡Sigue a otros usuarios o publica tus propios mensajes!</p>
                     {% else %}
-                    <div class="publications">
+                    <div class="list">
                         {% for m in messages_country %}
                             <div class="publication">
                                 <div class="info_publication">
@@ -45,28 +45,47 @@
                     </div>
                     {% endif %}
                 </div>
-                <div class="suggestions">
-                    <p class="title_suggestions">Albums sobre {{request.path|slice:"16::"}}</p>
-                    <div class="list_suggestions">
-                        {% if trips_country|length == 0 %}
-                                <p class="length_messages">No hay albumes disponibles.<br><br>¡Sigue a otros usuarios o publica tus propios albumes!</p>
-                        {% else %}
-                            {% for el in trips_country %}
-                                {% load envs %}
-                                <div class="suggestion">
-                                    <img src='../../image/{{el.location}}/{% split el.images.images %}/{{el.user.username}}/'>
-                                    <div class="div_suggestion">
-                                        <a>{{el.title}}</a>
-                                        <hr></hr>
-                                        <p>Album de {{el.user.username}}</p>
-                                    </div>
+                <div class="div_section suggestions">
+                    <p class="title">Albumes sobre {{request.path|slice:"16::"}}</p>
+                    {% if trips_country|length == 0 %}
+                            <p class="length_messages">No hay albumes disponibles.<br><br>¡Sigue a otros usuarios o publica tus propios albumes!</p>
+                    {% else %}
+                    <div class="list">
+                        {% for el in trips_country %}
+                            {% load envs %}
+                            <div class="suggestion">
+                                <img src='../../image/{{el.location}}/{% split el.images.images %}/{{el.user.username}}/'>
+                                <div class="div_suggestion">
+                                    <a>{{el.title}}</a>
+                                    <hr></hr>
+                                    <p>Album de {{el.user.username}}</p>
                                 </div>
-                            {% endfor %}
-                        {% endif %}                            
+                            </div>
+                        {% endfor %}
                     </div>
+                    {% endif %}                            
+                </div>
+                <div class="div_section livingrooms">
+                    <p class="title">Grupos sobre {{request.path|slice:"16::"}}</p>
+                    {% if livingrooms_country|length == 0 %}
+                            <p class="length_messages">No hay grupos disponibles.<br><br>¡Sigue a otros usuarios o crea tus propios grupos!</p>
+                    {% else %}
+                    <div class="list">
+                        {% for el in livingrooms_country %}
+                            {% load envs %}
+                            <div class="suggestion">
+                                <div class="div_suggestion">
+                                    <a href="../../chat/{{el.name}}">{{el.name}}</a>
+                                    <hr></hr>
+                                    <p>Grupo creado por {{el.created_by.username}}</p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
     </body>
-    <script src="{% static 'js/feed/countries_search.js' %}"></script>
+    <script src="{% static 'js/feed/countries_searchh.js' %}"></script>
 </html>

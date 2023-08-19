@@ -27,20 +27,18 @@ body{
 }
 .section{
     display: none;
-    flex-direction: column;
     width: 100%;
 }
 /* PUBLICATIONS */
-.section_center{
+.div_section{
     width: 95%;
     padding: 0 2%;
     margin: 30px auto;
 }
-.publications{
+.list{
     display: flex;
     flex-direction: column;
     background-color: #0c1217;
-    border-radius: 10px;
     padding: 10px 4%;
     width: 92%;
     height: auto;
@@ -77,7 +75,6 @@ body{
     font-size: 16px;
     margin-right: 5px;
 }
-
 .location_publication {
     display: flex;
     margin: 10px auto auto auto;
@@ -86,26 +83,22 @@ body{
     text-decoration: underline;
     color: white;
 }
-
 .message_publication {
     display: flex;
     margin: 5px auto 10px auto;
     width: 98%;
 }
-
 .likes_publication {
     display: flex;
     margin: auto;
     align-items: center;
     width: 98%;
 }
-
 .likes_publication i {
     margin-right: 4px;
     cursor: pointer;
 }
-
-.title_country{
+.title{
     width: 100%;
     text-align: left;
     font-family: 'Rubik';
@@ -115,34 +108,12 @@ body{
     color: white;
     margin-bottom: 20px;
 }
-.suggestions{
-    display: flex;
-    flex-direction: column;
-    width: 94%;
-    padding: 0 2%;
-    height: auto;
-    margin: 30px auto;
-    align-items: end;
-    color: white;
-}
-.suggestions .title_suggestions{
-    width: 100%;
-    font-family: 'Rubik';
-    font-size: 20px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid rgb(179, 179, 179);
-    margin-bottom: 20px;
-}
-.suggestions .list_suggestions {
-    width: 100%;
-    height: auto;
-}
 .suggestion{
     display: flex;
     justify-content: left;
     align-items: center;
     font-family: 'Poppins';
-    margin-bottom: 15px;
+    margin: 10px;
 }
 .div_suggestion{
     display: flex;
@@ -164,35 +135,38 @@ body{
 }
 
 @media screen and (min-width: 50em){
-    .section{
-        flex-direction: row;
-        margin-top: 10px;
-    }
     .length_messages {
-        font-size: 18px;
+        font-size: 17px;
+    }
+    .info_publication .date_publication{
+        margin-right: 0px;
+    }
+    .section{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        grid-gap: 15px;
+        width: auto;
+        margin: 0 15px;
     }
     .section_center{
-        width: 46%;
-        padding: 0 2%;
+        grid-column: 1/2;
     }
     .suggestions{
-        width: 46%;
-        margin: 30px 2%;
+        grid-column: 2/3;
     }
-    .suggestion img {
-        width: 150px;
-        height: 110px;
+    .livingrooms{
+        grid-column: 3/4;
     }
-    .suggestions .title_suggestions{
-        text-align: right;
+    .div_section{
+        width: 100%;
+        padding: 0 0;
     }
-    
 }
 
 @media screen and (min-width: 65em){
     .suggestion img {
-        width: 200px;
-        height: 120px;
+        width: 180px;
+        height: 110px;
     }
     .div_suggestion{
         margin-left: 20px;

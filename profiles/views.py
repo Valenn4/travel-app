@@ -2,6 +2,7 @@ import json
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .forms import FormNewTravel, FormChangeUser, FormAddImage, FormNewMessage
+from chat.forms import FormNewLivingRoom
 from .models import Trip, UserProfile, Publication
 from firebase_admin import storage
 from django.contrib.auth.decorators import login_required
@@ -71,6 +72,16 @@ def profile(request, user):
                 return redirect(f'../profile/{request.user.username}')
             else:
                 form_new_trip = FormNewTravel()
+        if 'form_new_livingroom' in request.POST:
+            form_new_livingroom = FormNewLivingRoom(request.POST)    
+            
+            name = form_new_livingroom.data["name"]
+            nacionality = form_new_livingroom.data["nacionality"]
+
+            LivingRoom.objects.create(created_by=request.user, name=name, nacionality=nacionality)
+
+            return redirect("../feed")
+        form_new_livingroom = FormNewLivingRoom()    
         form_new_message = FormNewMessage()
         form_new_trip = FormNewTravel()
     else:
@@ -137,57 +148,6 @@ def edit_profile(request):
         'countries': rapi.get_all()
     }
     return render(request, 'profile/edit_profile.html', context)
-
-@login_required(redirect_field_name=None)
-def new_trip(request):
-    if request.method=='POST':
-        form = FormNewTravel(request.POST, request.FILES)
-        
-        if(Trip.objects.filter(user = request.user,title=form.data["title"]).exists()):
-            result = "Ya existe un viaje con el mismo nombre"
-        else:
-            list_images = []
-            for image in request.FILES.getlist("image"):
-                bucket = storage.bucket()
-                blob = bucket.blob(f'trips/{request.user}/'+form.data["location"]+"/"+image.name)
-                blob.upload_from_file(image)
-                list_images.append(image.name)
-                
-            Trip.objects.create(
-                user = request.user,
-                location = form.data["location"],
-                title = form.data["title"],
-                images = {"images":json.dumps(list_images)}
-            )
-            result = "Viaje creado exitosamente"
-            return redirect(f'../profile/{request.user.username}')
-    else:
-        form = FormNewTravel()
-        result = ""
-    context={
-        "form":form,
-        "result":result,
-        'countries': rapi.get_all()
-    }
-    return render(request, 'profile/new_trip.html', context)
-
-@login_required(redirect_field_name=None)
-def new_message(request):
-    if request.method == 'POST':
-        form_new_message = FormNewMessage(request.POST)
-        Publication.objects.create(
-            user = request.user,
-            location = form_new_message.data["location"], 
-            message = form_new_message.data["message"]
-        )
-        return redirect("../feed")
-    else:
-        form_new_message = FormNewMessage()
-    context = {
-        'form_new_message': form_new_message,
-        'countries': rapi.get_all()
-    }
-    return render(request, 'profile/new_message.html', context)
 
 @login_required(redirect_field_name=None)
 def trip (request, id):

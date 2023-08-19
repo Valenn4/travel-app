@@ -50,7 +50,7 @@ def feed(request):
             nacionality = form_new_livingroom.data["nacionality"]
 
             LivingRoom.objects.create(created_by=request.user, name=name, nacionality=nacionality)
-
+            
             return redirect("../feed")
         form_new_livingroom = FormNewLivingRoom()    
         form_new_message = FormNewMessage()
@@ -103,6 +103,16 @@ def countries_search(request, country):
                 return redirect(f'../profile/{request.user.username}')
             else:
                 form_new_trip = FormNewTravel()
+        if 'form_new_livingroom' in request.POST:
+            form_new_livingroom = FormNewLivingRoom(request.POST)    
+            
+            name = form_new_livingroom.data["name"]
+            nacionality = form_new_livingroom.data["nacionality"]
+
+            LivingRoom.objects.create(created_by=request.user, name=name, nacionality=nacionality)
+
+            return redirect("../feed")
+        form_new_livingroom = FormNewLivingRoom()    
         form_new_message = FormNewMessage()
         form_new_trip = FormNewTravel()
     else:
@@ -111,6 +121,7 @@ def countries_search(request, country):
     context = {
         'trips_country': Trip.objects.filter(location=country),
         'messages_country': Publication.objects.filter(location=country).order_by("-id"),
+        'livingrooms_country': LivingRoom.objects.filter(nacionality=country),
         'form_new_message': form_new_message,
         'form_new_trip': form_new_trip,
     }
