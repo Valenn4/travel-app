@@ -9,6 +9,7 @@ SECRET_KEY = env("SECRET_KEY")
 
 DEBUG = env("DEBUG")
 
+SECURE_SSL_REDIRECT = False
 
 # Application definition
 
