@@ -2,6 +2,17 @@
     margin: 0;
     padding: 0;
 }
+.load {
+    text-align: center;
+    color: white;
+    font-size: 40px;
+    margin-top: 55px;
+    animation: spin 2s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
 body{
     background: #141d26;
 }
@@ -26,21 +37,22 @@ body{
     background-color: rgb(73, 73, 73);
     cursor: pointer;
     object-fit: cover;
+    position: relative;
+    z-index: -1;
 }
 .photo_portate {
-    position: relative;
     width: 100%;
     height: 100%;
     border-bottom: 2px solid orangered;
     object-fit: cover;
 }
 .photo_profile {
-    position: relative;
+    position: absolute;
     width: 120px;
     height: 120px;
     border-radius: 50%;
     left: 20px;
-    bottom: 80px;
+    bottom: -40px;
     border: 2px solid black;
 }
 /* WINDOW PHOTO */

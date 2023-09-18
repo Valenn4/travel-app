@@ -12,7 +12,6 @@ class ChatConsumer(WebsocketConsumer):
         self.accept()
 
     def receive(self, text_data):
-        print(self.scope["user"].username)
         uuid = self.scope["url_route"]["kwargs"]["uuid"]
         async_to_sync(self.channel_layer.group_send)(
             f'chat_{uuid}',

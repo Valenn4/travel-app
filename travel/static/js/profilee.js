@@ -13,7 +13,6 @@ document.querySelectorAll(".trip").forEach(el => {
 document.querySelector(".photo_profile").addEventListener("click", () => {
     document.querySelector(".window_photo").style.display = "flex"
     document.querySelector("body").style.overflow = "hidden"
-    alert("fgfgf")
 })
 document.querySelector(".close_image").addEventListener("click", () => {
     document.querySelector(".window_photo").style.display = "none"
