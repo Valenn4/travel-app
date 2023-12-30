@@ -121,7 +121,7 @@ def countries_search(request, country):
     context = {
         'trips_country': Trip.objects.filter(location=country),
         'messages_country': Publication.objects.filter(location=country).order_by("-id"),
-        'livingrooms_country': LivingRoom.objects.filter(nacionality=country),
+        #'livingrooms_country': LivingRoom.objects.filter(nacionality=country),
         'form_new_message': form_new_message,
         'form_new_trip': form_new_trip,
     }

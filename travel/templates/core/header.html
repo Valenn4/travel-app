@@ -58,7 +58,9 @@
         </div>
         {% if request.path == '/profile/'|add:request.user.username or request.path == '/feed/' or '/search/country/' in request.path %}
         <div class="new">
-            <a class="add_livingroom"><i class="fa-solid fa-people-group"></i></a>
+            <!--
+                <a class="add_livingroom"><i class="fa-solid fa-people-group"></i></a>
+            -->
             <a class="add_trip"><i class="fa-solid fa-plane"></i></a>
             <a class="add_message"><i class="fa-regular fa-comment"></i></a>
             <i class="fa-solid fa-plus add" onclick="openAdd()"></i>
@@ -107,6 +109,7 @@
                     {% endif %}
                 </form> 
             </div>
+            <!--
             <div class="new_livingroom">
                 <i class="fa-solid fa-xmark close"></i>
                 <p class="title_new_livingroom">Crear nuevo grupo</p>
@@ -124,6 +127,7 @@
                     <input type="submit" name="form_new_livingroom" value="Crear">
                 </form>
             </div>
+            -->
         </div>
         {% endif %}
     </body>

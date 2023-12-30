@@ -173,9 +173,45 @@ def trip (request, id):
         form = FormAddImage(request.POST)
         result_form = ""     
     list_images.reverse()
+
+    '''WEB'''
+    list_images_copy_web = list_images
+    group_images_web = [[],[],[],[]]
+    while len(list_images_copy_web) != 0:
+        if len(list_images_copy_web)<4:
+            for i in range(len(list_images_copy_web)):
+                list_modify = group_images_web[i]
+                list_modify.append(list_images_copy_web[i])
+                group_images_web[i] = list_modify
+            list_images_copy_web = []
+        else:
+            for i in range(4):
+                list_modify = group_images_web[i]
+                list_modify.append(list_images_copy_web[i])
+                group_images_web[i] = list_modify
+            list_images_copy_web = list_images_copy_web[4::]
+    
+    '''MOBILE'''
+    list_images_copy_mobile = list_images
+    group_images_mobile = [[],[],[]]
+    while len(list_images_copy_mobile) != 0:
+        if len(list_images_copy_mobile)<3:
+            for i in range(len(list_images_copy_mobile)):
+                list_modify = group_images_mobile[i]
+                list_modify.append(list_images_copy_mobile[i])
+                group_images_mobile[i] = list_modify
+            list_images_copy_mobile = []
+        else:
+            for i in range(3):
+                list_modify = group_images_mobile[i]
+                list_modify.append(list_images_copy_mobile[i])
+                group_images_mobile[i] = list_modify
+            list_images_copy_mobile = list_images_copy_mobile[3::]
+
     context = {
         'trip':trip,
-        'images':list_images,
+        'list_images_web':group_images_web,
+        'list_images_mobile': group_images_mobile,
         'result_form': result_form,
         'form': form,
         'user_trip': Trip.objects.get(id=id).user.username

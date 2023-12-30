@@ -31,7 +31,7 @@ urlpatterns = [
     path('', include(auth_urls)),
     path('', include(feed_urls)),
     path('', include(api_urls)),
-    path('', include(chat_urls)),
+    #path('', include(chat_urls)),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
