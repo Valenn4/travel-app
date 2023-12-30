@@ -40,7 +40,9 @@
                 {% csrf_token %}
                 <div class="div_input">
                     <input type="search" name="result" class="input_result" required placeholder="Escriba el nombre de un usuario o destino">
-                    <i class="fa-solid fa-xmark close"></i>
+                    <div onclick="closeSearch()">
+                        <i class="fa-solid fa-xmark close"></i>
+                    </div>
                 </div>
                 <input type="submit" value="Buscar">
             </form>
@@ -131,6 +133,6 @@
         </div>
         {% endif %}
     </body>
-    <script src="{% static 'js/core/headerrrr.js' %}"></script>
+    <script src="{% static 'js/core/headerrrrr.js' %}"></script>
 </html>
 

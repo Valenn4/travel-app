@@ -32,8 +32,6 @@ body{
     display: none;
 }
 .profile{
-    position: relative;
-    z-index: -1;
 }
 .photos_profile{
     width: 100%;
@@ -42,6 +40,7 @@ body{
     cursor: pointer;
     object-fit: cover;
     position: relative;
+    z-index: -1;
 }
 .photo_portate {
     width: 100%;
