@@ -31,6 +31,10 @@ body{
 .header_web{
     display: none;
 }
+.profile{
+    position: relative;
+    z-index: -1;
+}
 .photos_profile{
     width: 100%;
     height: 180px;
@@ -44,7 +48,6 @@ body{
     height: 100%;
     border-bottom: 2px solid orangered;
     object-fit: cover;
-    z-index: 0;
 }
 .photo_profile {
     position: absolute;
@@ -54,7 +57,6 @@ body{
     left: 20px;
     bottom: -40px;
     border: 2px solid black;
-    z-index: 1;
 }
 /* WINDOW PHOTO */
 .window_photo {

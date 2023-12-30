@@ -1,53 +1,3 @@
-/* ADD */
-function openAdd(){
-    document.querySelector(".add_trip").style.display = "block"
-    document.querySelector(".add_message").style.display = "block"
-    document.querySelector(".add_livingroom").style.display = "block"
-    document.querySelector(".add").setAttribute("onclick", "closeAdd()")
-    document.querySelector(".add").setAttribute("class","fa-solid fa-xmark add")
-}
-function closeAdd(){
-    document.querySelector(".add_trip").style.display = "none"
-    document.querySelector(".add_message").style.display = "none"
-    document.querySelector(".add_livingroom").style.display = "none"
-    document.querySelector(".add").setAttribute("onclick", "openAdd()")
-    document.querySelector(".add").setAttribute("class","fa-solid fa-plus add")
-}
-
-/* add message */
-document.querySelector(".add_message").addEventListener("click", () => {
-    document.querySelector(".new_message").style.display="block"
-})
-document.querySelector(".new_message .close").addEventListener("click", () => {
-    document.querySelector(".new_message").style.display="none"    
-})
-/* add trip */
-document.querySelector(".add_trip").addEventListener("click", () => {
-    document.querySelector(".new_trip").style.display="block"
-})
-document.querySelector(".new_trip .close").addEventListener("click", () => {
-    document.querySelector(".new_trip").style.display="none"    
-})
-/* add living room */
-document.querySelector(".add_livingroom").addEventListener("click", () => {
-    document.querySelector(".new_livingroom").style.display="block"
-})
-document.querySelector(".new_livingroom .close").addEventListener("click", () => {
-    document.querySelector(".new_livingroom").style.display="none"    
-})
-/* SEARCH WINDOW */
-function openSearch(){
-    document.querySelector(".users_results").value=''
-    document.querySelector(".countries_results").value=''
-    document.querySelector(".input_result").value=''
-    document.querySelector(".not_results").innerHTML = ''
-    document.querySelector(".search_window").style.display = 'block'
-    document.querySelector("body").style.overflow = "hidden"
-}
-document.querySelector(".close").addEventListener("click", () => {
-    document.querySelector(".search_window").style.display = 'none'
-    document.querySelector("body").style.overflow = "auto"
-})
 document.querySelector(".form_search").addEventListener("submit", (e)=>{
     document.querySelector(".list_users").innerHTML = ''
     document.querySelector(".list_countries").innerHTML = ''
@@ -121,3 +71,54 @@ function getCountries(){
     .catch(err => console.log('Solicitud fallida', err));
     
 }
+/* ADD */
+function openAdd(){
+    document.querySelector(".add_trip").style.display = "block"
+    document.querySelector(".add_message").style.display = "block"
+    document.querySelector(".add_livingroom").style.display = "block"
+    document.querySelector(".add").setAttribute("onclick", "closeAdd()")
+    document.querySelector(".add").setAttribute("class","fa-solid fa-xmark add")
+}
+function closeAdd(){
+    document.querySelector(".add_trip").style.display = "none"
+    document.querySelector(".add_message").style.display = "none"
+    document.querySelector(".add_livingroom").style.display = "none"
+    document.querySelector(".add").setAttribute("onclick", "openAdd()")
+    document.querySelector(".add").setAttribute("class","fa-solid fa-plus add")
+}
+
+/* add message */
+document.querySelector(".add_message").addEventListener("click", () => {
+    document.querySelector(".new_message").style.display="block"
+})
+document.querySelector(".new_message .close").addEventListener("click", () => {
+    document.querySelector(".new_message").style.display="none"    
+})
+/* add trip */
+document.querySelector(".add_trip").addEventListener("click", () => {
+    document.querySelector(".new_trip").style.display="block"
+})
+document.querySelector(".new_trip .close").addEventListener("click", () => {
+    document.querySelector(".new_trip").style.display="none"    
+})
+/* add living room */
+document.querySelector(".add_livingroom").addEventListener("click", () => {
+    document.querySelector(".new_livingroom").style.display="block"
+})
+document.querySelector(".new_livingroom .close").addEventListener("click", () => {
+    document.querySelector(".new_livingroom").style.display="none"    
+})
+/* SEARCH WINDOW */
+function openSearch(){
+    document.querySelector(".users_results").value=''
+    document.querySelector(".countries_results").value=''
+    document.querySelector(".input_result").value=''
+    document.querySelector(".not_results").innerHTML = ''
+    document.querySelector(".search_window").style.display = 'block'
+    document.querySelector("body").style.overflow = "hidden"
+}
+document.querySelector(".close").addEventListener("click", () => {
+    document.querySelector(".search_window").style.display = 'none'
+    document.querySelector("body").style.overflow = "auto"
+})
+
