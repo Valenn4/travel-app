@@ -6,7 +6,7 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static 'css/profile/trippp.css' %}">
+        <link rel="stylesheet" href="{% static 'css/profile/tripppp.css' %}">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
         <link href="https://fonts.googleapis.com/css2?family=Belanosima:wght@400;600;700&family=Eczar:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=Poppins:wght@400;500;600&family=Roboto:wght@400;500;700&family=Rubik:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
     </head>
@@ -64,7 +64,7 @@
 
                 <div class="grid_images_mobile">
                     {% for images in list_images_mobile %}
-                        <div style="display: grid; row-gap: 20px; grid-template-columns: minmax(0px, 1fr);">
+                        <div style="display: grid; row-gap: 10px; grid-template-columns: minmax(0px, 1fr);">
                         {% for image in images %}
                             <div class="image-container" style="width: auto;">
                                 <img src="{% url 'get_image_trip' location=trip.location image=image user=user_trip%}">

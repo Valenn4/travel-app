@@ -193,20 +193,20 @@ def trip (request, id):
     
     '''MOBILE'''
     list_images_copy_mobile = list_images
-    group_images_mobile = [[],[],[]]
+    group_images_mobile = [[],[]]
     while len(list_images_copy_mobile) != 0:
-        if len(list_images_copy_mobile)<3:
+        if len(list_images_copy_mobile)<2:
             for i in range(len(list_images_copy_mobile)):
                 list_modify = group_images_mobile[i]
                 list_modify.append(list_images_copy_mobile[i])
                 group_images_mobile[i] = list_modify
             list_images_copy_mobile = []
         else:
-            for i in range(3):
+            for i in range(2):
                 list_modify = group_images_mobile[i]
                 list_modify.append(list_images_copy_mobile[i])
                 group_images_mobile[i] = list_modify
-            list_images_copy_mobile = list_images_copy_mobile[3::]
+            list_images_copy_mobile = list_images_copy_mobile[2::]
 
     context = {
         'trip':trip,
