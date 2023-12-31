@@ -6,11 +6,12 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static 'css/profile/tripppp.css' %}">
+        <link rel="stylesheet" href="{% static 'css/profile/tripP.css' %}">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
         <link href="https://fonts.googleapis.com/css2?family=Belanosima:wght@400;600;700&family=Eczar:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=Poppins:wght@400;500;600&family=Roboto:wght@400;500;700&family=Rubik:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
     </head>
     <body>
+        <p class="user_connected" style="display:none;">{{request.user}}</p>
         <div class="container">
             <div class="album_trip">
                 <div class="header">
@@ -19,8 +20,8 @@
                             navigate_before
                         </span>
                     </a>
-                    <p class="location">{{trip.location}}: </p>
-                    <p class="title">{{trip.title}}</p>
+                    <p class="location">{{trip.location}}</p>
+                    <p class="title">- {{trip.title}}</p>
                 </div>
                 {% if request.user.username == trip.user.username %}
                 <div class="add_image">
@@ -55,7 +56,7 @@
                         <div style="display: grid; row-gap: 20px; grid-template-columns: minmax(0px, 1fr); height:auto">
                         {% for image in images %}
                             <div class="image-container" style="width: auto;">
-                                <img src="{% url 'get_image_trip' location=trip.location image=image user=user_trip%}">
+                                <img class="img_album" src="{% url 'get_image_trip' location=trip.location image=image user=user_trip%}">
                             </div>
                         {% endfor %}
                         </div>
@@ -67,14 +68,21 @@
                         <div style="display: grid; row-gap: 10px; grid-template-columns: minmax(0px, 1fr);">
                         {% for image in images %}
                             <div class="image-container" style="width: auto;">
-                                <img src="{% url 'get_image_trip' location=trip.location image=image user=user_trip%}">
+                                <img class="img_album" src="{% url 'get_image_trip' location=trip.location image=image user=user_trip%}">
                             </div>
                         {% endfor %}
                         </div>
                     {% endfor %}
                 </div>
             </div>
+            <div class="window_photo">
+                <svg class="close_image" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0,0,256,256"
+                    style="fill:#000000;">
+                    <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(10.66667,10.66667)"><path d="M4.99023,3.99023c-0.40692,0.00011 -0.77321,0.24676 -0.92633,0.62377c-0.15312,0.37701 -0.06255,0.80921 0.22907,1.09303l6.29297,6.29297l-6.29297,6.29297c-0.26124,0.25082 -0.36647,0.62327 -0.27511,0.97371c0.09136,0.35044 0.36503,0.62411 0.71547,0.71547c0.35044,0.09136 0.72289,-0.01388 0.97371,-0.27511l6.29297,-6.29297l6.29297,6.29297c0.25082,0.26124 0.62327,0.36648 0.97371,0.27512c0.35044,-0.09136 0.62411,-0.36503 0.71547,-0.71547c0.09136,-0.35044 -0.01388,-0.72289 -0.27512,-0.97371l-6.29297,-6.29297l6.29297,-6.29297c0.29576,-0.28749 0.38469,-0.72707 0.22393,-1.10691c-0.16075,-0.37985 -0.53821,-0.62204 -0.9505,-0.60988c-0.2598,0.00774 -0.50638,0.11632 -0.6875,0.30273l-6.29297,6.29297l-6.29297,-6.29297c-0.18827,-0.19353 -0.4468,-0.30272 -0.7168,-0.30273z"></path></g></g>
+                </svg>
+                <div class="div_photo_window"></div>
+            </div>  
         </div>
     </body>
-    <script src="{% static 'js/trippp.js' %}"></script>
+    <script src="{% static 'js/tripP.js' %}"></script>
 </html>

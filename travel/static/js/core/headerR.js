@@ -1,3 +1,4 @@
+document.getElementById("id_image").setAttribute("multiple", "true")
 /* SEARCH WINDOW */
 function openSearch(){
     document.querySelector(".users_results").value=''

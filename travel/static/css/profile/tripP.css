@@ -175,9 +175,39 @@
     transition: transform 0.3s ease; /* Agregar un efecto de transición suave */
   }
 
-  img:hover {
-    transform: scale(1.1); /* Efecto de escala al pasar el ratón sobre la imagen */
-  }
+  .window_photo {
+    display: none;
+    width: 100%;
+    height: auto;
+    position: fixed;
+    z-index: 1;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: rgb(0, 0, 0, .5);
+    align-items: center;
+}
+.div_photo_window {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    display: flex;
+    margin: auto;
+}
+.window_photo .close_image {
+    position: fixed;
+    z-index: 3;
+    top: 15px;
+    right: 15px;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
 
 @media screen and (min-width:50em){
     .grid_images_web {
@@ -191,5 +221,15 @@
     }
     .grid_images_mobile{
         display: none;
+    }
+    .window_photo {
+        margin: auto;
+    }
+    .div_photo_window {
+        width: 50%;
+    }
+    .window_photo img {
+        width: 100%;
+        margin: auto;
     }
 }
