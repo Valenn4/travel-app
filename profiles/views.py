@@ -154,21 +154,32 @@ def trip (request, id):
     trip = Trip.objects.get(id=id)
     list_images =json.loads(trip.images.get("images"))
     if request.method == 'POST':
+        if 'submit_delete_photo' in request.POST:
+            images = list_images
+            images.remove(request.POST["name_image"])
+            trip.images = {"images":json.dumps(images)}
+            trip.save()
+            bucket = storage.bucket()
+            blob = bucket.blob(f'trips/{request.user}/'+trip.location+"/"+request.POST["name_image"])
+            blob.delete()
+            result_form = ''
+        else:
+            form = FormAddImage(request.POST, request.FILES)
+            result_form = []
+            for image in request.FILES.getlist("image"):
+                if(image.name in list_images):
+                    result_form.append(image.name)
+                else:
+                    images = json.loads(trip.images.get("images"))
+                    images.append(image.name)
+                    
+                    trip.images = {"images":json.dumps(images)}
+                    trip.save()
+                    bucket = storage.bucket()
+                    blob = bucket.blob(f'trips/{request.user}/'+trip.location+"/"+image.name)
+                    blob.upload_from_file(image)
+                    list_images.append(image.name)
         form = FormAddImage(request.POST, request.FILES)
-        result_form = []
-        for image in request.FILES.getlist("image"):
-            if(image.name in list_images):
-                result_form.append(image.name)
-            else:
-                images = json.loads(trip.images.get("images"))
-                images.append(image.name)
-                
-                trip.images = {"images":json.dumps(images)}
-                trip.save()
-                bucket = storage.bucket()
-                blob = bucket.blob(f'trips/{request.user}/'+trip.location+"/"+image.name)
-                blob.upload_from_file(image)
-                list_images.append(image.name)
     else:
         form = FormAddImage(request.POST)
         result_form = ""     
