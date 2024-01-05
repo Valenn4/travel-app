@@ -18,11 +18,11 @@
             <div class="section">
                 {% include 'core/header.html' %}
                 <div class="section_center">
-                    <p class="title_feed">Últimas publicaciones de tus seguidores...</p>
                     <div class="publications">
                         {% if list_messages|length == 0 %}
                         <p class="length_messages">No hay mensajes disponibles.<br><br>¡Sigue a otros usuarios o publica tus propios mensajes!</p>
                         {% else %}
+                        <p class="title_feed">Últimas publicaciones de tus seguidores...</p>
                             {% for m in list_messages %}
                             <div class="publication">
                                 <div class="info_publication">
