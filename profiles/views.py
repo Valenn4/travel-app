@@ -155,14 +155,18 @@ def trip (request, id):
     list_images =json.loads(trip.images.get("images"))
     if request.method == 'POST':
         if 'submit_delete_photo' in request.POST:
-            images = list_images
-            images.remove(request.POST["name_image"])
-            trip.images = {"images":json.dumps(images)}
-            trip.save()
-            bucket = storage.bucket()
-            blob = bucket.blob(f'trips/{request.user}/'+trip.location+"/"+request.POST["name_image"])
-            blob.delete()
-            result_form = ''
+            if len(list_images) == 1:
+                error_delete = 'El album no puede quedar vacio',
+            else:
+                images = list_images
+                images.remove(request.POST["name_image"])
+                trip.images = {"images":json.dumps(images)}
+                trip.save()
+                bucket = storage.bucket()
+                blob = bucket.blob(f'trips/{request.user}/'+trip.location+"/"+request.POST["name_image"])
+                blob.delete()
+                result_form = ''
+                error_delete = ''
         else:
             form = FormAddImage(request.POST, request.FILES)
             result_form = []
@@ -180,9 +184,11 @@ def trip (request, id):
                     blob.upload_from_file(image)
                     list_images.append(image.name)
         form = FormAddImage(request.POST, request.FILES)
+        error_delete = ''
     else:
         form = FormAddImage(request.POST)
         result_form = ""     
+        error_delete = ''
     list_images.reverse()
 
     '''WEB'''
@@ -225,6 +231,7 @@ def trip (request, id):
         'list_images_mobile': group_images_mobile,
         'result_form': result_form,
         'form': form,
-        'user_trip': Trip.objects.get(id=id).user.username
+        'user_trip': Trip.objects.get(id=id).user.username,
+        'error_delete':error_delete
     }
     return render(request, 'profile/trip.html', context)

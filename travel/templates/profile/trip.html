@@ -6,7 +6,7 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static 'css/profile/trippP.css' %}">
+        <link rel="stylesheet" href="{% static 'css/profile/trippppP.css' %}">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
         <link href="https://fonts.googleapis.com/css2?family=Belanosima:wght@400;600;700&family=Eczar:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=Poppins:wght@400;500;600&family=Roboto:wght@400;500;700&family=Rubik:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
     </head>
@@ -53,7 +53,7 @@
                 {% endif %}
                 <div class="grid_images_web">
                     {% for images in list_images_web %}
-                        <div style="display: grid; row-gap: 20px; grid-template-columns: minmax(0px, 1fr); height:auto">
+                        <div style="grid-template-columns: minmax(0px, 1fr); height:auto">
                         {% for image in images %}
                             <div class="image-container" style="width: auto;">
                                 <img class="img_album" src="{% url 'get_image_trip' location=trip.location image=image user=user_trip%}" id="{{image}}">
@@ -77,13 +77,13 @@
             </div>
             <div class="window_photo">
                 <div class="actions_photo" style="display:flex;">
-                    <form method="POST">
+                    <form method="POST" style="cursor:pointer;">
                         {% csrf_token %}
                         <span class="material-symbols-outlined">
                             delete
                         </span>
                         <input type="text" class="input_name" name="name_image" style="display:none">
-                        <input type="submit" name="submit_delete_photo">
+                        <input type="submit" class="submit_delete" name="submit_delete_photo">
                     </form>
                     <svg class="close_image" onclick="closeImage()" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0,0,256,256"
                         style="fill:#000000;">
@@ -91,6 +91,8 @@
                     </svg>
                 </div>
                 <div class="div_photo_window"></div>
+                
+                <p>{{error_delete}}</p>
             </div>  
         </div>
     </body>
