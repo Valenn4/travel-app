@@ -17,7 +17,7 @@ document.querySelectorAll(".publication").forEach(p => {
         body.append("likes", Number(document.querySelector(".id_user").innerHTML))
         csrftoken = document.cookie.substring(10)
 
-        fetch(`http://127.0.0.1:8000/api/v1/publication/${p.id}`, {
+        fetch(`https://valenn2.pythonanywhere.com/api/v1/publication/${p.id}`, {
             method: 'PUT',
             body: body,
             headers:{"X-Csrftoken": csrftoken}
