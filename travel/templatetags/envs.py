@@ -18,10 +18,9 @@ def split(value):
 
 @register.filter(name="len_likes")
 def len_like(value):
-    if value == '':
+    if value == None:
         return 0
-    
-    if '' in value.split(","):
+    elif '' in value.split(","):
         return len(value.split(","))-1
     else:
         return len(value.split(","))
