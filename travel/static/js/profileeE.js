@@ -2,7 +2,23 @@ window.addEventListener("load", e => {
     document.querySelector(".container").style.display = 'flex'
     document.querySelector(".load").style.display = 'none'
 })
-
+/* click publication */
+document.querySelectorAll(".publication").forEach(p => {
+    p.addEventListener("click", (e) => {
+        if(e.target.getAttribute("id") != 'favorite'){
+            location.href = `../publication/${p.id}`
+        } else {
+            let likes = p.childNodes[7].childNodes[3].textContent
+            if(e.target.style.color=="red"){
+                e.target.style.color = "white"
+                p.childNodes[7].childNodes[3].textContent = Number(likes)-1
+            } else {
+                e.target.style.color = "red"
+                p.childNodes[7].childNodes[3].textContent = Number(likes)+1
+            }
+        }
+    })
+})
 /* click trip */
 document.querySelectorAll(".trip").forEach(el => {
     el.addEventListener("click", () => {

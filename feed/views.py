@@ -61,6 +61,7 @@ def feed(request):
         form_new_trip = FormNewTravel()
     followings = request.user.following["followings"]
     followings.append(request.user)
+    print("fdsfds,4334,2fdg".split(","))
     context = {
         'list_suggestions': UserProfile.objects.all()[0:5],
         'list_messages': Publication.objects.filter(user__in=followings).order_by("-id"),
@@ -126,3 +127,9 @@ def countries_search(request, country):
         'form_new_trip': form_new_trip,
     }
     return render(request, 'feed/countries_search.html', context)
+
+def publication(request, id):
+    context = {
+        'publication': Publication.objects.get(id=id)
+    }
+    return render(request, 'feed/publication.html', context)

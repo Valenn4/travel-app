@@ -23,11 +23,9 @@ class Trip(models.Model):
     def __str__(self):
         return f'{self.user} {self.title}'
 
-
-
 class Publication(models.Model):
     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     location = models.CharField(max_length=200, choices=tuple(list_countries), blank=False)
     message = models.TextField(max_length=150, blank=False, null=False)
     date = models.DateTimeField(auto_now=True, null=False, blank=False)
-    likes = models.IntegerField(default=0, blank=False, null=False)
+    likes = models.TextField(null=True, blank=True)
