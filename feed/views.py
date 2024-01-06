@@ -61,7 +61,6 @@ def feed(request):
         form_new_trip = FormNewTravel()
     followings = request.user.following["followings"]
     followings.append(request.user)
-    print("fdsfds,4334,2fdg".split(","))
     context = {
         'list_suggestions': UserProfile.objects.all()[0:5],
         'list_messages': Publication.objects.filter(user__in=followings).order_by("-id"),

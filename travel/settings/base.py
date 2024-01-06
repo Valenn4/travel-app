@@ -133,3 +133,7 @@ LOGOUT_REDIRECT_URL = '../../login/'
 LOGIN_URL = 'auth_login'
 LOGIN_REDIRECT_URL = '../feed/'
 
+DEFAULT_AUTHENTICATION_CLASSES = [
+    # 'rest_framework.authentication.SessionAuthentication',
+    'rest_framework.authentication.BasicAuthentication',
+]

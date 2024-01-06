@@ -18,10 +18,19 @@ def split(value):
 
 @register.filter(name="len_likes")
 def len_like(value):
-    return len(value.split(","))-1
+    if value == '':
+        return 0
+    
+    if '' in value.split(","):
+        return len(value.split(","))-1
+    else:
+        return len(value.split(","))
 
 @register.filter(name="contain_like")
 def contain_like(value):
-    list = value[1:-2]
-    return list.split(",")
+    return value.split(",")
+
+@register.filter(name="string")
+def string(value):
+    return str(value)
 
