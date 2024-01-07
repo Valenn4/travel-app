@@ -52,17 +52,18 @@ class PublicationViewSet(APIView):
     def put(self, request, id):
         queryset = Publication.objects.get(id=id)
         if queryset.likes == '':
-            likes = f'[{request.user.id}]'
+            likes = [str(request.user.id)]
         else:
             if str(request.user.id) in queryset.likes.split(","):
                 likes = queryset.likes.split(",")
                 likes.remove(str(request.user.id))
+                if len(likes) == 0:
+                    likes = ''
             else:
                 likes = queryset.likes.split(",")
                 likes.append(request.data["likes"])
     
         serializer = PublicationSerializer(queryset, data={'likes':','.join(likes)})
-        print(serializer)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)

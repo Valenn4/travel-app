@@ -1,4 +1,5 @@
 {% load static %}
+{% load envs %}
 <html>
     <head>
         <meta charset="utf-8">
@@ -89,13 +90,14 @@
         }
     </style>
     <body>
+        <p class="id_user" style="display:none;">{{request.user.id}}</p>
         <header class="header">
             <span class="material-symbols-outlined back">
                 keyboard_backspace
             </span>
         </header>
 
-        <div class="publication">
+        <div class="publication" id={{publication.id}}>
             <div class="info_publication">
                 <a href="{% url 'profile' user=publication.user.username%}">
                 {% if publication.user.image_profile != '' %}
@@ -112,12 +114,18 @@
             </div>
             <a href="{% url 'search_country' country=publication.location%}" class="location_publication"><p>{{publication.location}}</p></a>
             <p class="message_publication">{{publication.message}}</p>
-            <p class="likes_publication">
-                <span class="material-symbols-outlined">
+            <div class="likes_publication">
+                {% if request.user.id|string in publication.likes|contain_like %}
+                <span class="material-symbols-outlined" style="color:red" id="favorite">
                 favorite
                 </span> 
-                {{publication.likes}}
-            </p>
+                {% else %}
+                <span class="material-symbols-outlined" style="color:white" id="favorite">
+                    favorite
+                </span> 
+                {% endif %}
+                <p class="count_likes">{{publication.likes|len_likes}}</p>
+            </div>
         </div>
     </body>
     <script>
@@ -131,6 +139,30 @@
                 location.href = `..${ultimaParte}`
             }
         })
-        
+        let favorite = document.querySelector("#favorite")
+        favorite.addEventListener("click", (p) => {
+            console.log("Dfgdfgf")
+            const body = new URLSearchParams()
+            body.append("likes", Number(document.querySelector(".id_user").innerHTML))
+            csrftoken = document.cookie.substring(10)
+    
+            fetch(`http://127.0.0.1:8000/api/v1/publication/${document.querySelector(".publication").id}`, {
+                method: 'PUT',
+                body: body,
+                headers:{"X-Csrftoken": csrftoken}
+            })
+            .then(response => response.json())
+            .then(json => {
+                console.log(json)
+            })
+            let likes = document.querySelector(".count_likes").innerHTML
+            if(favorite.style.color=="red"){
+                favorite.style.color = "white"
+                document.querySelector(".count_likes").innerHTML = Number(likes)-1
+            } else {
+                favorite.style.color = "red"
+                document.querySelector(".count_likes").innerHTML = Number(likes)+1
+            }
+        })
     </script>
 </html>
