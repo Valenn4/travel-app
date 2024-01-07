@@ -130,7 +130,7 @@
     </body>
     <script>
         var paginaAnterior = document.referrer;
-        var ultimaParte = paginaAnterior.substring(paginaAnterior.indexOf("8000")+4);
+        var ultimaParte = paginaAnterior.substring(paginaAnterior.indexOf(".com")+4);
 
         document.querySelector(".back").addEventListener("click", () => {
             if(paginaAnterior == ''){
