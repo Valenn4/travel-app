@@ -23,10 +23,12 @@
                     <p class="location">{{trip.location}}</p>
                     <p class="title">- {{trip.title}}</p>
 
+                    {% if request.user.username == trip.user.username %}
                     <form method="POST">
                         {% csrf_token %}
                         <input type="submit" name="submit_delete_album" value="Borrar">
                     </form>
+                    {% endif %}
                 </div>
                 {% if request.user.username == trip.user.username %}
                 <div class="add_image">
