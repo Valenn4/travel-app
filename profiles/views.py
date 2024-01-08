@@ -20,9 +20,9 @@ def get_image_user(request, image, user):
     except Exception as e:
         return HttpResponse('Error al obtener la imagen: {}'.format(str(e)))
 
-def get_image_trip(request, location, image, user):
+def get_image_trip(request, title, image, user):
     bucket = storage.bucket()
-    blob = bucket.blob(f"trips/{user}/{location}/{image}")
+    blob = bucket.blob(f"trips/{user}/{title}/{image}")
     
     try:
         image_data = blob.download_as_bytes()
@@ -59,7 +59,7 @@ def profile(request, user):
                 list_images = []
                 for image in request.FILES.getlist("image"):
                     bucket = storage.bucket()
-                    blob = bucket.blob(f'trips/{request.user}/'+form_new_trip.data["location"]+"/"+image.name)
+                    blob = bucket.blob(f'trips/{request.user}/'+form_new_trip.data["title"]+"/"+image.name)
                     blob.upload_from_file(image)
                     list_images.append(image.name)
                     
@@ -163,10 +163,17 @@ def trip (request, id):
                 trip.images = {"images":json.dumps(images)}
                 trip.save()
                 bucket = storage.bucket()
-                blob = bucket.blob(f'trips/{request.user}/'+trip.location+"/"+request.POST["name_image"])
+                blob = bucket.blob(f'trips/{request.user}/'+trip.title+"/"+request.POST["name_image"])
                 blob.delete()
                 result_form = ''
                 error_delete = ''
+        elif 'submit_delete_album' in request.POST:
+            bucket = storage.bucket()
+            blobs = bucket.list_blobs(prefix = f'trips/{request.user}/'+trip.title+"/")
+            for blob in blobs:
+                blob.delete()
+            trip.delete()
+            return redirect(f'../../profile/{request.user.username}')
         else:
             form = FormAddImage(request.POST, request.FILES)
             result_form = []
@@ -180,7 +187,7 @@ def trip (request, id):
                     trip.images = {"images":json.dumps(images)}
                     trip.save()
                     bucket = storage.bucket()
-                    blob = bucket.blob(f'trips/{request.user}/'+trip.location+"/"+image.name)
+                    blob = bucket.blob(f'trips/{request.user}/'+trip.title+"/"+image.name)
                     blob.upload_from_file(image)
                     list_images.append(image.name)
         form = FormAddImage(request.POST, request.FILES)

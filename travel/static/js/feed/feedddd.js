@@ -17,7 +17,12 @@ document.querySelectorAll(".publication").forEach(p => {
         if(e.target.getAttribute("id") != 'favorite'){
             location.href = `../publication/${p.id}`
         } else {
-            fetch(`http://127.0.0.1:8000/api/v1/publication/${p.id}`, {
+            if(document.querySelector("#DEBUG").value=='True'){
+                url = `http://127.0.0.1:8000/api/v1/publication/${p.id}`
+            } else {
+                url = `https://valenn2.pythonanywhere.com/api/v1/publication/${p.id}`
+            }
+            fetch(url, {
             method: 'PUT',
             body: body,
             headers:{"X-Csrftoken": csrftoken}

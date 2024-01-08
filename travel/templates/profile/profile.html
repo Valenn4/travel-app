@@ -82,7 +82,7 @@
                         <div class="trip" id="{{trip.id}}">
                             <p class="title_trip">{{trip.title}}</p>
                             <div class="structure_trip">
-                                <img class="image_trip" src={% url 'get_image_trip' location=trip.location image=trip.last_image user=user_profile.username %}>
+                                <img class="image_trip" src={% url 'get_image_trip' title=trip.title image=trip.last_image user=user_profile.username %}>
                                 <div class="info_trip">
                                     <div class="section1">
                                         <p class="location_trip">{{trip.location}}</p>
@@ -142,7 +142,6 @@
                 </div>
             </div>
         </div>
-        {% load envs %}
         <input id="DEBUG" value="{% get_env 'DEBUG' %}" type="hidden"> 
     </body>
     <script src="{% static 'js/profileeeE.js' %}"></script>
