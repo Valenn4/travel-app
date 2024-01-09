@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'rest_framework',
     'profiles',
     'chat',
@@ -36,9 +37,13 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
-
+CORS_ALLOWED_ORIGINS = [
+    "https://valenn2.pythonanywhere.com",
+    # Agrega aquí otros dominios permitidos si es necesario
+]
 
 ROOT_URLCONF = 'travel.urls'
 
