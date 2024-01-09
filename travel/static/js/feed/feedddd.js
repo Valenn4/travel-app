@@ -25,7 +25,10 @@ document.querySelectorAll(".publication").forEach(p => {
             fetch(url, {
             method: 'PUT',
             body: body,
-            headers:{"X-Csrftoken": csrftoken}
+            headers:{
+                "X-Csrftoken": csrftoken,
+                "Content Type":"application/json"
+            }
             })
             .then(response => response.json())
             .then(json => {
