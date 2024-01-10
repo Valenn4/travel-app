@@ -1,3 +1,16 @@
+var paginaAnterior = document.referrer;
+if(document.querySelector("#DEBUG").value=='False'){
+	var ultimaParte = paginaAnterior.substring(paginaAnterior.indexOf(".com")+4);
+} else {
+	var ultimaParte = paginaAnterior.substring(paginaAnterior.indexOf("8000")+4);
+}
+document.querySelector(".back").addEventListener("click", () => {
+	if(paginaAnterior == ''){
+		location.href = `../feed`
+	} else {
+		location.href = `../..${ultimaParte}`
+	}
+})
 document.querySelectorAll(".img_album").forEach(e => {
 	e.addEventListener("click", i => {
 		document.querySelector(".input_name").setAttribute("value", e.id)

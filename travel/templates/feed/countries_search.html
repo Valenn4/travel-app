@@ -1,4 +1,5 @@
 {% load static %}
+{% load envs %}
 <html>
     <head>
         <meta charset="utf-8">
@@ -8,7 +9,7 @@
         <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{% static 'css/feed/countries_searchhH.css' %}">
-        <link href="https://fonts.googleapis.com/css2?family=Belanosima:wght@400;600;700&family=Eczar:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=Poppins:wght@400;500;600&family=Roboto:wght@400;500;700&family=Rubik:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">    
+        <link href="https://fonts.googleapis.com/css2?family=Belanosima:wght@400;600;700&family=Eczar:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=Poppins:wght@400;500;600&family=Roboto:wght@400;500;700&family=Rubik:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/9702b0450a.js" crossorigin="anonymous"></script>
     </head>
     <body>
@@ -30,8 +31,8 @@
                                     <img class="image_publication" src="{% url 'get_image_user' image=m.user.image_profile user=m.user.username%}">
                                     {% else %}
                                     <img class="image_publication" src="{% static 'images/profile.png' %}">
-                                    {% endif %}        
-                                    </a>                    
+                                    {% endif %}
+                                    </a>
                                     <div class="info_user">
                                         <p class="name_publication">{{m.user.first_name}}</p>
                                     </div>
@@ -41,7 +42,7 @@
                                 <p class="message_publication">{{m.message}}</p>
                                 <p class="likes_publication"><i class="fa-regular fa-heart"></i> {{m.likes}}</p>
                             </div>
-                            {% endfor %}
+                        {% endfor %}
                     </div>
                     {% endif %}
                 </div>
@@ -52,10 +53,9 @@
                     {% else %}
                     <div class="list">
                         {% for el in trips_country %}
-                            {% load envs %}
                             <a href="{% url 'trip' id=el.id %}">
                                 <div class="suggestion">
-                                    <img src='../../image/{{el.location}}/{% split el.images.images %}/{{el.user.username}}/'>
+                                    <img src='../../image/{{el.title}}/{{ el.images.images|split }}/{{el.user.username}}/'>
                                     <div class="div_suggestion">
                                         <p>{{el.title}}</p>
                                         <hr></hr>
@@ -65,7 +65,7 @@
                             </a>
                         {% endfor %}
                     </div>
-                    {% endif %}                            
+                    {% endif %}
                 </div>
                 <!--
                 <div class="div_section livingrooms">

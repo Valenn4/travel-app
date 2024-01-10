@@ -1,4 +1,5 @@
 {% load static %}
+{% load envs %}
 <html>
     <head>
         <meta charset="utf-8">
@@ -102,6 +103,7 @@
                 <p>{{error_delete}}</p>
             </div>  
         </div>
+        <input id="DEBUG" value="{% get_env 'DEBUG' %}" type="hidden">
     </body>
-    <script src="{% static 'js/trippppP.js' %}"></script>
+    <script src="{% static 'js/tripPP.js' %}"></script>
 </html>
