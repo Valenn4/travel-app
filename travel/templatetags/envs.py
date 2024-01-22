@@ -9,12 +9,10 @@ register = template.Library()
 def get_env(key):
     return env(key)
 
-'''
 @register.filter(name="split")
 def split(value):
     list = json.loads(value)
     return list[0]
-'''
 
 @register.filter(name="len_likes")
 def len_like(value):

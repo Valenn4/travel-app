@@ -53,7 +53,7 @@ body{
 }
 .title_feed{
     color: white;
-    margin: 20px 20px 0px 20px;
+    margin: 20px 20px 10px 20px;
     font-family: 'Poppins';
     font-size: 18px;
 }
@@ -71,6 +71,7 @@ body{
     font-family: 'Poppins';
     border-bottom: 1px solid rgb(128, 128, 128, .5);
     cursor: pointer;
+    overflow: hidden;
 }
 .info_publication{
     display: flex;
@@ -107,8 +108,10 @@ body{
 
 .message_publication {
     display: flex;
+    flex-direction: column;
     margin: 5px auto 10px auto;
     width: 98%;
+    overflow-wrap: break-word;
 }
 
 .likes_publication {
@@ -146,18 +149,17 @@ body{
     .publications{
         display: flex;
         flex-direction: column;
-        background-color: #0c1217;
-        border-radius: 10px;
-        padding: 15px 4%;
-        width: 85%;
+        width: 95%;
         height: auto;
         margin: auto;
     }
     .publication{
-        width: 100%;
-        margin: 10px 0;
-        padding: 0 0 15px 0;
+        width: 94%;
+        margin: 10px auto;
+        padding: 18px 3%;
         color: white;
+        background-color: #0c1217;
+        border-radius: 10px;
     }
     .info_publication .date_publication{
         margin: 0px;

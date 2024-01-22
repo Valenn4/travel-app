@@ -51,7 +51,7 @@ class PublicationViewSet(APIView):
     
     def put(self, request, id):
         queryset = Publication.objects.get(id=id)
-        if queryset.likes == '':
+        if queryset.likes == '' or queryset.likes == None:
             likes = [str(request.user.id)]
         else:
             if str(request.user.id) in queryset.likes.split(","):

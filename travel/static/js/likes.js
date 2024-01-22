@@ -1,13 +1,3 @@
- 
-window.addEventListener("load", e => {
-    document.querySelector(".section").style.display = 'flex'
-    document.querySelector(".load").style.display = 'none'
-})
-
-/* NEW MESSAGE */
-document.querySelector("#id_message").setAttribute("rows", 0)
-document.querySelector("#id_message").setAttribute("placeholder", "Escriba un mensaje")
-
 document.querySelectorAll(".publication").forEach(p => {
     p.addEventListener("click", (e) => {
         const body = new URLSearchParams()
@@ -15,7 +5,7 @@ document.querySelectorAll(".publication").forEach(p => {
         csrftoken = document.cookie.substring(10)
 
         if(e.target.getAttribute("id") != 'favorite'){
-            location.href = `../publication/${p.id}`
+            location.href = `../../publication/${p.id}`
         } else {
             if(document.querySelector("#DEBUG").value=='True'){
                 url = `http://127.0.0.1:8000/api/v1/publication/${p.id}`
@@ -26,8 +16,7 @@ document.querySelectorAll(".publication").forEach(p => {
             method: 'PUT',
             body: body,
             headers:{
-                "X-Csrftoken": csrftoken,
-                "Content Type":"application/json"
+                "X-Csrftoken": csrftoken
             }
             })
             .then(response => response.json())

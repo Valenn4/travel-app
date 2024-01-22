@@ -132,9 +132,9 @@
     <script>
         var paginaAnterior = document.referrer;
         if(document.querySelector("#DEBUG").value=='True'){
-            var ultimaParte = paginaAnterior.substring(paginaAnterior.indexOf(".com")+4);
-        } else {
             var ultimaParte = paginaAnterior.substring(paginaAnterior.indexOf("8000")+4);
+        } else {
+            var ultimaParte = paginaAnterior.substring(paginaAnterior.indexOf(".com")+4);
         }
         document.querySelector(".back").addEventListener("click", () => {
             
@@ -149,7 +149,7 @@
             const body = new URLSearchParams()
             body.append("likes", Number(document.querySelector(".id_user").innerHTML))
             csrftoken = document.cookie.substring(10)
-            if(document.querySelector("#DEBUG").value=='False'){
+            if(document.querySelector("#DEBUG").value=='True'){
                 url = `http://127.0.0.1:8000/api/v1/publication/${document.querySelector(".publication").id}`
             } else {
                 url = `https://valenn2.pythonanywhere.com/api/v1/publication/${document.querySelector(".publication").id}`
